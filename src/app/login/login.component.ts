@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     this.utilService.makeFormDirtyAndUpdateErrors(this.form, this.formErrors, this.formErrorMessages);
     if(this.form.valid){
       this.authService.login(this.form.value.userID, this.form.value.password)
-      .then(data =>{
+      .then(data => {
         this.router.navigate([this.redirectTo?this.redirectTo:'/']);
       })
       .catch(response =>{

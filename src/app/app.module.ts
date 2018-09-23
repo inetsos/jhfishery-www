@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule }    from './app-routing.module';
+import { AuthGuard } from './auth.guard';
+import { UsersResolve } from './users.resolve';
 
 import { UtilService } from './util.service';
 import { AuthService } from './auth.service';
@@ -15,6 +17,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { Error404Component } from './error404/error404.component';
 import { LoginComponent } from './login/login.component';
 import { UserNewComponent } from './user-new/user-new.component';
+import { UserIndexComponent } from './user-index/user-index.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { UserNewComponent } from './user-new/user-new.component';
     WelcomeComponent,
     Error404Component,
     LoginComponent,
-    UserNewComponent
+    UserNewComponent,
+    UserIndexComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +41,11 @@ import { UserNewComponent } from './user-new/user-new.component';
       useClass: RequestInterceptorService,
       multi: true,
     },
+    AuthGuard,
     UtilService,
     AuthService,
     UserService,
+    UsersResolve,
   ],
   bootstrap: [AppComponent]
 })
