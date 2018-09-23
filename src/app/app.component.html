@@ -15,22 +15,25 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
           <ul class="nav navbar-nav">
             <li [routerLinkActive]="['active']">
               <a [routerLink]="['/','users']">Users</a>
             </li>
           </ul>
+
           <ul class="nav navbar-nav navbar-right">
-            <li [routerLinkActive]="['active']">
-              <a [routerLink]="['/','login']">Login</a>
+            <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']"> <!-- 1 -->
+              <a [routerLink]="['/','login']">로그인</a>
             </li>
-            <li [routerLinkActive]="['active']">
-              <a [routerLink]="['/','users','new']">Sign Up</a>
+            <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']"> <!-- 1 -->
+              <a [routerLink]="['/','users','new']">사용자 등록</a>
             </li>
-            <li>
-              <a>Logout</a>
+            <li *ngIf="authService.isLoggedIn()">  <!-- 1 -->
+              <a (click)="authService.logout()">로그아웃</a>
             </li>
           </ul>
+
         </div>
 
       </div>
