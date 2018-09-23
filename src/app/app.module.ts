@@ -5,6 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+import { FileSelectDirective } from 'ng2-file-upload';
+
 import { AppRoutingModule }    from './app-routing.module';
 import { AuthGuard } from './auth.guard';
 import { UsersResolve } from './users.resolve';
@@ -23,6 +25,7 @@ import { UserNewComponent } from './user-new/user-new.component';
 import { UserIndexComponent } from './user-index/user-index.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserShowComponent } from './user-show/user-show.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { UserShowComponent } from './user-show/user-show.component';
     UserNewComponent,
     UserIndexComponent,
     UserEditComponent,
-    UserShowComponent
+    UserShowComponent,
+    UploadComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

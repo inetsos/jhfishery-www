@@ -14,8 +14,11 @@ import { UserIndexComponent } from './user-index/user-index.component';
 import { UserShowComponent } from './user-show/user-show.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 
+import { UploadComponent } from './upload/upload.component';
+
 const routes: Routes = [
   { path: '',  component: WelcomeComponent },
+  { path: 'upload',  component: UploadComponent },
   { path: 'login', component: LoginComponent },
   { path: 'users/new',  component: UserNewComponent },
   { path: 'users', canActivate: [AuthGuard],

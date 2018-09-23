@@ -20,7 +20,7 @@
 
           <ul class="nav navbar-nav">
             <li [routerLinkActive]="['active']">
-              <a [routerLink]="['/','users']">사용자</a>
+              <a [routerLink]="['/','upload']">업로드</a>
             </li>
           </ul>
 
@@ -30,6 +30,9 @@
             </li>
             <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']"> <!-- 1 -->
               <a [routerLink]="['/','users','new']">사용자 등록</a>
+            </li>
+            <li [routerLinkActive]="['active']">
+              <a [routerLink]="['/','users']">사용자</a>
             </li>
             <li *ngIf="authService.isLoggedIn()">  <!-- 1 -->
               <a (click)="authService.logout()">로그아웃</a>
