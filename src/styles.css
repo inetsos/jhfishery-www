@@ -85,6 +85,10 @@ a {
     max-width: 330px;
 }
 
+.page-invoices {
+    max-width: 980px;
+}
+
 ul{
     margin: 0;
     padding: 3px 12px;

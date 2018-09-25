@@ -1,0 +1,50 @@
+<div class="page page-invoices">
+
+  <div class="contentBox">
+    <h3 class="contentBoxTop">송품장</h3>    
+   
+    <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="mydate" (ngModelChange)="anotherDay()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
+    
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th width="10%">구분</th>
+          <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
+          <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
+          <th width="10%" class="text-right">입고수량<br/>매수금액</th>
+          <th width="10%" class="text-right">출고수량<br/>매출금액</th>
+          <th width="20%">매출일<br/>매출처</th>
+      </tr>
+      </thead>
+      <tbody  *ngFor="let invoice of invoices">
+        <tr>
+          <td>
+            {{invoice.in_out}}
+          </td>
+          <td>
+              {{invoice.seller}} <br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}
+          </td>
+          <td>
+            {{invoice.item}} <br/>
+            {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
+          </td>
+          <td  class="text-right">
+            {{invoice.in_number | number}}<br/>
+            {{invoice.in_sum | number}}
+          </td>
+          <td  class="text-right">
+            {{invoice.out_number | number}}<br/>
+            {{invoice.out_sum | number}}
+          </td>
+          <td>
+            {{invoice.out_date}} <br/>
+            {{invoice.out_purchase}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
+</div>

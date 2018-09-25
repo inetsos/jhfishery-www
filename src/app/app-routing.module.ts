@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { UsersResolve } from './users.resolve';
 import { UserResolve } from './user.resolve';
+import { InvoicesResolve } from './invoices.resolve';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
@@ -15,27 +16,49 @@ import { UserShowComponent } from './user-show/user-show.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 
 import { UploadComponent } from './upload/upload.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 const routes: Routes = [
   { path: '',  component: WelcomeComponent },
-  { path: 'upload',  component: UploadComponent },
+  { path: 'upload',  canActivate: [AuthGuard],
+    children: [
+      { 
+        path: '', 
+        component: UploadComponent 
+      }
+    ]
+  },
+  { path: 'invoice', canActivate: [AuthGuard],
+    children: [
+      { 
+        path: '', 
+        component: InvoiceComponent,
+        resolve: { 
+          invoices: InvoicesResolve,
+        } 
+      }
+    ]
+  },
   { path: 'login', component: LoginComponent },
   { path: 'users/new',  component: UserNewComponent },
   { path: 'users', canActivate: [AuthGuard],
     children: [
-      { path: '', 
+      { 
+        path: '', 
         component: UserIndexComponent,
         resolve: { 
           users: UsersResolve,
         } 
       },
-      { path: ':userID',
+      { 
+        path: ':userID',
         component: UserShowComponent,
         resolve: {
           user: UserResolve
         }
       },
-      { path: ':userID/edit',
+      { 
+        path: ':userID/edit',
         component: UserEditComponent,
         resolve: {
           user: UserResolve

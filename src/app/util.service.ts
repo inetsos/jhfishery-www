@@ -65,4 +65,31 @@ export class UtilService {
       }
     }
   }
+
+  public get2digits (num) {
+    return ("0" + num).slice(-2);
+  }
+
+  public getDate() {
+      var mydate = new Date();
+      return mydate.getFullYear() + "-" + this.get2digits(mydate.getMonth()+1) + "-" + this.get2digits(mydate.getDate());
+  }
+
+  public getTime() {
+      var mydate = new Date();
+      return this.get2digits(mydate.getHours()) + ":" + this.get2digits(mydate.getMinutes()+1) + ":" + this.get2digits(mydate.getSeconds());
+  }
+
+  public getDateTime() {
+      var mydate = new Date();
+      return mydate.getFullYear() + "-" + this.get2digits(mydate.getMonth()+1) + "-" + this.get2digits(mydate.getDate()) + " " 
+          + this.get2digits(mydate.getHours()) + ":" + this.get2digits(mydate.getMinutes()+1) + ":" + this.get2digits(mydate.getSeconds());
+  }
+
+  public getDateTimeStr() {
+      var mydate = new Date();
+      return mydate.getFullYear() +  this.get2digits(mydate.getMonth()+1) + this.get2digits(mydate.getDate())
+              + this.get2digits(mydate.getHours()) + this.get2digits(mydate.getMinutes())  + this.get2digits(mydate.getSeconds());
+  }
+
 }
