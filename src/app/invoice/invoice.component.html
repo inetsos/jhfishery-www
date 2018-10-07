@@ -14,7 +14,7 @@
           <th width="10%">구분</th>
           <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
           <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
-          <th width="10%" class="text-right">입고수량</th>
+          <th width="10%" class="text-right">입고수량<br/>영업인</th>
           <th width="10%" class="text-right">출고수량<br/>매출금액</th>
           <th width="20%">매출일<br/>매출처</th>
       </tr>
@@ -26,22 +26,20 @@
             {{invoice.in_out}}
           </td>
           <td>
-              {{invoice.seller}} <br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}
+              {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}
           </td>
           <td>
-            {{invoice.item}} <br/>
+            {{invoice.item}}<br/>
             {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
           </td>
           <td  class="text-right">
-            {{invoice.in_number | number}}
+            {{invoice.in_number | number}}<br/>{{invoice.seller_no}}
           </td>
           <td  class="text-right">
-            {{invoice.out_number | number}}<br/>
-            {{invoice.out_sum | number}}
+            {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}
           </td>
           <td>
-            {{invoice.out_date}} <br/>
-            {{invoice.out_purchase}}
+            {{invoice.out_date}}<br/>{{invoice.out_purchase}}
           </td>
         </tr>
         <ng-container *ngIf="i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice ">
