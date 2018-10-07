@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
-const URL = 'http://localhost:3300/api/upload';
+const URL = `${environment.apiBaseUrl}/upload`;
 
 @Component({
   selector: 'app-upload',

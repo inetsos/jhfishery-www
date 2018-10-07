@@ -14,12 +14,13 @@
           <th width="10%">구분</th>
           <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
           <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
-          <th width="10%" class="text-right">입고수량<br/>매수금액</th>
+          <th width="10%" class="text-right">입고수량</th>
           <th width="10%" class="text-right">출고수량<br/>매출금액</th>
           <th width="20%">매출일<br/>매출처</th>
       </tr>
       </thead>
-      <tbody  *ngFor="let invoice of invoices">
+      <tbody>
+        <ng-container *ngFor="let invoice of invoices; let i = index">
         <tr>
           <td>
             {{invoice.in_out}}
@@ -32,8 +33,7 @@
             {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
           </td>
           <td  class="text-right">
-            {{invoice.in_number | number}}<br/>
-            {{invoice.in_sum | number}}
+            {{invoice.in_number | number}}
           </td>
           <td  class="text-right">
             {{invoice.out_number | number}}<br/>
@@ -44,6 +44,17 @@
             {{invoice.out_purchase}}
           </td>
         </tr>
+        <ng-container *ngIf="i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice ">
+          <tr>
+            <td colspan="6" class="text-right"><b>{{invoice.in_sum | number}}</b></td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="i === invoices.length-1">
+            <tr>
+              <td colspan="6" class="text-right"><b>{{invoice.in_sum | number}}</b></td>
+            </tr>
+        </ng-container>
+      </ng-container>
       </tbody>
     </table>
   </div>  
