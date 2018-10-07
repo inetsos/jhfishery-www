@@ -14,11 +14,14 @@ import { AuthGuard } from './auth.guard';
 import { UsersResolve } from './users.resolve';
 import { UserResolve } from './user.resolve';
 import { InvoicesResolve } from './invoices.resolve';
+import { SellersResolve } from './sellers.resolve';
+import { SellerResolve } from './seller.resolve';
 
 import { UtilService } from './util.service';
 import { AuthService } from './auth.service';
 import { RequestInterceptorService } from './request-interceptor.service';
 import { UserService } from './user.service';
+import { SellerService } from './seller.service';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -30,6 +33,11 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserShowComponent } from './user-show/user-show.component';
 import { UploadComponent } from './upload/upload.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+
+import { SellerNewComponent } from './seller-new/seller-new.component';
+import { SellerIndexComponent } from './seller-index/seller-index.component';
+import { SellerEditComponent } from './seller-edit/seller-edit.component';
+import { SellerShowComponent } from './seller-show/seller-show.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +51,11 @@ import { InvoiceComponent } from './invoice/invoice.component';
     UserShowComponent,
     UploadComponent,
     FileSelectDirective,
-    InvoiceComponent
+    InvoiceComponent,
+    SellerNewComponent,
+    SellerIndexComponent,
+    SellerEditComponent,
+    SellerShowComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +81,9 @@ import { InvoiceComponent } from './invoice/invoice.component';
     UsersResolve,
     UserResolve,
     InvoicesResolve,
+    SellerService,
+    SellersResolve,
+    SellerResolve,
   ],
   bootstrap: [AppComponent]
 })

@@ -40,15 +40,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_resolve__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./users.resolve */ "./src/app/users.resolve.ts");
 /* harmony import */ var _user_resolve__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user.resolve */ "./src/app/user.resolve.ts");
 /* harmony import */ var _invoices_resolve__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./invoices.resolve */ "./src/app/invoices.resolve.ts");
-/* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _error404_error404_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./error404/error404.component */ "./src/app/error404/error404.component.ts");
-/* harmony import */ var _user_new_user_new_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./user-new/user-new.component */ "./src/app/user-new/user-new.component.ts");
-/* harmony import */ var _user_index_user_index_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./user-index/user-index.component */ "./src/app/user-index/user-index.component.ts");
-/* harmony import */ var _user_show_user_show_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user-show/user-show.component */ "./src/app/user-show/user-show.component.ts");
-/* harmony import */ var _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./user-edit/user-edit.component */ "./src/app/user-edit/user-edit.component.ts");
-/* harmony import */ var _upload_upload_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./upload/upload.component */ "./src/app/upload/upload.component.ts");
-/* harmony import */ var _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./invoice/invoice.component */ "./src/app/invoice/invoice.component.ts");
+/* harmony import */ var _sellers_resolve__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./sellers.resolve */ "./src/app/sellers.resolve.ts");
+/* harmony import */ var _seller_resolve__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./seller.resolve */ "./src/app/seller.resolve.ts");
+/* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _error404_error404_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./error404/error404.component */ "./src/app/error404/error404.component.ts");
+/* harmony import */ var _user_new_user_new_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user-new/user-new.component */ "./src/app/user-new/user-new.component.ts");
+/* harmony import */ var _user_index_user_index_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./user-index/user-index.component */ "./src/app/user-index/user-index.component.ts");
+/* harmony import */ var _user_show_user_show_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./user-show/user-show.component */ "./src/app/user-show/user-show.component.ts");
+/* harmony import */ var _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./user-edit/user-edit.component */ "./src/app/user-edit/user-edit.component.ts");
+/* harmony import */ var _upload_upload_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./upload/upload.component */ "./src/app/upload/upload.component.ts");
+/* harmony import */ var _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./invoice/invoice.component */ "./src/app/invoice/invoice.component.ts");
+/* harmony import */ var _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./seller-new/seller-new.component */ "./src/app/seller-new/seller-new.component.ts");
+/* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
+/* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
+/* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,13 +77,19 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
+
+
+
 var routes = [
-    { path: '', component: _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_7__["WelcomeComponent"] },
+    { path: '', component: _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_9__["WelcomeComponent"] },
     { path: 'upload', canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]],
         children: [
             {
                 path: '',
-                component: _upload_upload_component__WEBPACK_IMPORTED_MODULE_14__["UploadComponent"]
+                component: _upload_upload_component__WEBPACK_IMPORTED_MODULE_16__["UploadComponent"]
             }
         ]
     },
@@ -85,41 +97,68 @@ var routes = [
         children: [
             {
                 path: '',
-                component: _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_15__["InvoiceComponent"],
+                component: _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_17__["InvoiceComponent"],
                 resolve: {
                     invoices: _invoices_resolve__WEBPACK_IMPORTED_MODULE_6__["InvoicesResolve"],
                 }
             }
         ]
     },
-    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"] },
-    { path: 'users/new', component: _user_new_user_new_component__WEBPACK_IMPORTED_MODULE_10__["UserNewComponent"] },
+    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"] },
+    { path: 'users/new', component: _user_new_user_new_component__WEBPACK_IMPORTED_MODULE_12__["UserNewComponent"] },
     { path: 'users', canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]],
         children: [
             {
                 path: '',
-                component: _user_index_user_index_component__WEBPACK_IMPORTED_MODULE_11__["UserIndexComponent"],
+                component: _user_index_user_index_component__WEBPACK_IMPORTED_MODULE_13__["UserIndexComponent"],
                 resolve: {
                     users: _users_resolve__WEBPACK_IMPORTED_MODULE_4__["UsersResolve"],
                 }
             },
             {
                 path: ':userID',
-                component: _user_show_user_show_component__WEBPACK_IMPORTED_MODULE_12__["UserShowComponent"],
+                component: _user_show_user_show_component__WEBPACK_IMPORTED_MODULE_14__["UserShowComponent"],
                 resolve: {
                     user: _user_resolve__WEBPACK_IMPORTED_MODULE_5__["UserResolve"]
                 }
             },
             {
                 path: ':userID/edit',
-                component: _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_13__["UserEditComponent"],
+                component: _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_15__["UserEditComponent"],
                 resolve: {
                     user: _user_resolve__WEBPACK_IMPORTED_MODULE_5__["UserResolve"]
                 }
             },
         ]
     },
-    { path: '**', component: _error404_error404_component__WEBPACK_IMPORTED_MODULE_9__["Error404Component"] },
+    { path: 'sellers', canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]],
+        children: [
+            {
+                path: 'new', component: _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_18__["SellerNewComponent"],
+            },
+            {
+                path: '', component: _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_19__["SellerIndexComponent"],
+                resolve: {
+                    sellers: _sellers_resolve__WEBPACK_IMPORTED_MODULE_7__["SellersResolve"],
+                }
+            },
+            {
+                path: ':userID',
+                component: _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_20__["SellerShowComponent"],
+                resolve: {
+                    seller: _seller_resolve__WEBPACK_IMPORTED_MODULE_8__["SellerResolve"]
+                }
+            },
+            {
+                path: ':userID/edit',
+                component: _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_21__["SellerEditComponent"],
+                resolve: {
+                    seller: _seller_resolve__WEBPACK_IMPORTED_MODULE_8__["SellerResolve"]
+                }
+            },
+        ]
+    },
+    { path: '**', component: _error404_error404_component__WEBPACK_IMPORTED_MODULE_11__["Error404Component"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -161,7 +200,7 @@ module.exports = ".loading-overlay {\r\n    position: fixed;\r\n    top: 0px;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-progress-bar *ngIf=\"loading\" class=\"loading-overlay\" [mode]=\"'indeterminate'\"></mat-progress-bar>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <nav class=\"navbar navbar-default navbar-custom\">\n      <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\n\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a [routerLink]=\"['/']\" class=\"navbar-brand\">(주)대구종합수산</a>\n        </div>\n\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n          <ul class=\"nav navbar-nav\">\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','upload']\">업로드</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','invoice']\">송품장</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','seller']\">영업인</a>\n            </li>\n          </ul>\n\n          <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\n              <a [routerLink]=\"['/','login']\">로그인</a>\n            </li>\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\n              <a [routerLink]=\"['/','users','new']\">사용자 등록</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','users']\">사용자</a>\n            </li>\n            <li *ngIf=\"authService.isLoggedIn()\">  <!-- 1 -->\n              <a (click)=\"authService.logout()\">로그아웃</a>\n            </li>\n          </ul>\n\n        </div>\n\n      </div>\n    </nav>\n\n    <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
+module.exports = "<mat-progress-bar *ngIf=\"loading\" class=\"loading-overlay\" [mode]=\"'indeterminate'\"></mat-progress-bar>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <nav class=\"navbar navbar-default navbar-custom\">\n      <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\n\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a [routerLink]=\"['/']\" class=\"navbar-brand\">(주)대구종합수산</a>\n        </div>\n\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n          <ul class=\"nav navbar-nav\">\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','upload']\">업로드</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','invoice']\">송품장</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','sellers', 'new']\">영업인 등록</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','sellers']\">영업인 보기</a>\n            </li>\n          </ul>\n\n          <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\n              <a [routerLink]=\"['/','login']\">로그인</a>\n            </li>\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\n              <a [routerLink]=\"['/','users','new']\">사용자 등록</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','users']\">사용자</a>\n            </li>\n            <li *ngIf=\"authService.isLoggedIn()\">  <!-- 1 -->\n              <a (click)=\"authService.logout()\">로그아웃</a>\n            </li>\n          </ul>\n\n        </div>\n\n      </div>\n    </nav>\n\n    <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -255,20 +294,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_resolve__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./users.resolve */ "./src/app/users.resolve.ts");
 /* harmony import */ var _user_resolve__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user.resolve */ "./src/app/user.resolve.ts");
 /* harmony import */ var _invoices_resolve__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./invoices.resolve */ "./src/app/invoices.resolve.ts");
-/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./util.service */ "./src/app/util.service.ts");
-/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
-/* harmony import */ var _request_interceptor_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./request-interceptor.service */ "./src/app/request-interceptor.service.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
-/* harmony import */ var _error404_error404_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./error404/error404.component */ "./src/app/error404/error404.component.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _user_new_user_new_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user-new/user-new.component */ "./src/app/user-new/user-new.component.ts");
-/* harmony import */ var _user_index_user_index_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./user-index/user-index.component */ "./src/app/user-index/user-index.component.ts");
-/* harmony import */ var _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./user-edit/user-edit.component */ "./src/app/user-edit/user-edit.component.ts");
-/* harmony import */ var _user_show_user_show_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./user-show/user-show.component */ "./src/app/user-show/user-show.component.ts");
-/* harmony import */ var _upload_upload_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./upload/upload.component */ "./src/app/upload/upload.component.ts");
-/* harmony import */ var _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./invoice/invoice.component */ "./src/app/invoice/invoice.component.ts");
+/* harmony import */ var _sellers_resolve__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./sellers.resolve */ "./src/app/sellers.resolve.ts");
+/* harmony import */ var _seller_resolve__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./seller.resolve */ "./src/app/seller.resolve.ts");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./util.service */ "./src/app/util.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _request_interceptor_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./request-interceptor.service */ "./src/app/request-interceptor.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _seller_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./seller.service */ "./src/app/seller.service.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
+/* harmony import */ var _error404_error404_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./error404/error404.component */ "./src/app/error404/error404.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _user_new_user_new_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./user-new/user-new.component */ "./src/app/user-new/user-new.component.ts");
+/* harmony import */ var _user_index_user_index_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./user-index/user-index.component */ "./src/app/user-index/user-index.component.ts");
+/* harmony import */ var _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./user-edit/user-edit.component */ "./src/app/user-edit/user-edit.component.ts");
+/* harmony import */ var _user_show_user_show_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./user-show/user-show.component */ "./src/app/user-show/user-show.component.ts");
+/* harmony import */ var _upload_upload_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./upload/upload.component */ "./src/app/upload/upload.component.ts");
+/* harmony import */ var _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./invoice/invoice.component */ "./src/app/invoice/invoice.component.ts");
+/* harmony import */ var _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./seller-new/seller-new.component */ "./src/app/seller-new/seller-new.component.ts");
+/* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
+/* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
+/* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -303,23 +349,34 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
+
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"],
-                _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_19__["WelcomeComponent"],
-                _error404_error404_component__WEBPACK_IMPORTED_MODULE_20__["Error404Component"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_21__["LoginComponent"],
-                _user_new_user_new_component__WEBPACK_IMPORTED_MODULE_22__["UserNewComponent"],
-                _user_index_user_index_component__WEBPACK_IMPORTED_MODULE_23__["UserIndexComponent"],
-                _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_24__["UserEditComponent"],
-                _user_show_user_show_component__WEBPACK_IMPORTED_MODULE_25__["UserShowComponent"],
-                _upload_upload_component__WEBPACK_IMPORTED_MODULE_26__["UploadComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_21__["AppComponent"],
+                _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_22__["WelcomeComponent"],
+                _error404_error404_component__WEBPACK_IMPORTED_MODULE_23__["Error404Component"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_24__["LoginComponent"],
+                _user_new_user_new_component__WEBPACK_IMPORTED_MODULE_25__["UserNewComponent"],
+                _user_index_user_index_component__WEBPACK_IMPORTED_MODULE_26__["UserIndexComponent"],
+                _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_27__["UserEditComponent"],
+                _user_show_user_show_component__WEBPACK_IMPORTED_MODULE_28__["UserShowComponent"],
+                _upload_upload_component__WEBPACK_IMPORTED_MODULE_29__["UploadComponent"],
                 ng2_file_upload__WEBPACK_IMPORTED_MODULE_8__["FileSelectDirective"],
-                _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_27__["InvoiceComponent"]
+                _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_30__["InvoiceComponent"],
+                _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_31__["SellerNewComponent"],
+                _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_32__["SellerIndexComponent"],
+                _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_33__["SellerEditComponent"],
+                _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_34__["SellerShowComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -335,18 +392,21 @@ var AppModule = /** @class */ (function () {
             providers: [
                 {
                     provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"],
-                    useClass: _request_interceptor_service__WEBPACK_IMPORTED_MODULE_16__["RequestInterceptorService"],
+                    useClass: _request_interceptor_service__WEBPACK_IMPORTED_MODULE_18__["RequestInterceptorService"],
                     multi: true,
                 },
                 _auth_guard__WEBPACK_IMPORTED_MODULE_10__["AuthGuard"],
-                _util_service__WEBPACK_IMPORTED_MODULE_14__["UtilService"],
-                _auth_service__WEBPACK_IMPORTED_MODULE_15__["AuthService"],
-                _user_service__WEBPACK_IMPORTED_MODULE_17__["UserService"],
+                _util_service__WEBPACK_IMPORTED_MODULE_16__["UtilService"],
+                _auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
+                _user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"],
                 _users_resolve__WEBPACK_IMPORTED_MODULE_11__["UsersResolve"],
                 _user_resolve__WEBPACK_IMPORTED_MODULE_12__["UserResolve"],
                 _invoices_resolve__WEBPACK_IMPORTED_MODULE_13__["InvoicesResolve"],
+                _seller_service__WEBPACK_IMPORTED_MODULE_20__["SellerService"],
+                _sellers_resolve__WEBPACK_IMPORTED_MODULE_14__["SellersResolve"],
+                _seller_resolve__WEBPACK_IMPORTED_MODULE_15__["SellerResolve"],
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_21__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -778,7 +838,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-invoices\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">송품장</h3>    \n   \n    <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n    <mat-datepicker #picker></mat-datepicker>\n\n    \n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th width=\"10%\">구분</th>\n          <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n          <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n          <th width=\"10%\" class=\"text-right\">입고수량</th>\n          <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n          <th width=\"20%\">매출일<br/>매출처</th>\n      </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n        <tr>\n          <td>\n            {{invoice.in_out}}\n          </td>\n          <td>\n              {{invoice.seller}} <br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n          </td>\n          <td>\n            {{invoice.item}} <br/>\n            {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n          </td>\n          <td  class=\"text-right\">\n            {{invoice.in_number | number}}<br/>\n          </td>\n          <td  class=\"text-right\">\n            {{invoice.out_number | number}}<br/>\n            {{invoice.out_sum | number}}\n          </td>\n          <td>\n            {{invoice.out_date}} <br/>\n            {{invoice.out_purchase}}\n          </td>\n        </tr>\n        <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n          <tr>\n            <td colspan=\"6\" class=\"text-right\"><b>{{invoice.in_sum | number}}</b></td>\n          </tr>\n        </ng-container>\n        <ng-container *ngIf=\"i === invoices.length-1\">\n            <tr>\n              <td colspan=\"6\" class=\"text-right\"><b>{{invoice.in_sum | number}}</b></td>\n            </tr>\n        </ng-container>\n      </ng-container>\n      </tbody>\n    </table>\n  </div>  \n</div>"
+module.exports = "<div class=\"page page-invoices\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">송품장</h3>    \n   \n    <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n    <mat-datepicker #picker></mat-datepicker>\n\n    \n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th width=\"10%\">구분</th>\n          <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n          <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n          <th width=\"10%\" class=\"text-right\">입고수량</th>\n          <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n          <th width=\"20%\">매출일<br/>매출처</th>\n      </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n        <tr>\n          <td>\n            {{invoice.in_out}}\n          </td>\n          <td>\n              {{invoice.seller}} <br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n          </td>\n          <td>\n            {{invoice.item}} <br/>\n            {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n          </td>\n          <td  class=\"text-right\">\n            {{invoice.in_number | number}}\n          </td>\n          <td  class=\"text-right\">\n            {{invoice.out_number | number}}<br/>\n            {{invoice.out_sum | number}}\n          </td>\n          <td>\n            {{invoice.out_date}} <br/>\n            {{invoice.out_purchase}}\n          </td>\n        </tr>\n        <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n          <tr>\n            <td colspan=\"6\" class=\"text-right\"><b>{{invoice.in_sum | number}}</b></td>\n          </tr>\n        </ng-container>\n        <ng-container *ngIf=\"i === invoices.length-1\">\n            <tr>\n              <td colspan=\"6\" class=\"text-right\"><b>{{invoice.in_sum | number}}</b></td>\n            </tr>\n        </ng-container>\n      </ng-container>\n      </tbody>\n    </table>\n  </div>  \n</div>"
 
 /***/ }),
 
@@ -1064,6 +1124,657 @@ var RequestInterceptorService = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], RequestInterceptorService);
     return RequestInterceptorService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/seller-edit/seller-edit.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/seller-edit/seller-edit.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".buttons .delete {\r\n    color: #860505;\r\n    float: right;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/seller-edit/seller-edit.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/seller-edit/seller-edit.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"page page-sellers\">\n\n    <div>\n      <a  *ngIf=\"authService.isLoggedIn()\" [routerLink]=\"['/','sellers',seller.userID]\" class=\"btn btn-default\">뒤로</a>\n      <span *ngIf=\"authService.isLoggedIn()\" (click)=\"delete()\" class=\"btn btn-default delete\">삭제</span>\n    </div>\n  \n    <form class=\"user-form form-horizontal\" [formGroup]=\"form\" (ngSubmit)=\"submit()\" class=\"login-form form-horizontal\" >\n      <div class=\"contentBox\">\n        <h3 class=\"contentBoxTop\">영업인 수정</h3>\n\n        <fieldset>\n          <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.currentPassword}\">\n            <label for=\"currentPassword\" class=\"col-sm-12 control-label\">현재 비밀번호*</label>\n            <div class=\"col-sm-9 col-sm-offset-3\">\n              <input class=\"form-control\" type=\"password\" formControlName=\"currentPassword\" id=\"currentPassword\">\n              <span *ngIf=\"formErrors.currentPassword\" class=\"help-block\">{{formErrors.currentPassword}}</span>\n            </div>\n          </div>\n          <hr/>\n\n          <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.userID}\">\n            <label for=\"userID\" class=\"col-sm-3 control-label\">아이디*</label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"text\" formControlName=\"userID\" id=\"userID\">\n              <span *ngIf=\"formErrors.userID\" class=\"help-block\">{{formErrors.userID}}</span>\n            </div>\n          </div>\n\n          <div class=\"form-group\">\n            <label for=\"name\" class=\"col-sm-3 control-label\">이름</label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"text\" formControlName=\"name\" id=\"name\">\n            </div>\n          </div>\n\n          <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.sellerNo}\">\n            <label for=\"sellerNo\" class=\"col-sm-3 control-label\">영업인번호*</label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"text\" formControlName=\"sellerNo\" id=\"sellerNo\">\n              <span *ngIf=\"formErrors.sellerNo\" class=\"help-block\">{{formErrors.sellerNo}}</span>\n            </div>\n          </div>\n\n          <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.storeName}\">\n            <label for=\"storeName\" class=\"col-sm-3 control-label\">상호*</label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"text\" formControlName=\"storeName\" id=\"storeName\">\n              <span *ngIf=\"formErrors.storeName\" class=\"help-block\">{{formErrors.storeName}}</span>\n            </div>\n          </div>\n\n          <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.phone}\">\n            <label for=\"phone\" class=\"col-sm-3 control-label\">전화번호*</label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"text\" formControlName=\"phone\" id=\"phone\">\n              <span *ngIf=\"formErrors.phone\" class=\"help-block\">{{formErrors.phone}}</span>\n            </div>\n          </div>\n\n          <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.email}\">\n            <label for=\"email\" class=\"col-sm-3 control-label\">메일</label>\n            <div class=\"col-sm-9\">\n              <input class=\"form-control\" type=\"text\" formControlName=\"email\" id=\"email\">\n              <span *ngIf=\"formErrors.email\" class=\"help-block\">{{formErrors.email}}</span>\n            </div>\n          </div>\n\n          <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.newPassword}\">\n            <label for=\"newPassword\" class=\"col-sm-12 control-label\">새 비밀번호</label>\n            <div class=\"col-sm-9 col-sm-offset-3\">\n              <input class=\"form-control\" type=\"password\" formControlName=\"newPassword\" id=\"newPassword\">\n              <span *ngIf=\"formErrors.newPassword\" class=\"help-block\">{{formErrors.newPassword}}</span>\n            </div>\n          </div>\n\n          <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.confirmPassword}\">\n            <label for=\"confirmPassword\" class=\"col-sm-12 control-label\">비밀번호 확인</label>\n            <div class=\"col-sm-9 col-sm-offset-3\">\n              <input class=\"form-control\" type=\"password\" formControlName=\"confirmPassword\" id=\"confirmPassword\">\n              <span *ngIf=\"formErrors.confirmPassword\" class=\"help-block\">{{formErrors.confirmPassword}}</span>\n            </div>\n          </div>\n\n          <p>\n            *필수항목\n          </p>\n        </fieldset>\n\n        <div *ngIf=\"errorResponse?.message\" class=\"alert alert-danger\">\n          {{errorResponse?.message}}\n        </div>\n      </div>\n      <div class=\"buttons\">\n        <button type=\"submit\" class=\"btn btn-default\">확인</button>\n      </div>\n    </form>\n  \n</div>\n  "
+
+/***/ }),
+
+/***/ "./src/app/seller-edit/seller-edit.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/seller-edit/seller-edit.component.ts ***!
+  \******************************************************/
+/*! exports provided: SellerEditComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellerEditComponent", function() { return SellerEditComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util.service */ "./src/app/util.service.ts");
+/* harmony import */ var _seller_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../seller.service */ "./src/app/seller.service.ts");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var SellerEditComponent = /** @class */ (function () {
+    function SellerEditComponent(route, router, formBuilder, utilService, sellerService, authService) {
+        this.route = route;
+        this.router = router;
+        this.formBuilder = formBuilder;
+        this.utilService = utilService;
+        this.sellerService = sellerService;
+        this.authService = authService;
+        this.formErrors = {
+            'currentPassword': '',
+            'userID': '',
+            'sellerNo': '',
+            'storeName': '',
+            'phone': '',
+            'email': '',
+            'newPassword': '',
+            'confirmPassword': '',
+        };
+        this.formErrorMessages = {
+            'userID': {
+                'required': '아이디를 입력하세요.',
+                'pattern': '8~16자의 영문 숫자 조합입니다.',
+            },
+            'currentPassword': {
+                'required': '현재 비밀번호를 입력하세요.',
+            },
+            'sellerNo': {
+                'required': '영업인 번호를 입력하세요.',
+                'pattern': '숫자만 입력하세요.',
+            },
+            'storeName': {
+                'required': '상호를 입력하세요.',
+                'pattern': '2~40 글자입니다.',
+            },
+            'phone': {
+                'pattern': '전화번호 형식("-"포함)으로 입력하세요.',
+            },
+            'email': {
+                'pattern': '메일주소가 아닙니다.',
+            },
+            'newPassword': {
+                'pattern': '8~16자의 영문 숫자 조합입니다.',
+            },
+            'confirmPassword': {
+                'match': '비밀번호와 확인이 일치하지 않습니다.',
+            },
+        };
+        this.seller = this.route.snapshot.data['seller'];
+        this.buildForm();
+    }
+    SellerEditComponent.prototype.buildForm = function () {
+        var _this = this;
+        this.form = this.formBuilder.group({
+            currentPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            userID: [this.seller.userID, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^.{8,16}$/)]],
+            name: [this.seller.name],
+            sellerNo: [this.seller.sellerNo, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^[0-9]*$/)]],
+            storeName: [this.seller.storeName, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^.{2,40}$/)]],
+            phone: [this.seller.phone, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
+            email: [this.seller.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+            newPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
+            confirmPassword: [""],
+        }, {
+            validator: this.customValidation,
+        });
+        this.form.valueChanges.subscribe(function (data) {
+            _this.utilService.updateFormErrors(_this.form, _this.formErrors, _this.formErrorMessages);
+        });
+    };
+    ;
+    SellerEditComponent.prototype.customValidation = function (group) {
+        var password = group.get('newPassword');
+        var confirmPassword = group.get('confirmPassword');
+        if (password.dirty && confirmPassword.dirty && password.value != confirmPassword.value) {
+            confirmPassword.setErrors({ 'match': true });
+        }
+    };
+    SellerEditComponent.prototype.ngOnInit = function () {
+    };
+    SellerEditComponent.prototype.submit = function () {
+        var _this = this;
+        this.utilService.makeFormDirtyAndUpdateErrors(this.form, this.formErrors, this.formErrorMessages);
+        if (this.form.valid) {
+            this.sellerService.update(this.seller.userID, this.form.value)
+                .then(function (data) {
+                _this.router.navigate(['/', 'sellers', _this.seller.userID]);
+            })
+                .catch(function (response) {
+                _this.errorResponse = response;
+                _this.utilService.handleFormSubmitError(_this.errorResponse, _this.form, _this.formErrors);
+            });
+        }
+    };
+    SellerEditComponent.prototype.delete = function () {
+        var _this = this;
+        var answer = confirm("영업인 계정을 삭제하시겠습니까?");
+        if (answer) {
+            this.sellerService.destroy(this.seller.userID)
+                .then(function (data) {
+                alert('영업인 계정을 삭제하였습니다.');
+                //this.authService.logout();
+            })
+                .catch(function (response) {
+                _this.errorResponse = response;
+                _this.utilService.handleFormSubmitError(_this.errorResponse, _this.form, _this.formErrors);
+            });
+        }
+    };
+    SellerEditComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-seller-edit',
+            template: __webpack_require__(/*! ./seller-edit.component.html */ "./src/app/seller-edit/seller-edit.component.html"),
+            styles: [__webpack_require__(/*! ./seller-edit.component.css */ "./src/app/seller-edit/seller-edit.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+            _util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"],
+            _seller_service__WEBPACK_IMPORTED_MODULE_4__["SellerService"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]])
+    ], SellerEditComponent);
+    return SellerEditComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/seller-index/seller-index.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/seller-index/seller-index.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "ul {\r\n    margin: 0;\r\n    padding: 3px 12px;\r\n}\r\nul:after {\r\n    content: \"\";\r\n    display: block;\r\n    clear: both;\r\n}\r\nul li{\r\n    display: inline-block;\r\n    list-style-type: none;\r\n    float:left;\r\n}\r\nul li a{\r\n    display: inline-block;\r\n    text-decoration:none;\r\n    margin: 3px;\r\n    background-color: #eee;\r\n    padding: 3px 10px;\r\n    border-radius: 3px;\r\n}\r\nul li a:hover{\r\n    background-color: #ccc;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/seller-index/seller-index.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/seller-index/seller-index.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"page page-sellers\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">영업인</h3>\n    <ul>\n      <ng-container *ngIf=\"sellers == null || sellers.length == 0\">\n        <div class=\"noData\" colspan=100> There is no seller yet.</div>\n      </ng-container>\n        <li *ngFor=\"let seller of sellers\">\n          <a [routerLink]=\"['/','sellers', seller.userID]\">{{seller.sellerNo}} {{seller.storeName}}</a>\n        </li>\n    </ul>\n  </div>\n    \n</div>"
+
+/***/ }),
+
+/***/ "./src/app/seller-index/seller-index.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/seller-index/seller-index.component.ts ***!
+  \********************************************************/
+/*! exports provided: SellerIndexComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellerIndexComponent", function() { return SellerIndexComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SellerIndexComponent = /** @class */ (function () {
+    function SellerIndexComponent(route) {
+        this.route = route;
+        this.sellers = this.route.snapshot.data['sellers'];
+    }
+    SellerIndexComponent.prototype.ngOnInit = function () {
+    };
+    SellerIndexComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-seller-index',
+            template: __webpack_require__(/*! ./seller-index.component.html */ "./src/app/seller-index/seller-index.component.html"),
+            styles: [__webpack_require__(/*! ./seller-index.component.css */ "./src/app/seller-index/seller-index.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+    ], SellerIndexComponent);
+    return SellerIndexComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/seller-new/seller-new.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/seller-new/seller-new.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/seller-new/seller-new.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/seller-new/seller-new.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"page page-sellers\">\n\n  <form [formGroup]=\"form\" (ngSubmit)=\"submit()\" class=\"login-form form-horizontal\" >\n    <div class=\"contentBox\">\n      <h3 class=\"contentBoxTop\">사용자 등록</h3>\n\n      <fieldset>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.userID}\">\n          <label for=\"userID\" class=\"col-sm-3 control-label\">아이디*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"userID\" id=\"userID\">\n            <span *ngIf=\"formErrors.userID\" class=\"help-block\">{{formErrors.userID}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"name\" class=\"col-sm-3 control-label\">이름</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"name\" id=\"name\">\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.sellerNo}\">\n          <label for=\"sellerNo\" class=\"col-sm-3 control-label\">영업인번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"sellerNo\" id=\"sellerNo\">\n            <span *ngIf=\"formErrors.sellerNo\" class=\"help-block\">{{formErrors.sellerNo}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.storeName}\">\n          <label for=\"storeName\" class=\"col-sm-3 control-label\">상호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"storeName\" id=\"storeName\">\n            <span *ngIf=\"formErrors.storeName\" class=\"help-block\">{{formErrors.storeName}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.phone}\">\n          <label for=\"phone\" class=\"col-sm-3 control-label\">전화번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"phone\" id=\"phone\">\n            <span *ngIf=\"formErrors.phone\" class=\"help-block\">{{formErrors.phone}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.email}\">\n          <label for=\"email\" class=\"col-sm-3 control-label\">메일</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"email\" id=\"email\">\n            <span *ngIf=\"formErrors.email\" class=\"help-block\">{{formErrors.email}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.password}\">\n          <label for=\"password\" class=\"col-sm-3 control-label\">비밀번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"password\" formControlName=\"password\" id=\"password\">\n            <span *ngIf=\"formErrors.password\" class=\"help-block\">{{formErrors.password}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.confirmPassword}\">\n          <label for=\"confirmPassword\" class=\"col-sm-12 control-label\">비밀번호 확인*</label>\n          <div class=\"col-sm-9 col-sm-offset-3\">\n            <input class=\"form-control\" type=\"password\" formControlName=\"confirmPassword\" id=\"confirmPassword\">\n            <span *ngIf=\"formErrors.confirmPassword\" class=\"help-block\">{{formErrors.confirmPassword}}</span>\n          </div>\n        </div>\n        <p>\n          *필수항목\n        </p>\n        <div *ngIf=\"errorResponse?.message\" class=\"alert alert-danger\">\n          {{errorResponse?.message}}\n        </div>\n      </fieldset>\n    </div>\n    <div class=\"buttons\">\n      <button type=\"submit\" class=\"btn btn-default\">확인</button>\n    </div>\n  </form>\n  \n</div>"
+
+/***/ }),
+
+/***/ "./src/app/seller-new/seller-new.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/seller-new/seller-new.component.ts ***!
+  \****************************************************/
+/*! exports provided: SellerNewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellerNewComponent", function() { return SellerNewComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util.service */ "./src/app/util.service.ts");
+/* harmony import */ var _seller_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../seller.service */ "./src/app/seller.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var SellerNewComponent = /** @class */ (function () {
+    function SellerNewComponent(router, formBuilder, utilService, sellerService) {
+        this.router = router;
+        this.formBuilder = formBuilder;
+        this.utilService = utilService;
+        this.sellerService = sellerService;
+        this.formErrors = {
+            'usernID': '',
+            'name': '',
+            'sellerNo': '',
+            'storeName': '',
+            'phone': '',
+            'email': '',
+            'password': '',
+            'confirmPassword': '',
+        };
+        this.formErrorMessages = {
+            'usernID': {
+                'required': '아이디를 입력하세요.',
+                'pattern': '8~16자의 영문 숫자입니다.',
+            },
+            'sellerNo': {
+                'required': '영업인 번호를 입력하세요.',
+                'pattern': '숫자만 입력하세요.',
+            },
+            'storeName': {
+                'required': '송품장의 상호를 입력하세요.',
+                'pattern': '2~40자 입니다.',
+            },
+            'phone': {
+                'required': '전화번호를 입력하세요.',
+                'pattern': '전화번호 형식("-" 포함)에 맞춰 입력하세요.',
+            },
+            'email': {
+                'pattern': '메일주소가 아닙니다.',
+            },
+            'password': {
+                'required': '비밀번호를 입력하세요.',
+                'pattern': '8~16자의 영문 숫자 조합입니다.',
+            },
+            'passwordConfirmation': {
+                'required': '비밀번호을 한번 더 입력하세요.',
+                'match': '입력 비밀번호가 확인과 일치하지 않습니다.',
+            },
+        };
+        this.buildForm();
+    }
+    SellerNewComponent.prototype.buildForm = function () {
+        var _this = this;
+        this.form = this.formBuilder.group({
+            userID: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{8,16}$/)]],
+            name: [""],
+            sellerNo: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^[0-9]*$/)]],
+            storeName: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{2,40}$/)]],
+            phone: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
+            email: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
+            confirmPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+        }, {
+            validator: this.customValidation,
+        });
+        this.form.valueChanges.subscribe(function (data) {
+            _this.utilService.updateFormErrors(_this.form, _this.formErrors, _this.formErrorMessages);
+        });
+    };
+    ;
+    SellerNewComponent.prototype.customValidation = function (group) {
+        var password = group.get('password');
+        var confirmPassword = group.get('confirmPassword');
+        if (password.dirty && confirmPassword.dirty && password.value != confirmPassword.value) {
+            confirmPassword.setErrors({ 'match': true });
+        }
+    };
+    SellerNewComponent.prototype.ngOnInit = function () {
+    };
+    SellerNewComponent.prototype.submit = function () {
+        var _this = this;
+        this.utilService.makeFormDirtyAndUpdateErrors(this.form, this.formErrors, this.formErrorMessages);
+        if (this.form.valid) {
+            this.sellerService.create(this.form.value)
+                .then(function (data) {
+                _this.router.navigate(['/sellers']);
+            })
+                .catch(function (response) {
+                _this.errorResponse = response;
+                _this.utilService.handleFormSubmitError(_this.errorResponse, _this.form, _this.formErrors);
+            });
+        }
+    };
+    SellerNewComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-seller-new',
+            template: __webpack_require__(/*! ./seller-new.component.html */ "./src/app/seller-new/seller-new.component.html"),
+            styles: [__webpack_require__(/*! ./seller-new.component.css */ "./src/app/seller-new/seller-new.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            _util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"],
+            _seller_service__WEBPACK_IMPORTED_MODULE_4__["SellerService"]])
+    ], SellerNewComponent);
+    return SellerNewComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/seller-show/seller-show.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/seller-show/seller-show.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/seller-show/seller-show.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/seller-show/seller-show.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"page page-sellers\">\n\n  <div>\n    <a *ngIf=\"authService.isLoggedIn()\" [routerLink]=\"['/','sellers']\" class=\"btn btn-default\">뒤로</a>\n    <a *ngIf=\"authService.isLoggedIn()\" [routerLink]=\"['/','sellers', seller.userID, 'edit']\" class=\"btn btn-default\">수정</a>\n  </div>\n\n  <form class=\"seller-form form-horizontal\">\n    <div class=\"contentBox\">\n      <h3 class=\"contentBoxTop\">{{seller.userID}}</h3>\n      \n      <fieldset disabled>\n        <div class=\"form-group\">\n          <label for=\"name\" class=\"col-sm-3\">이름</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" id=\"name\" name=\"name\" [value]=\"seller.name\">\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"sellerNo\" class=\"col-sm-3\">영업인번호</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" id=\"sellerNo\" name=\"sellerNo\" [value]=\"seller.sellerNo\">\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"storeName\" class=\"col-sm-3\">상호</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" id=\"storeName\" name=\"storeName\" [value]=\"seller.storeName\">\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"phone\" class=\"col-sm-3\">전화번호</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" id=\"phone\" name=\"phone\" [value]=\"seller.phone\">\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"email\" class=\"col-sm-3\">메일</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" id=\"email\" name=\"email\" [value]=\"seller.email\">\n          </div>\n        </div>\n      </fieldset>\n\n    </div>\n  </form>\n  \n</div>"
+
+/***/ }),
+
+/***/ "./src/app/seller-show/seller-show.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/seller-show/seller-show.component.ts ***!
+  \******************************************************/
+/*! exports provided: SellerShowComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellerShowComponent", function() { return SellerShowComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SellerShowComponent = /** @class */ (function () {
+    function SellerShowComponent(route, authService) {
+        this.route = route;
+        this.authService = authService;
+        this.seller = this.route.snapshot.data['seller'];
+    }
+    SellerShowComponent.prototype.ngOnInit = function () {
+    };
+    SellerShowComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-seller-show',
+            template: __webpack_require__(/*! ./seller-show.component.html */ "./src/app/seller-show/seller-show.component.html"),
+            styles: [__webpack_require__(/*! ./seller-show.component.css */ "./src/app/seller-show/seller-show.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+    ], SellerShowComponent);
+    return SellerShowComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/seller.resolve.ts":
+/*!***********************************!*\
+  !*** ./src/app/seller.resolve.ts ***!
+  \***********************************/
+/*! exports provided: SellerResolve */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellerResolve", function() { return SellerResolve; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _seller_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seller.service */ "./src/app/seller.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SellerResolve = /** @class */ (function () {
+    function SellerResolve(sellerService) {
+        this.sellerService = sellerService;
+    }
+    SellerResolve.prototype.resolve = function (route) {
+        return this.sellerService.show(route.params['userID']);
+    };
+    SellerResolve = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_seller_service__WEBPACK_IMPORTED_MODULE_1__["SellerService"]])
+    ], SellerResolve);
+    return SellerResolve;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/seller.service.ts":
+/*!***********************************!*\
+  !*** ./src/app/seller.service.ts ***!
+  \***********************************/
+/*! exports provided: SellerService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellerService", function() { return SellerService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util.service */ "./src/app/util.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var SellerService = /** @class */ (function () {
+    function SellerService(http, utilService) {
+        this.http = http;
+        this.utilService = utilService;
+        this.apiBaseUrl = _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiBaseUrl + "/sellers";
+    }
+    SellerService.prototype.index = function () {
+        return this.http.get("" + this.apiBaseUrl)
+            .toPromise()
+            .then(this.utilService.checkSuccess)
+            .then(function (response) {
+            return response.data;
+        })
+            .catch(this.utilService.handleApiError);
+    };
+    SellerService.prototype.show = function (userID) {
+        return this.http.get(this.apiBaseUrl + "/" + userID)
+            .toPromise()
+            .then(this.utilService.checkSuccess)
+            .then(function (response) {
+            return response.data;
+        })
+            .catch(this.utilService.handleApiError);
+    };
+    SellerService.prototype.create = function (seller) {
+        return this.http.post("" + this.apiBaseUrl, seller)
+            .toPromise()
+            .then(this.utilService.checkSuccess)
+            .then(function (response) {
+            return response.data;
+        })
+            .catch(this.utilService.handleApiError);
+    };
+    SellerService.prototype.update = function (userID, seller) {
+        return this.http.put(this.apiBaseUrl + "/" + userID, seller)
+            .toPromise()
+            .then(this.utilService.checkSuccess)
+            .then(function (response) {
+            return response.data;
+        })
+            .catch(this.utilService.handleApiError);
+    };
+    SellerService.prototype.destroy = function (userID) {
+        return this.http.delete(this.apiBaseUrl + "/" + userID)
+            .toPromise()
+            .then(this.utilService.checkSuccess)
+            .then(function (response) {
+            return response.data;
+        })
+            .catch(this.utilService.handleApiError);
+    };
+    SellerService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"]])
+    ], SellerService);
+    return SellerService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/sellers.resolve.ts":
+/*!************************************!*\
+  !*** ./src/app/sellers.resolve.ts ***!
+  \************************************/
+/*! exports provided: SellersResolve */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SellersResolve", function() { return SellersResolve; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _seller_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./seller.service */ "./src/app/seller.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SellersResolve = /** @class */ (function () {
+    function SellersResolve(sellerService) {
+        this.sellerService = sellerService;
+    }
+    SellersResolve.prototype.resolve = function (route) {
+        return this.sellerService.index().catch(function (response) { return null; });
+    };
+    SellersResolve = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_seller_service__WEBPACK_IMPORTED_MODULE_1__["SellerService"]])
+    ], SellersResolve);
+    return SellersResolve;
 }());
 
 

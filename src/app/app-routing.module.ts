@@ -6,6 +6,8 @@ import { AuthGuard } from './auth.guard';
 import { UsersResolve } from './users.resolve';
 import { UserResolve } from './user.resolve';
 import { InvoicesResolve } from './invoices.resolve';
+import { SellersResolve } from './sellers.resolve';
+import { SellerResolve } from './seller.resolve';
 
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
@@ -17,6 +19,11 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 
 import { UploadComponent } from './upload/upload.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+
+import { SellerNewComponent } from './seller-new/seller-new.component'; 
+import { SellerIndexComponent } from './seller-index/seller-index.component';
+import { SellerShowComponent } from './seller-show/seller-show.component';
+import { SellerEditComponent } from './seller-edit/seller-edit.component';
 
 const routes: Routes = [
   { path: '',  component: WelcomeComponent },
@@ -62,6 +69,33 @@ const routes: Routes = [
         component: UserEditComponent,
         resolve: {
           user: UserResolve
+        }
+      },
+    ]
+  },
+  { path: 'sellers', canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'new', component: SellerNewComponent,  
+      },
+      { 
+        path: '', component: SellerIndexComponent,      
+        resolve: {
+          sellers: SellersResolve,
+        } 
+      },
+      { 
+        path: ':userID',
+        component: SellerShowComponent,
+        resolve: {
+          seller: SellerResolve
+        }
+      },
+      { 
+        path: ':userID/edit',
+        component: SellerEditComponent,
+        resolve: {
+          seller: SellerResolve
         }
       },
     ]
