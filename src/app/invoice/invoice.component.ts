@@ -25,6 +25,7 @@ export class InvoiceComponent implements OnInit {
 
   invoices: Invoice[];
   mydate = new Date();
+  total: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,10 +46,17 @@ export class InvoiceComponent implements OnInit {
     this.invoiceService.today(today).
       then((data) => {
         this.invoices = data as Invoice[];
-        this.router.navigate(['/invoice'], { queryParams: { today:today }});
-        //return data as Order[]
       })
       .catch(response => null);
   }
 
+  getOutSum(invoice: string) : number {
+    
+    let sum = 0;
+    for(let i = 0; i < this.invoices.length; i++) {
+      if(this.invoices[i].invoice === invoice)
+        sum += this.invoices[i].out_sum;
+    }
+    return sum;
+  }
 }

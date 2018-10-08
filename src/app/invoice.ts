@@ -17,4 +17,13 @@ export interface Invoice {
     out_number: number;
     out_sum: number;
     out_purchase: string;
+    unstoring: [
+        {
+            _id: string;
+            outDate: string;
+            outNumber: number;
+            outSum: number;
+            outPurchase: string;
+        }
+    ];
 }

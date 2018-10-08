@@ -10215,7 +10215,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-invoices\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">송품장</h3>    \n   \n    <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n    <mat-datepicker #picker></mat-datepicker>\n\n    \n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th width=\"10%\">구분</th>\n          <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n          <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n          <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n          <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n          <th width=\"20%\">매출일<br/>매출처</th>\n      </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n        <tr>\n          <td>\n            {{invoice.in_out}}\n          </td>\n          <td>\n              {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n          </td>\n          <td>\n            {{invoice.item}}<br/>\n            {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n          </td>\n          <td  class=\"text-right\">\n            {{invoice.in_number | number}}<br/>{{invoice.seller_no}}\n          </td>\n          <td  class=\"text-right\">\n            {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n          </td>\n          <td>\n            {{invoice.out_date}}<br/>{{invoice.out_purchase}}\n          </td>\n        </tr>\n        <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n          <tr>\n            <td colspan=\"6\" class=\"text-right\"><b>{{invoice.in_sum | number}}</b></td>\n          </tr>\n        </ng-container>\n        <ng-container *ngIf=\"i === invoices.length-1\">\n            <tr>\n              <td colspan=\"6\" class=\"text-right\"><b>{{invoice.in_sum | number}}</b></td>\n            </tr>\n        </ng-container>\n      </ng-container>\n      </tbody>\n    </table>\n  </div>  \n</div>"
+module.exports = "<div class=\"page page-invoices\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">송품장</h3>    \n   \n    <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n    <mat-datepicker #picker></mat-datepicker>\n\n    \n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th width=\"10%\">구분</th>\n          <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n          <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n          <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n          <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n      </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n          <tr>\n            <td>\n              {{invoice.in_out}}\n            </td>\n            <td>\n                {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n            </td>\n            <td>\n              {{invoice.item}}<br/>\n              {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.in_number | number}}<br/>{{invoice.seller_no}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n            </td>\n          </tr>\n          \n          <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n            <tr>      \n              <td colspan=\"3\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\n              <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\n              <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n            </tr>\n          </ng-container> \n\n          <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n            <tr>\n              <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}}, &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n            </tr>\n          </ng-container>\n\n          <ng-container *ngIf=\"i === invoices.length-1\">\n              <tr>\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}}, &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n              </tr>\n          </ng-container>\n\n        </ng-container>\n      </tbody>\n    </table>\n  </div>  \n</div>"
 
 /***/ }),
 
@@ -10257,6 +10257,7 @@ var InvoiceComponent = /** @class */ (function () {
         this.invoiceService = invoiceService;
         this.utilService = utilService;
         this.mydate = new Date();
+        this.total = 0;
         this.invoices = this.route.snapshot.data['invoices'];
     }
     InvoiceComponent.prototype.ngOnInit = function () {
@@ -10269,10 +10270,16 @@ var InvoiceComponent = /** @class */ (function () {
         this.invoiceService.today(today).
             then(function (data) {
             _this.invoices = data;
-            _this.router.navigate(['/invoice'], { queryParams: { today: today } });
-            //return data as Order[]
         })
             .catch(function (response) { return null; });
+    };
+    InvoiceComponent.prototype.getOutSum = function (invoice) {
+        var sum = 0;
+        for (var i = 0; i < this.invoices.length; i++) {
+            if (this.invoices[i].invoice === invoice)
+                sum += this.invoices[i].out_sum;
+        }
+        return sum;
     };
     InvoiceComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
