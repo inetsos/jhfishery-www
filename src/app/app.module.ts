@@ -23,6 +23,8 @@ import { RequestInterceptorService } from './request-interceptor.service';
 import { UserService } from './user.service';
 import { SellerService } from './seller.service';
 
+import { ExcelService } from './excel.service';
+
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { Error404Component } from './error404/error404.component';
@@ -84,6 +86,7 @@ import { SellerShowComponent } from './seller-show/seller-show.component';
     SellerService,
     SellersResolve,
     SellerResolve,
+    ExcelService
   ],
   bootstrap: [AppComponent]
 })

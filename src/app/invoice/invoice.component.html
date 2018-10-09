@@ -1,12 +1,12 @@
 <div class="page page-invoices">
 
   <div class="contentBox">
-    <h3 class="contentBoxTop">송품장</h3>    
+    <h3 class="contentBoxTop">송품장 - 입력일 이후 등록된 송품장 리스트</h3>    
    
     <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="mydate" (ngModelChange)="anotherDay()">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-
+    <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:20px;color:blue"></i></button>
     
     <table class="table table-bordered">
       <thead>
@@ -40,8 +40,9 @@
           </tr>
           
           <ng-container *ngFor="let unstoring of invoice.unstoring" >   
-            <tr>      
-              <td colspan="3" class="text-right"><b>판매일<br/>판매처</b></td>
+            <tr>   
+              <td>출고</td>   
+              <td colspan="2" class="text-right"><b>판매일<br/>판매처</b></td>
               <td class="text-right">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>
               <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>
             </tr>
