@@ -1,0 +1,79 @@
+<div class="page page-invoices">
+
+    <div class="contentBox">
+      <h3 class="contentBoxTop">전체보기 - 입력일 이후 전체 송품장 리스트</h3>    
+     
+      <table width="100%">
+        <tr>
+          <td>
+            <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="mydate" (ngModelChange)="anotherDay()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker> 
+             &nbsp; &nbsp; &nbsp;
+            <a [routerLink]="['/','invoice']" class="btn btn-success btn-sm">재고 보기</a>
+          </td>
+          <td>
+            <button (click)="exportAsXLSX()">
+              <i class="fa fa-file-excel-o" style="font-size:20px;color:blue"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+        
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th width="10%">구분</th>
+            <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
+            <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
+            <th width="10%" class="text-right">입고수량<br/>영업인</th>
+            <th width="10%" class="text-right">출고수량<br/>매출금액</th>
+        </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let invoice of invoices; let i = index">
+            <tr>
+              <td>
+                {{invoice.in_out}}
+              </td>
+              <td>
+                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}
+              </td>
+              <td>
+                {{invoice.item}}<br/>
+                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
+              </td>
+              <td  class="text-right">
+                {{invoice.in_number | number}}<br/>{{invoice.seller_no}}
+              </td>
+              <td  class="text-right">
+                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}
+              </td>
+            </tr>
+            
+            <ng-container *ngFor="let unstoring of invoice.unstoring" >   
+              <tr>   
+                <td>출고</td>   
+                <td colspan="2" class="text-right"><b>판매일<br/>판매처</b></td>
+                <td class="text-right">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>
+                <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>
+              </tr>
+            </ng-container> 
+  
+            <ng-container *ngIf="i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice ">
+              <tr>
+                <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
+              </tr>
+            </ng-container>
+  
+            <ng-container *ngIf="i === invoices.length-1">
+                <tr>
+                  <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
+                </tr>
+            </ng-container>
+  
+          </ng-container>
+        </tbody>
+      </table>
+    </div>  
+  </div>

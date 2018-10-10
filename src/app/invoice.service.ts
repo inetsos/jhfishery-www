@@ -38,6 +38,16 @@ export class InvoiceService {
               .catch(this.utilService.handleApiError);
   }
 
+  todayAll(today:string): Promise<Invoice[]> {
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${today}/all`)
+              .toPromise()
+              .then(this.utilService.checkSuccess)
+              .then(response => {
+                return response.data as Invoice[]
+              })
+              .catch(this.utilService.handleApiError);
+  }
+
   //////////////////////////////////////////////
   show(userID: string): Promise<Invoice> {
     return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${userID}`)

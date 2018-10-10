@@ -1,13 +1,25 @@
 <div class="page page-invoices">
 
   <div class="contentBox">
-    <h3 class="contentBoxTop">송품장 - 입력일 이후 등록된 송품장 리스트</h3>    
+    <h3 class="contentBoxTop">재고보기 - 입력일 이후 재고가 있는 송품장 리스트</h3>    
    
-    <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="mydate" (ngModelChange)="anotherDay()">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-    <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:20px;color:blue"></i></button>
-    
+    <table width="100%">
+      <tr>
+        <td>
+          <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="mydate" (ngModelChange)="anotherDay()">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker> 
+           &nbsp; &nbsp; &nbsp;
+          <a [routerLink]="['/','invoice', 'all']" class="btn btn-primary btn-sm">전체 보기</a>
+        </td>
+        <td>
+          <button (click)="exportAsXLSX()">
+            <i class="fa fa-file-excel-o" style="font-size:20px;color:blue"></i>
+          </button>
+        </td>
+      </tr>
+    </table>
+      
     <table class="table table-bordered">
       <thead>
         <tr>

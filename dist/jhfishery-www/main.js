@@ -9428,16 +9428,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_edit_user_edit_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./user-edit/user-edit.component */ "./src/app/user-edit/user-edit.component.ts");
 /* harmony import */ var _upload_upload_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./upload/upload.component */ "./src/app/upload/upload.component.ts");
 /* harmony import */ var _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./invoice/invoice.component */ "./src/app/invoice/invoice.component.ts");
-/* harmony import */ var _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./seller-new/seller-new.component */ "./src/app/seller-new/seller-new.component.ts");
-/* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
-/* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
-/* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
+/* harmony import */ var _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./invoice-all/invoice-all.component */ "./src/app/invoice-all/invoice-all.component.ts");
+/* harmony import */ var _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./seller-new/seller-new.component */ "./src/app/seller-new/seller-new.component.ts");
+/* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
+/* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
+/* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -9478,6 +9480,13 @@ var routes = [
                 resolve: {
                     invoices: _invoices_resolve__WEBPACK_IMPORTED_MODULE_6__["InvoicesResolve"],
                 }
+            },
+            {
+                path: 'all',
+                component: _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_18__["InvoiceAllComponent"],
+                resolve: {
+                    invoices: _invoices_resolve__WEBPACK_IMPORTED_MODULE_6__["InvoicesResolve"],
+                }
             }
         ]
     },
@@ -9511,24 +9520,24 @@ var routes = [
     { path: 'sellers', canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]],
         children: [
             {
-                path: 'new', component: _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_18__["SellerNewComponent"],
+                path: 'new', component: _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_19__["SellerNewComponent"],
             },
             {
-                path: '', component: _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_19__["SellerIndexComponent"],
+                path: '', component: _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_20__["SellerIndexComponent"],
                 resolve: {
                     sellers: _sellers_resolve__WEBPACK_IMPORTED_MODULE_7__["SellersResolve"],
                 }
             },
             {
                 path: ':userID',
-                component: _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_20__["SellerShowComponent"],
+                component: _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_21__["SellerShowComponent"],
                 resolve: {
                     seller: _seller_resolve__WEBPACK_IMPORTED_MODULE_8__["SellerResolve"]
                 }
             },
             {
                 path: ':userID/edit',
-                component: _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_21__["SellerEditComponent"],
+                component: _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_22__["SellerEditComponent"],
                 resolve: {
                     seller: _seller_resolve__WEBPACK_IMPORTED_MODULE_8__["SellerResolve"]
                 }
@@ -9693,12 +9702,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
 /* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
 /* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
+/* harmony import */ var _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./invoice-all/invoice-all.component */ "./src/app/invoice-all/invoice-all.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -9755,7 +9766,8 @@ var AppModule = /** @class */ (function () {
                 _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_32__["SellerNewComponent"],
                 _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_33__["SellerIndexComponent"],
                 _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_34__["SellerEditComponent"],
-                _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_35__["SellerShowComponent"]
+                _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_35__["SellerShowComponent"],
+                _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_36__["InvoiceAllComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -10135,7 +10147,6 @@ var ExcelService = /** @class */ (function () {
         console.log('worksheet', worksheet);
         var workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
         var excelBuffer = xlsx__WEBPACK_IMPORTED_MODULE_2__["write"](workbook, { bookType: 'xlsx', type: 'array' });
-        //const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
         this.saveAsExcelFile(excelBuffer, excelFileName);
     };
     ExcelService.prototype.saveAsExcelFile = function (buffer, fileName) {
@@ -10151,6 +10162,174 @@ var ExcelService = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], ExcelService);
     return ExcelService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/invoice-all/invoice-all.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/invoice-all/invoice-all.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/invoice-all/invoice-all.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/invoice-all/invoice-all.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"page page-invoices\">\n\n    <div class=\"contentBox\">\n      <h3 class=\"contentBoxTop\">전체보기 - 입력일 이후 전체 송품장 리스트</h3>    \n     \n      <table width=\"100%\">\n        <tr>\n          <td>\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker> \n             &nbsp; &nbsp; &nbsp;\n            <a [routerLink]=\"['/','invoice']\" class=\"btn btn-success btn-sm\">재고 보기</a>\n          </td>\n          <td>\n            <button (click)=\"exportAsXLSX()\">\n              <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\n            </button>\n          </td>\n        </tr>\n      </table>\n        \n      <table class=\"table table-bordered\">\n        <thead>\n          <tr>\n            <th width=\"10%\">구분</th>\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n            <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n            <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n        </tr>\n        </thead>\n        <tbody>\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n            <tr>\n              <td>\n                {{invoice.in_out}}\n              </td>\n              <td>\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n              </td>\n              <td>\n                {{invoice.item}}<br/>\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n              </td>\n              <td  class=\"text-right\">\n                {{invoice.in_number | number}}<br/>{{invoice.seller_no}}\n              </td>\n              <td  class=\"text-right\">\n                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n              </td>\n            </tr>\n            \n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n              <tr>   \n                <td>출고</td>   \n                <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\n                <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n              </tr>\n            </ng-container> \n  \n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n              <tr>\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n              </tr>\n            </ng-container>\n  \n            <ng-container *ngIf=\"i === invoices.length-1\">\n                <tr>\n                  <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n                </tr>\n            </ng-container>\n  \n          </ng-container>\n        </tbody>\n      </table>\n    </div>  \n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/invoice-all/invoice-all.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/invoice-all/invoice-all.component.ts ***!
+  \******************************************************/
+/*! exports provided: InvoiceAllComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceAllComponent", function() { return InvoiceAllComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _date_adapter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../date.adapter */ "./src/app/date.adapter.ts");
+/* harmony import */ var _invoice_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../invoice.service */ "./src/app/invoice.service.ts");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util.service */ "./src/app/util.service.ts");
+/* harmony import */ var _excel_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../excel.service */ "./src/app/excel.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var InvoiceAllComponent = /** @class */ (function () {
+    function InvoiceAllComponent(route, router, invoiceService, utilService, excelService) {
+        this.route = route;
+        this.router = router;
+        this.invoiceService = invoiceService;
+        this.utilService = utilService;
+        this.excelService = excelService;
+        this.mydate = new Date();
+        this.total = 0;
+        this.invoiceExs = [];
+        //this.invoices = this.route.snapshot.data['invoices'];
+    }
+    InvoiceAllComponent.prototype.ngOnInit = function () {
+    };
+    InvoiceAllComponent.prototype.anotherDay = function () {
+        var _this = this;
+        var today = this.mydate.getFullYear() + "-" +
+            this.utilService.get2digits(this.mydate.getMonth() + 1) + "-" +
+            this.utilService.get2digits(this.mydate.getDate());
+        this.invoiceService.todayAll(today).
+            then(function (data) {
+            _this.invoices = data;
+        })
+            .catch(function (response) { return null; });
+    };
+    InvoiceAllComponent.prototype.getOutSum = function (invoice) {
+        var sum = 0;
+        for (var i = 0; i < this.invoices.length; i++) {
+            if (this.invoices[i].invoice === invoice)
+                sum += this.invoices[i].out_sum;
+        }
+        return sum;
+    };
+    InvoiceAllComponent.prototype.exportAsXLSX = function () {
+        this.makeExport();
+        this.excelService.exportAsExcelFile(this.invoiceExs, 'invoice');
+    };
+    InvoiceAllComponent.prototype.makeExport = function () {
+        var idx = 0;
+        for (var i = 0; i < this.invoices.length; i++) {
+            var invoiceEx = {};
+            invoiceEx.trader = this.invoices[i].trader;
+            invoiceEx.in_out = this.invoices[i].in_out;
+            invoiceEx.in_date = this.invoices[i].in_date;
+            invoiceEx.seller = this.invoices[i].seller;
+            invoiceEx.deal_type = this.invoices[i].deal_type;
+            invoiceEx.invoice = this.invoices[i].invoice;
+            invoiceEx.origin = this.invoices[i].origin;
+            invoiceEx.item = this.invoices[i].item;
+            invoiceEx.unit = this.invoices[i].unit;
+            invoiceEx.quality = this.invoices[i].quality;
+            invoiceEx.weight = this.invoices[i].weight;
+            invoiceEx.in_number = this.invoices[i].in_number;
+            invoiceEx.in_sum = this.invoices[i].in_sum;
+            invoiceEx.out_number = this.invoices[i].out_number;
+            invoiceEx.out_sum = this.invoices[i].out_sum;
+            invoiceEx.outDate = '';
+            invoiceEx.outNumber = 0;
+            invoiceEx.outSum = 0;
+            invoiceEx.outPurchase = '';
+            this.invoiceExs.push(invoiceEx);
+            for (var j = 0; j < this.invoices[i].unstoring.length; j++) {
+                var invoiceEx_1 = {};
+                invoiceEx_1.trader = ''; //this.invoices[i].trader;
+                invoiceEx_1.in_out = ''; //this.invoices[i].in_out;
+                invoiceEx_1.in_date = ''; //this.invoices[i].in_date;
+                invoiceEx_1.seller = ''; //this.invoices[i].seller;
+                invoiceEx_1.deal_type = ''; //this.invoices[i].deal_type;
+                invoiceEx_1.invoice = ''; //this.invoices[i].invoice;
+                invoiceEx_1.origin = ''; // this.invoices[i].origin;
+                invoiceEx_1.item = ''; //this.invoices[i].item;
+                invoiceEx_1.unit = 0; //this.invoices[i].unit;
+                invoiceEx_1.quality = ''; //this.invoices[i].quality;
+                invoiceEx_1.weight = ''; //this.invoices[i].weight;
+                invoiceEx_1.in_number = 0; //this.invoices[i].in_number;
+                invoiceEx_1.in_sum = 0; //this.invoices[i].in_sum;
+                invoiceEx_1.out_number = 0; //this.invoices[i].out_number;
+                invoiceEx_1.out_sum = 0; //this.invoices[i].out_sum;
+                invoiceEx_1.outDate = this.invoices[i].unstoring[j].outDate;
+                invoiceEx_1.outNumber = this.invoices[i].unstoring[j].outNumber;
+                invoiceEx_1.outSum = this.invoices[i].unstoring[j].outSum;
+                invoiceEx_1.outPurchase = this.invoices[i].unstoring[j].outPurchase;
+                this.invoiceExs.push(invoiceEx_1);
+            }
+        }
+    };
+    InvoiceAllComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-invoice-all',
+            template: __webpack_require__(/*! ./invoice-all.component.html */ "./src/app/invoice-all/invoice-all.component.html"),
+            styles: [__webpack_require__(/*! ./invoice-all.component.css */ "./src/app/invoice-all/invoice-all.component.css")],
+            providers: [
+                {
+                    provide: _angular_material__WEBPACK_IMPORTED_MODULE_2__["DateAdapter"], useClass: _date_adapter__WEBPACK_IMPORTED_MODULE_3__["AppDateAdapter"]
+                },
+                {
+                    provide: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DATE_FORMATS"], useValue: _date_adapter__WEBPACK_IMPORTED_MODULE_3__["APP_DATE_FORMATS"]
+                }
+            ]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _invoice_service__WEBPACK_IMPORTED_MODULE_4__["InvoiceService"],
+            _util_service__WEBPACK_IMPORTED_MODULE_5__["UtilService"],
+            _excel_service__WEBPACK_IMPORTED_MODULE_6__["ExcelService"]])
+    ], InvoiceAllComponent);
+    return InvoiceAllComponent;
 }());
 
 
@@ -10201,6 +10380,15 @@ var InvoiceService = /** @class */ (function () {
     };
     InvoiceService.prototype.today = function (today) {
         return this.http.get(this.apiBaseUrl + "/" + today)
+            .toPromise()
+            .then(this.utilService.checkSuccess)
+            .then(function (response) {
+            return response.data;
+        })
+            .catch(this.utilService.handleApiError);
+    };
+    InvoiceService.prototype.todayAll = function (today) {
+        return this.http.get(this.apiBaseUrl + "/" + today + "/all")
             .toPromise()
             .then(this.utilService.checkSuccess)
             .then(function (response) {
@@ -10277,7 +10465,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-invoices\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">송품장 - 입력일 이후 등록된 송품장 리스트</h3>    \n   \n    <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n    <mat-datepicker #picker></mat-datepicker>\n    <button (click)=\"exportAsXLSX()\"><i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i></button>\n    \n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th width=\"10%\">구분</th>\n          <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n          <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n          <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n          <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n      </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n          <tr>\n            <td>\n              {{invoice.in_out}}\n            </td>\n            <td>\n                {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n            </td>\n            <td>\n              {{invoice.item}}<br/>\n              {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.in_number | number}}<br/>{{invoice.seller_no}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n            </td>\n          </tr>\n          \n          <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n            <tr>   \n              <td>출고</td>   \n              <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\n              <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\n              <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n            </tr>\n          </ng-container> \n\n          <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n            <tr>\n              <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n            </tr>\n          </ng-container>\n\n          <ng-container *ngIf=\"i === invoices.length-1\">\n              <tr>\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n              </tr>\n          </ng-container>\n\n        </ng-container>\n      </tbody>\n    </table>\n  </div>  \n</div>"
+module.exports = "<div class=\"page page-invoices\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">재고보기 - 입력일 이후 재고가 있는 송품장 리스트</h3>    \n   \n    <table width=\"100%\">\n      <tr>\n        <td>\n          <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n          <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n          <mat-datepicker #picker></mat-datepicker> \n           &nbsp; &nbsp; &nbsp;\n          <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-primary btn-sm\">전체 보기</a>\n        </td>\n        <td>\n          <button (click)=\"exportAsXLSX()\">\n            <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\n          </button>\n        </td>\n      </tr>\n    </table>\n      \n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th width=\"10%\">구분</th>\n          <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n          <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n          <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n          <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n      </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n          <tr>\n            <td>\n              {{invoice.in_out}}\n            </td>\n            <td>\n                {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n            </td>\n            <td>\n              {{invoice.item}}<br/>\n              {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.in_number | number}}<br/>{{invoice.seller_no}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n            </td>\n          </tr>\n          \n          <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n            <tr>   \n              <td>출고</td>   \n              <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\n              <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\n              <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n            </tr>\n          </ng-container> \n\n          <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n            <tr>\n              <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n            </tr>\n          </ng-container>\n\n          <ng-container *ngIf=\"i === invoices.length-1\">\n              <tr>\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n              </tr>\n          </ng-container>\n\n        </ng-container>\n      </tbody>\n    </table>\n  </div>  \n</div>"
 
 /***/ }),
 

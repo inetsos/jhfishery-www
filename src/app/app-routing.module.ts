@@ -19,6 +19,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 
 import { UploadComponent } from './upload/upload.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { InvoiceAllComponent } from './invoice-all/invoice-all.component';
 
 import { SellerNewComponent } from './seller-new/seller-new.component'; 
 import { SellerIndexComponent } from './seller-index/seller-index.component';
@@ -40,6 +41,13 @@ const routes: Routes = [
       { 
         path: '', 
         component: InvoiceComponent,
+        resolve: { 
+          invoices: InvoicesResolve,
+        } 
+      },
+      { 
+        path: 'all', 
+        component: InvoiceAllComponent,
         resolve: { 
           invoices: InvoicesResolve,
         } 
