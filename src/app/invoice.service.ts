@@ -48,6 +48,16 @@ export class InvoiceService {
               .catch(this.utilService.handleApiError);
   }
 
+  destroy(id: string): Promise<Invoice> {
+    return this.http.delete<ApiResponse>(`${this.apiBaseUrl}/${id}`)
+              .toPromise()
+              .then(this.utilService.checkSuccess)
+              .then(response => {
+                return response.data as Invoice
+              })
+              .catch(this.utilService.handleApiError);
+  }
+
   //////////////////////////////////////////////
   show(userID: string): Promise<Invoice> {
     return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${userID}`)
@@ -79,14 +89,6 @@ export class InvoiceService {
               .catch(this.utilService.handleApiError);
   }
 
-  destroy(userID: string): Promise<Invoice> {
-    return this.http.delete<ApiResponse>(`${this.apiBaseUrl}/${userID}`)
-              .toPromise()
-              .then(this.utilService.checkSuccess)
-              .then(response => {
-                return response.data as Invoice
-              })
-              .catch(this.utilService.handleApiError);
-  }
+  
 
 }

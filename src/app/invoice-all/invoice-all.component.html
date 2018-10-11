@@ -49,6 +49,9 @@
               <td  class="text-right">
                 {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}
               </td>
+              <td class="text-center">
+                <button (click)="deleteInvoice(invoice._id)">삭제</button>
+              </td>
             </tr>
             
             <ng-container *ngFor="let unstoring of invoice.unstoring" >   
@@ -57,18 +60,21 @@
                 <td colspan="2" class="text-right"><b>판매일<br/>판매처</b></td>
                 <td class="text-right">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>
                 <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>
+                <td></td>
               </tr>
             </ng-container> 
   
             <ng-container *ngIf="i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice ">
               <tr>
                 <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
+                <td></td>
               </tr>
             </ng-container>
   
             <ng-container *ngIf="i === invoices.length-1">
                 <tr>
                   <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
+                  <td></td>
                 </tr>
             </ng-container>
   

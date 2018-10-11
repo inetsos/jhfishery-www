@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { NativeDateAdapter, DateAdapter, MAT_DATE_FORMATS } from "@angular/material";
 import { AppDateAdapter, APP_DATE_FORMATS} from '../date.adapter';
@@ -10,6 +10,7 @@ import { UtilService } from '../util.service';
 
 import { ExcelService } from '../excel.service';
 import { InvoiceEx } from '../invoice_ex';
+import { ApiResponse } from '../api-response';
 
 @Component({
   selector: 'app-invoice-all',
@@ -29,6 +30,8 @@ export class InvoiceAllComponent implements OnInit {
   invoices: Invoice[];
   mydate = new Date();
   total: number = 0;
+  errorResponse: ApiResponse;
+  navigationSubscription;
   
   invoiceExs : InvoiceEx[] = [];
 
@@ -39,7 +42,13 @@ export class InvoiceAllComponent implements OnInit {
     private utilService: UtilService,
     private excelService:ExcelService
   ) { 
-    //this.invoices = this.route.snapshot.data['invoices'];
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      // If it is a NavigationEnd event re-initalise the component
+      if (e instanceof NavigationEnd) {
+        this.invoices = this.route.snapshot.data['invoices'];
+        this.anotherDay();
+      }
+    });
   }
 
   ngOnInit() {
@@ -64,6 +73,20 @@ export class InvoiceAllComponent implements OnInit {
         sum += this.invoices[i].out_sum;
     }
     return sum;
+  }
+
+  deleteInvoice(id: string) {
+    var answer = confirm("송품장을 삭제하시겠습니까?");
+    if(answer){
+      this.invoiceService.destroy(id)
+      .then(data => {
+        alert('삭제하였습니다.');
+        this.router.navigate(['/invoice']);
+      })
+      .catch(response => {
+        this.errorResponse = response;
+      });
+    }
   }
 
   exportAsXLSX():void {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 import { NativeDateAdapter, DateAdapter, MAT_DATE_FORMATS } from "@angular/material";
 import { AppDateAdapter, APP_DATE_FORMATS} from '../date.adapter';
@@ -8,8 +8,9 @@ import { Invoice } from '../invoice';
 import { InvoiceService } from '../invoice.service';
 import { UtilService } from '../util.service';
 
-import {ExcelService} from '../excel.service';
+import { ExcelService } from '../excel.service';
 import { InvoiceEx } from '../invoice_ex';
+import { ApiResponse } from '../api-response';
 
 @Component({
   selector: 'app-invoice',
@@ -29,6 +30,8 @@ export class InvoiceComponent implements OnInit {
   invoices: Invoice[];
   mydate = new Date();
   total: number = 0;
+  errorResponse: ApiResponse;
+  navigationSubscription;
   
   invoiceExs : InvoiceEx[] = [];
 
@@ -39,7 +42,14 @@ export class InvoiceComponent implements OnInit {
     private utilService: UtilService,
     private excelService:ExcelService
   ) { 
-    this.invoices = this.route.snapshot.data['invoices'];
+    
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      // If it is a NavigationEnd event re-initalise the component
+      if (e instanceof NavigationEnd) {
+        this.invoices = this.route.snapshot.data['invoices'];
+        this.anotherDay();
+      }
+    });
   }
 
   ngOnInit() {
@@ -66,31 +76,24 @@ export class InvoiceComponent implements OnInit {
     return sum;
   }
 
+  deleteInvoice(id: string) {
+    var answer = confirm("송품장을 삭제하시겠습니까?");
+    if(answer){
+      this.invoiceService.destroy(id)
+      .then(data => {
+        alert('삭제하였습니다.');
+        this.router.navigate(['/invoice']);
+      })
+      .catch(response => {
+        this.errorResponse = response;
+      });
+    }
+  }
+
   exportAsXLSX():void {
     this.makeExport();
     this.excelService.exportAsExcelFile(this.invoiceExs, 'invoice');
   }
-
-  // trader: string;
-  // in_out: string;
-  // in_date: string;
-  // seller: string;
-  // deal_type: string;
-  // invoice: string;
-  // origin: string;
-  // item: string;
-  // unit: number;
-  // quality: string;
-  // weight: string;
-  // in_number: number;
-  // in_sum: number;
-  // out_number: number;
-  // out_sum: number;
-      
-  // outDate: string;
-  // outNumber: number;
-  // outSum: number;
-  // outPurchase: string;
 
   makeExport() {
     let idx = 0;
