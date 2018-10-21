@@ -8,11 +8,12 @@ export interface Invoice {
     invoice: string;
     origin: string;
     item: string;
-    unit: number;
+    unit: string;
     quality: string;
     weight: string;
     in_number: number;
     in_sum: number;
+    seller_no: number;
     out_date: string;
     out_number: number;
     out_sum: number;

@@ -13,7 +13,7 @@ export class SellerIndexComponent implements OnInit {
   sellers: Seller[];
 
   constructor( private route: ActivatedRoute ) {
-    this.sellers = this.route.snapshot.data['sellers']; 
+    this.sellers = this.route.snapshot.data['sellers'];
   }
 
   ngOnInit() {

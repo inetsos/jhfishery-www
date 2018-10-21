@@ -41,6 +41,7 @@ import { SellerIndexComponent } from './seller-index/seller-index.component';
 import { SellerEditComponent } from './seller-edit/seller-edit.component';
 import { SellerShowComponent } from './seller-show/seller-show.component';
 import { InvoiceAllComponent } from './invoice-all/invoice-all.component';
+import { InvoiceSaleComponent } from './invoice-sale/invoice-sale.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { InvoiceAllComponent } from './invoice-all/invoice-all.component';
     SellerIndexComponent,
     SellerEditComponent,
     SellerShowComponent,
-    InvoiceAllComponent
+    InvoiceAllComponent,
+    InvoiceSaleComponent
   ],
   imports: [
     BrowserModule,

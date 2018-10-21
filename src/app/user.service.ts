@@ -12,18 +12,18 @@ import { User } from './user';
 export class UserService {
 
   private apiBaseUrl = `${environment.apiBaseUrl}/users`;
-  
+
   constructor(
     private http: HttpClient,
     private utilService: UtilService,
   ) { }
 
-  index() : Promise<User[]> {
+  index(): Promise<User[]> {
     return this.http.get<ApiResponse>(`${this.apiBaseUrl}`)
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
-                return response.data as User[]
+                return response.data as User[];
               })
               .catch(this.utilService.handleApiError);
   }
@@ -33,7 +33,7 @@ export class UserService {
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
-                return response.data as User
+                return response.data as User;
               })
               .catch(this.utilService.handleApiError);
   }
@@ -43,7 +43,7 @@ export class UserService {
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
-                return response.data as User
+                return response.data as User;
               })
               .catch(this.utilService.handleApiError);
   }
@@ -53,7 +53,7 @@ export class UserService {
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
-                return response.data as User
+                return response.data as User;
               })
               .catch(this.utilService.handleApiError);
   }
@@ -63,7 +63,7 @@ export class UserService {
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
-                return response.data as User
+                return response.data as User;
               })
               .catch(this.utilService.handleApiError);
   }

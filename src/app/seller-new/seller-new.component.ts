@@ -18,7 +18,7 @@ export class SellerNewComponent implements OnInit {
   form: FormGroup;
 
   formErrors = {
-    'usernID': '',
+    'userID': '',
     'name': '',
     'sellerNo': '',
     'storeName': '',
@@ -28,7 +28,7 @@ export class SellerNewComponent implements OnInit {
     'confirmPassword': '',
   };
   formErrorMessages = {
-    'usernID': {
+    'userID': {
       'required': '아이디를 입력하세요.',
       'pattern': '8~16자의 영문 숫자입니다.',
     },
@@ -51,22 +51,22 @@ export class SellerNewComponent implements OnInit {
       'required': '비밀번호를 입력하세요.',
       'pattern': '8~16자의 영문 숫자 조합입니다.',
     },
-    'passwordConfirmation': {
+    'confirmPassword': {
       'required': '비밀번호을 한번 더 입력하세요.',
-      'match': '입력 비밀번호가 확인과 일치하지 않습니다.', 
+      'match': '입력 비밀번호가 확인과 일치하지 않습니다.',
     },
   };
- 
-  buildForm(): void { 
+
+  buildForm(): void {
     this.form = this.formBuilder.group({
-      userID:["", [Validators.required, Validators.pattern(/^.{8,16}$/)]],
-      name:[""],
-      sellerNo:[null, [Validators.required, Validators.pattern(/^[0-9]*$/)]],
-      storeName:["", [Validators.required, Validators.pattern(/^.{2,40}$/)]],
-      phone:["", [Validators.required, Validators.pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
-      email:["", [Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-      password:["", [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
-      confirmPassword:["", [Validators.required]],
+      userID: ['', [Validators.required, Validators.pattern(/^.{8,16}$/)]],
+      name: [''],
+      sellerNo: [null, [Validators.required, Validators.pattern(/^[0-9]*$/)]],
+      storeName: ['', [Validators.required, Validators.pattern(/^.{2,40}$/)]],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
+      email: ['', [Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
+      confirmPassword: ['', [Validators.required]],
     }, {
       validator: this.customValidation,
     });
@@ -74,12 +74,12 @@ export class SellerNewComponent implements OnInit {
     this.form.valueChanges.subscribe(data => {
       this.utilService.updateFormErrors(this.form, this.formErrors, this.formErrorMessages);
     });
-  };
+  }
 
   customValidation(group: FormGroup) {
-    var password = group.get('password');
-    var confirmPassword = group.get('confirmPassword');
-    if(password.dirty && confirmPassword.dirty && password.value != confirmPassword.value){
+    const password = group.get('password');
+    const confirmPassword = group.get('confirmPassword');
+    if (password.dirty && confirmPassword.dirty && password.value !== confirmPassword.value) {
       confirmPassword.setErrors({'match': true});
     }
   }
@@ -98,12 +98,12 @@ export class SellerNewComponent implements OnInit {
 
   submit() {
     this.utilService.makeFormDirtyAndUpdateErrors(this.form, this.formErrors, this.formErrorMessages);
-    if(this.form.valid){
+    if (this.form.valid) {
       this.sellerService.create(this.form.value)
-      .then(data =>{
+      .then(data => {
         this.router.navigate(['/sellers']);
       })
-      .catch(response =>{
+      .catch(response => {
         this.errorResponse = response;
         this.utilService.handleFormSubmitError(this.errorResponse, this.form, this.formErrors);
       });

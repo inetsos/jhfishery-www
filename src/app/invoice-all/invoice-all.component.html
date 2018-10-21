@@ -10,7 +10,9 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker> 
              &nbsp; &nbsp; &nbsp;
-            <a [routerLink]="['/','invoice']" class="btn btn-success btn-sm">재고 보기</a>
+            <a [routerLink]="['/','invoice']" class="btn btn-primary btn-sm" role="button">재고 보기</a>&nbsp;
+            <a [routerLink]="['/','invoice', 'all']" class="btn btn-warning btn-sm" role="button">전체 보기</a>&nbsp;
+            <a [routerLink]="['/','invoice', 'sale']" class="btn btn-primary btn-sm" role="button">판매 보기</a>&nbsp;
           </td>
           <td>
             <button (click)="exportAsXLSX()">
@@ -22,12 +24,14 @@
         
       <table class="table table-bordered">
         <thead>
-          <tr>
+          <tr >
             <th width="10%">구분</th>
             <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
             <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
             <th width="10%" class="text-right">입고수량<br/>영업인</th>
             <th width="10%" class="text-right">출고수량<br/>매출금액</th>
+            <th width="10%" class="text-right">재고수량</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -37,17 +41,26 @@
                 {{invoice.in_out}}
               </td>
               <td>
-                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}
+                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, 
+                  <ng-container *ngIf="invoice.in_number - invoice.out_number === 0">
+                    <span class='text-danger'><b>{{invoice.invoice}}</b></span>
+                  </ng-container>
+                  <ng-container *ngIf="invoice.in_number - invoice.out_number !== 0">
+                    <span><b>{{invoice.invoice}}</b></span>
+                  </ng-container>
               </td>
               <td>
                 {{invoice.item}}<br/>
                 {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
               </td>
               <td  class="text-right">
-                {{invoice.in_number | number}}<br/>{{invoice.seller_no}}
+                {{invoice.in_number | number}}<br/><span class='text-primary'><b>{{invoice.seller_no}}</b></span>
               </td>
               <td  class="text-right">
                 {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}
+              </td>
+              <td  class="text-right">
+                <b>{{invoice.in_number - invoice.out_number | number}} </b>
               </td>
               <td class="text-center">
                 <button (click)="deleteInvoice(invoice._id)">삭제</button>
@@ -68,12 +81,14 @@
               <tr>
                 <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
                 <td></td>
+                <td></td>
               </tr>
             </ng-container>
   
             <ng-container *ngIf="i === invoices.length-1">
                 <tr>
                   <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
+                  <td></td>
                   <td></td>
                 </tr>
             </ng-container>

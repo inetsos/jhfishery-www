@@ -9429,16 +9429,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _upload_upload_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./upload/upload.component */ "./src/app/upload/upload.component.ts");
 /* harmony import */ var _invoice_invoice_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./invoice/invoice.component */ "./src/app/invoice/invoice.component.ts");
 /* harmony import */ var _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./invoice-all/invoice-all.component */ "./src/app/invoice-all/invoice-all.component.ts");
-/* harmony import */ var _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./seller-new/seller-new.component */ "./src/app/seller-new/seller-new.component.ts");
-/* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
-/* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
-/* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
+/* harmony import */ var _invoice_sale_invoice_sale_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./invoice-sale/invoice-sale.component */ "./src/app/invoice-sale/invoice-sale.component.ts");
+/* harmony import */ var _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./seller-new/seller-new.component */ "./src/app/seller-new/seller-new.component.ts");
+/* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
+/* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
+/* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -9487,6 +9489,13 @@ var routes = [
                 resolve: {
                     invoices: _invoices_resolve__WEBPACK_IMPORTED_MODULE_6__["InvoicesResolve"],
                 }
+            },
+            {
+                path: 'sale',
+                component: _invoice_sale_invoice_sale_component__WEBPACK_IMPORTED_MODULE_19__["InvoiceSaleComponent"],
+                resolve: {
+                    invoices: _invoices_resolve__WEBPACK_IMPORTED_MODULE_6__["InvoicesResolve"],
+                }
             }
         ]
     },
@@ -9520,24 +9529,24 @@ var routes = [
     { path: 'sellers', canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]],
         children: [
             {
-                path: 'new', component: _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_19__["SellerNewComponent"],
+                path: 'new', component: _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_20__["SellerNewComponent"],
             },
             {
-                path: '', component: _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_20__["SellerIndexComponent"],
+                path: '', component: _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_21__["SellerIndexComponent"],
                 resolve: {
                     sellers: _sellers_resolve__WEBPACK_IMPORTED_MODULE_7__["SellersResolve"],
                 }
             },
             {
                 path: ':userID',
-                component: _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_21__["SellerShowComponent"],
+                component: _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_22__["SellerShowComponent"],
                 resolve: {
                     seller: _seller_resolve__WEBPACK_IMPORTED_MODULE_8__["SellerResolve"]
                 }
             },
             {
                 path: ':userID/edit',
-                component: _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_22__["SellerEditComponent"],
+                component: _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_23__["SellerEditComponent"],
                 resolve: {
                     seller: _seller_resolve__WEBPACK_IMPORTED_MODULE_8__["SellerResolve"]
                 }
@@ -9586,7 +9595,7 @@ module.exports = ".loading-overlay {\r\n    position: fixed;\r\n    top: 0px;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-progress-bar *ngIf=\"loading\" class=\"loading-overlay\" [mode]=\"'indeterminate'\"></mat-progress-bar>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <nav class=\"navbar navbar-default navbar-custom\">\n      <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\n\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a [routerLink]=\"['/']\" class=\"navbar-brand\">(주)대구종합수산</a>\n        </div>\n\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n          <ul class=\"nav navbar-nav\">\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','upload']\">업로드</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','invoice']\">송품장</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','sellers', 'new']\">영업인 등록</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','sellers']\">영업인 보기</a>\n            </li>\n          </ul>\n\n          <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\n              <a [routerLink]=\"['/','login']\">로그인</a>\n            </li>\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\n              <a [routerLink]=\"['/','users','new']\">사용자 등록</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','users']\">사용자</a>\n            </li>\n            <li *ngIf=\"authService.isLoggedIn()\">  <!-- 1 -->\n              <a (click)=\"authService.logout()\">로그아웃</a>\n            </li>\n          </ul>\n\n        </div>\n\n      </div>\n    </nav>\n\n    <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
+module.exports = "<mat-progress-bar *ngIf=\"loading\" class=\"loading-overlay\" [mode]=\"'indeterminate'\"></mat-progress-bar>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <nav class=\"navbar navbar-default navbar-custom\">\n      <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\n\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a [routerLink]=\"['/']\" class=\"navbar-brand\">(주)대구종합수산</a>\n        </div>\n\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n\n          <ul class=\"nav navbar-nav\">\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','upload']\">파일 업로드</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','invoice']\">송품장 보기</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','sellers', 'new']\">영업인 등록</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','sellers']\">영업인 보기</a>\n            </li>\n          </ul>\n\n          <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\n              <a [routerLink]=\"['/','login']\">로그인</a>\n            </li>\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\n              <a [routerLink]=\"['/','users','new']\">사용자 등록</a>\n            </li>\n            <li [routerLinkActive]=\"['active']\">\n              <a [routerLink]=\"['/','users']\">사용자 보기</a>\n            </li>\n            <li *ngIf=\"authService.isLoggedIn()\">  <!-- 1 -->\n              <a (click)=\"authService.logout()\"> 로그아웃 </a>\n            </li>\n          </ul>\n\n        </div>\n\n      </div>\n    </nav>\n\n    <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -9703,12 +9712,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
 /* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
 /* harmony import */ var _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./invoice-all/invoice-all.component */ "./src/app/invoice-all/invoice-all.component.ts");
+/* harmony import */ var _invoice_sale_invoice_sale_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./invoice-sale/invoice-sale.component */ "./src/app/invoice-sale/invoice-sale.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -9767,7 +9778,8 @@ var AppModule = /** @class */ (function () {
                 _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_33__["SellerIndexComponent"],
                 _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_34__["SellerEditComponent"],
                 _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_35__["SellerShowComponent"],
-                _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_36__["InvoiceAllComponent"]
+                _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_36__["InvoiceAllComponent"],
+                _invoice_sale_invoice_sale_component__WEBPACK_IMPORTED_MODULE_37__["InvoiceSaleComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -10144,8 +10156,64 @@ var ExcelService = /** @class */ (function () {
     }
     ExcelService.prototype.exportAsExcelFile = function (json, excelFileName) {
         var worksheet = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].json_to_sheet(json);
-        console.log('worksheet', worksheet);
-        var workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+        // console.log('worksheet', worksheet);
+        var workbook = {
+            Sheets: { 'data': worksheet },
+            SheetNames: ['data']
+        };
+        // K, L, M, N, O, Q, R
+        var K = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].decode_col('K');
+        var L = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].decode_col('L');
+        var M = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].decode_col('M');
+        var N = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].decode_col('N');
+        var O = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].decode_col('O');
+        var Q = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].decode_col('Q');
+        var R = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].decode_col('R');
+        var fmt = '#,##0'; // .00_);[Red]\\("$"#,##0.00\\)' or any Excel number format
+        /* get worksheet range */
+        var range = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].decode_range(worksheet['!ref']);
+        for (var i = range.s.r + 1; i <= range.e.r; ++i) {
+            /* find the data cell (range.s.r + 1 skips the header row of the worksheet) */
+            var ref = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].encode_cell({ r: i, c: K });
+            /* if the particular row did not contain data for the column, the cell will not be generated */
+            if (!worksheet[ref]) {
+                continue;
+            }
+            /* `.t == "n"` for number cells */
+            // if(ws[ref].t != 'n') continue;
+            /* assign the `.z` number format */
+            worksheet[ref].z = fmt;
+            ref = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].encode_cell({ r: i, c: L });
+            if (!worksheet[ref]) {
+                continue;
+            }
+            worksheet[ref].z = fmt;
+            ref = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].encode_cell({ r: i, c: M });
+            if (!worksheet[ref]) {
+                continue;
+            }
+            worksheet[ref].z = fmt;
+            ref = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].encode_cell({ r: i, c: N });
+            if (!worksheet[ref]) {
+                continue;
+            }
+            worksheet[ref].z = fmt;
+            ref = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].encode_cell({ r: i, c: O });
+            if (!worksheet[ref]) {
+                continue;
+            }
+            worksheet[ref].z = fmt;
+            ref = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].encode_cell({ r: i, c: Q });
+            if (!worksheet[ref]) {
+                continue;
+            }
+            worksheet[ref].z = fmt;
+            ref = xlsx__WEBPACK_IMPORTED_MODULE_2__["utils"].encode_cell({ r: i, c: R });
+            if (!worksheet[ref]) {
+                continue;
+            }
+            worksheet[ref].z = fmt;
+        }
         var excelBuffer = xlsx__WEBPACK_IMPORTED_MODULE_2__["write"](workbook, { bookType: 'xlsx', type: 'array' });
         this.saveAsExcelFile(excelBuffer, excelFileName);
     };
@@ -10186,7 +10254,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-invoices\">\n\n    <div class=\"contentBox\">\n      <h3 class=\"contentBoxTop\">전체보기 - 입력일 이후 전체 송품장 리스트</h3>    \n     \n      <table width=\"100%\">\n        <tr>\n          <td>\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker> \n             &nbsp; &nbsp; &nbsp;\n            <a [routerLink]=\"['/','invoice']\" class=\"btn btn-success btn-sm\">재고 보기</a>\n          </td>\n          <td>\n            <button (click)=\"exportAsXLSX()\">\n              <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\n            </button>\n          </td>\n        </tr>\n      </table>\n        \n      <table class=\"table table-bordered\">\n        <thead>\n          <tr>\n            <th width=\"10%\">구분</th>\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n            <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n            <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n        </tr>\n        </thead>\n        <tbody>\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n            <tr>\n              <td>\n                {{invoice.in_out}}\n              </td>\n              <td>\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n              </td>\n              <td>\n                {{invoice.item}}<br/>\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n              </td>\n              <td  class=\"text-right\">\n                {{invoice.in_number | number}}<br/>{{invoice.seller_no}}\n              </td>\n              <td  class=\"text-right\">\n                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n              </td>\n              <td class=\"text-center\">\n                <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\n              </td>\n            </tr>\n            \n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n              <tr>   \n                <td>출고</td>   \n                <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\n                <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n                <td></td>\n              </tr>\n            </ng-container> \n  \n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n              <tr>\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n                <td></td>\n              </tr>\n            </ng-container>\n  \n            <ng-container *ngIf=\"i === invoices.length-1\">\n                <tr>\n                  <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n                  <td></td>\n                </tr>\n            </ng-container>\n  \n          </ng-container>\n        </tbody>\n      </table>\n    </div>  \n  </div>"
+module.exports = "<div class=\"page page-invoices\">\n\n    <div class=\"contentBox\">\n      <h3 class=\"contentBoxTop\">전체보기 - 입력일 이후 전체 송품장 리스트</h3>    \n     \n      <table width=\"100%\">\n        <tr>\n          <td>\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker> \n             &nbsp; &nbsp; &nbsp;\n            <a [routerLink]=\"['/','invoice']\" class=\"btn btn-primary btn-sm\" role=\"button\">재고 보기</a>&nbsp;\n            <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-warning btn-sm\" role=\"button\">전체 보기</a>&nbsp;\n            <a [routerLink]=\"['/','invoice', 'sale']\" class=\"btn btn-primary btn-sm\" role=\"button\">판매 보기</a>&nbsp;\n          </td>\n          <td>\n            <button (click)=\"exportAsXLSX()\">\n              <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\n            </button>\n          </td>\n        </tr>\n      </table>\n        \n      <table class=\"table table-bordered\">\n        <thead>\n          <tr >\n            <th width=\"10%\">구분</th>\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n            <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n            <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n            <th width=\"10%\" class=\"text-right\">재고수량</th>\n            <th></th>\n        </tr>\n        </thead>\n        <tbody>\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n            <tr>\n              <td>\n                {{invoice.in_out}}\n              </td>\n              <td>\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\n                    <span class='text-danger'><b>{{invoice.invoice}}</b></span>\n                  </ng-container>\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\n                    <span><b>{{invoice.invoice}}</b></span>\n                  </ng-container>\n              </td>\n              <td>\n                {{invoice.item}}<br/>\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n              </td>\n              <td  class=\"text-right\">\n                {{invoice.in_number | number}}<br/><span class='text-primary'><b>{{invoice.seller_no}}</b></span>\n              </td>\n              <td  class=\"text-right\">\n                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n              </td>\n              <td  class=\"text-right\">\n                <b>{{invoice.in_number - invoice.out_number | number}} </b>\n              </td>\n              <td class=\"text-center\">\n                <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\n              </td>\n            </tr>\n            \n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n              <tr>   \n                <td>출고</td>   \n                <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\n                <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n                <td></td>\n              </tr>\n            </ng-container> \n  \n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n              <tr>\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n                <td></td>\n                <td></td>\n              </tr>\n            </ng-container>\n  \n            <ng-container *ngIf=\"i === invoices.length-1\">\n                <tr>\n                  <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n                  <td></td>\n                  <td></td>\n                </tr>\n            </ng-container>\n  \n          </ng-container>\n        </tbody>\n      </table>\n    </div>  \n  </div>"
 
 /***/ }),
 
@@ -10246,8 +10314,8 @@ var InvoiceAllComponent = /** @class */ (function () {
     };
     InvoiceAllComponent.prototype.anotherDay = function () {
         var _this = this;
-        var today = this.mydate.getFullYear() + "-" +
-            this.utilService.get2digits(this.mydate.getMonth() + 1) + "-" +
+        var today = this.mydate.getFullYear() + '-' +
+            this.utilService.get2digits(this.mydate.getMonth() + 1) + '-' +
             this.utilService.get2digits(this.mydate.getDate());
         this.invoiceService.todayAll(today).
             then(function (data) {
@@ -10258,14 +10326,15 @@ var InvoiceAllComponent = /** @class */ (function () {
     InvoiceAllComponent.prototype.getOutSum = function (invoice) {
         var sum = 0;
         for (var i = 0; i < this.invoices.length; i++) {
-            if (this.invoices[i].invoice === invoice)
+            if (this.invoices[i].invoice === invoice) {
                 sum += this.invoices[i].out_sum;
+            }
         }
         return sum;
     };
     InvoiceAllComponent.prototype.deleteInvoice = function (id) {
         var _this = this;
-        var answer = confirm("송품장을 삭제하시겠습니까?");
+        var answer = confirm('송품장을 삭제하시겠습니까?');
         if (answer) {
             this.invoiceService.destroy(id)
                 .then(function (data) {
@@ -10282,6 +10351,7 @@ var InvoiceAllComponent = /** @class */ (function () {
         this.excelService.exportAsExcelFile(this.invoiceExs, 'invoice');
     };
     InvoiceAllComponent.prototype.makeExport = function () {
+        // console.log(this.invoices);
         var idx = 0;
         for (var i = 0; i < this.invoices.length; i++) {
             var invoiceEx = {};
@@ -10296,37 +10366,39 @@ var InvoiceAllComponent = /** @class */ (function () {
             invoiceEx.unit = this.invoices[i].unit;
             invoiceEx.quality = this.invoices[i].quality;
             invoiceEx.weight = this.invoices[i].weight;
-            invoiceEx.in_number = this.invoices[i].in_number;
-            invoiceEx.in_sum = this.invoices[i].in_sum;
-            invoiceEx.out_number = this.invoices[i].out_number;
-            invoiceEx.out_sum = this.invoices[i].out_sum;
+            invoiceEx.in_number = (this.invoices[i].in_number);
+            invoiceEx.in_sum = (this.invoices[i].in_sum);
+            invoiceEx.out_number = (this.invoices[i].out_number);
+            invoiceEx.out_sum = (this.invoices[i].out_sum);
             invoiceEx.outDate = '';
             invoiceEx.outNumber = 0;
             invoiceEx.outSum = 0;
             invoiceEx.outPurchase = '';
+            invoiceEx.seller_no = this.invoices[i].seller_no;
             this.invoiceExs.push(invoiceEx);
             for (var j = 0; j < this.invoices[i].unstoring.length; j++) {
-                var invoiceEx_1 = {};
-                invoiceEx_1.trader = ''; //this.invoices[i].trader;
-                invoiceEx_1.in_out = ''; //this.invoices[i].in_out;
-                invoiceEx_1.in_date = ''; //this.invoices[i].in_date;
-                invoiceEx_1.seller = ''; //this.invoices[i].seller;
-                invoiceEx_1.deal_type = ''; //this.invoices[i].deal_type;
-                invoiceEx_1.invoice = ''; //this.invoices[i].invoice;
-                invoiceEx_1.origin = ''; // this.invoices[i].origin;
-                invoiceEx_1.item = ''; //this.invoices[i].item;
-                invoiceEx_1.unit = 0; //this.invoices[i].unit;
-                invoiceEx_1.quality = ''; //this.invoices[i].quality;
-                invoiceEx_1.weight = ''; //this.invoices[i].weight;
-                invoiceEx_1.in_number = 0; //this.invoices[i].in_number;
-                invoiceEx_1.in_sum = 0; //this.invoices[i].in_sum;
-                invoiceEx_1.out_number = 0; //this.invoices[i].out_number;
-                invoiceEx_1.out_sum = 0; //this.invoices[i].out_sum;
-                invoiceEx_1.outDate = this.invoices[i].unstoring[j].outDate;
-                invoiceEx_1.outNumber = this.invoices[i].unstoring[j].outNumber;
-                invoiceEx_1.outSum = this.invoices[i].unstoring[j].outSum;
-                invoiceEx_1.outPurchase = this.invoices[i].unstoring[j].outPurchase;
-                this.invoiceExs.push(invoiceEx_1);
+                var invoiceExOut = {};
+                invoiceExOut.trader = ''; // this.invoices[i].trader;
+                invoiceExOut.in_out = ''; // this.invoices[i].in_out;
+                invoiceExOut.in_date = ''; // this.invoices[i].in_date;
+                invoiceExOut.seller = ''; // this.invoices[i].seller;
+                invoiceExOut.deal_type = ''; // this.invoices[i].deal_type;
+                invoiceExOut.invoice = ''; // this.invoices[i].invoice;
+                invoiceExOut.origin = ''; // this.invoices[i].origin;
+                invoiceExOut.item = ''; // this.invoices[i].item;
+                invoiceExOut.unit = ''; // this.invoices[i].unit;
+                invoiceExOut.quality = ''; // this.invoices[i].quality;
+                invoiceExOut.weight = ''; // this.invoices[i].weight;
+                invoiceExOut.in_number = 0; // this.invoices[i].in_number;
+                invoiceExOut.in_sum = 0; // this.invoices[i].in_sum;
+                invoiceExOut.out_number = 0; // this.invoices[i].out_number;
+                invoiceExOut.out_sum = 0; // this.invoices[i].out_sum;
+                invoiceExOut.outDate = this.invoices[i].unstoring[j].outDate;
+                invoiceExOut.outNumber = this.invoices[i].unstoring[j].outNumber;
+                invoiceExOut.outSum = this.invoices[i].unstoring[j].outSum;
+                invoiceExOut.outPurchase = this.invoices[i].unstoring[j].outPurchase;
+                invoiceExOut.seller_no = this.invoices[i].seller_no;
+                this.invoiceExs.push(invoiceExOut);
             }
         }
     };
@@ -10351,6 +10423,203 @@ var InvoiceAllComponent = /** @class */ (function () {
             _excel_service__WEBPACK_IMPORTED_MODULE_6__["ExcelService"]])
     ], InvoiceAllComponent);
     return InvoiceAllComponent;
+}());
+
+function addComma(num) {
+    var regexp = /\B(?=(\d{3})+(?!\d))/g;
+    return num.toString().replace(regexp, ',');
+}
+
+
+/***/ }),
+
+/***/ "./src/app/invoice-sale/invoice-sale.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/invoice-sale/invoice-sale.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/invoice-sale/invoice-sale.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/invoice-sale/invoice-sale.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"page page-invoices\">\n\n    <div class=\"contentBox\">\n      <h3 class=\"contentBoxTop\">판매보기 - 입력일 이후 판매한 송품장 리스트</h3>    \n     \n      <table width=\"100%\">\n        <tr>\n          <td>\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker> \n             &nbsp; &nbsp; &nbsp;\n            <a [routerLink]=\"['/','invoice']\" class=\"btn btn-primary btn-sm\" role=\"button\">재고 보기</a>&nbsp;\n            <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-primary btn-sm\" role=\"button\">전체 보기</a>&nbsp;\n            <a [routerLink]=\"['/','invoice', 'sale']\" class=\"btn btn-warning btn-sm\" role=\"button\">판매 보기</a>&nbsp;\n          </td>\n          <td>\n            <button (click)=\"exportAsXLSX()\">\n              <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\n            </button>\n          </td>\n        </tr>\n      </table>\n        \n      <table class=\"table table-bordered\">\n        <thead>\n          <tr >\n            <th width=\"10%\">구분</th>\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n            <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n            <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n            <th width=\"10%\" class=\"text-right\">재고수량</th>\n            <th>판매일<br/>판매처</th>\n        </tr>\n        </thead>\n        <tbody>\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n              <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n                <tr>\n                  <td>\n                    {{invoice.in_out}}\n                  </td>\n                  <td>\n                      {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \n                      <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\n                        <span class='text-danger'><b>{{invoice.invoice}}</b></span>\n                      </ng-container>\n                      <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\n                        <span><b>{{invoice.invoice}}</b></span>\n                      </ng-container>\n                  </td>\n                  <td>\n                    {{invoice.item}}<br/>\n                    {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n                  </td>\n                  <td  class=\"text-right\">\n                    {{invoice.in_number | number}}<br/><span class='text-primary'><b>{{invoice.seller_no}}</b></span>\n                  </td>\n                  <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n                  <td  class=\"text-right\">\n                    <b>{{invoice.in_number - invoice.out_number | number}} </b>\n                  </td>\n                  <td class=\"text-right\"><b>{{unstoring.outDate}}</b><br/>{{unstoring.outPurchase}}</td>\n                </tr>\n              </ng-container>            \n\n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice && invoice.unstoring.length > 0\">\n              <tr>\n                <td colspan=\"7\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n              </tr>\n            </ng-container>           \n  \n            <ng-container *ngIf=\"i === invoices.length-1  && invoice.unstoring.length > 0\">\n                <tr>\n                  <td colspan=\"7\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n                </tr>\n            </ng-container>\n  \n          </ng-container>\n        </tbody>\n      </table>\n    </div>  \n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/invoice-sale/invoice-sale.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/invoice-sale/invoice-sale.component.ts ***!
+  \********************************************************/
+/*! exports provided: InvoiceSaleComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceSaleComponent", function() { return InvoiceSaleComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _date_adapter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../date.adapter */ "./src/app/date.adapter.ts");
+/* harmony import */ var _invoice_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../invoice.service */ "./src/app/invoice.service.ts");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util.service */ "./src/app/util.service.ts");
+/* harmony import */ var _excel_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../excel.service */ "./src/app/excel.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var InvoiceSaleComponent = /** @class */ (function () {
+    function InvoiceSaleComponent(route, router, invoiceService, utilService, excelService) {
+        var _this = this;
+        this.route = route;
+        this.router = router;
+        this.invoiceService = invoiceService;
+        this.utilService = utilService;
+        this.excelService = excelService;
+        this.mydate = new Date();
+        this.total = 0;
+        this.invoiceExs = [];
+        this.navigationSubscription = this.router.events.subscribe(function (e) {
+            // If it is a NavigationEnd event re-initalise the component
+            if (e instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]) {
+                _this.invoices = _this.route.snapshot.data['invoices'];
+                _this.anotherDay();
+            }
+        });
+    }
+    InvoiceSaleComponent.prototype.ngOnInit = function () {
+    };
+    InvoiceSaleComponent.prototype.anotherDay = function () {
+        var _this = this;
+        var today = this.mydate.getFullYear() + '-' +
+            this.utilService.get2digits(this.mydate.getMonth() + 1) + '-' +
+            this.utilService.get2digits(this.mydate.getDate());
+        this.invoiceService.todaySale(today).
+            then(function (data) {
+            _this.invoices = data;
+        })
+            .catch(function (response) { return null; });
+    };
+    InvoiceSaleComponent.prototype.getOutSum = function (invoice) {
+        var sum = 0;
+        for (var i = 0; i < this.invoices.length; i++) {
+            if (this.invoices[i].invoice === invoice) {
+                sum += this.invoices[i].out_sum;
+            }
+        }
+        return sum;
+    };
+    InvoiceSaleComponent.prototype.deleteInvoice = function (id) {
+        var _this = this;
+        var answer = confirm('송품장을 삭제하시겠습니까?');
+        if (answer) {
+            this.invoiceService.destroy(id)
+                .then(function (data) {
+                alert('삭제하였습니다.');
+                _this.router.navigate(['/invoice']);
+            })
+                .catch(function (response) {
+                _this.errorResponse = response;
+            });
+        }
+    };
+    InvoiceSaleComponent.prototype.exportAsXLSX = function () {
+        this.makeExport();
+        this.excelService.exportAsExcelFile(this.invoiceExs, 'invoice');
+    };
+    InvoiceSaleComponent.prototype.makeExport = function () {
+        // console.log(this.invoices);
+        var idx = 0;
+        for (var i = 0; i < this.invoices.length; i++) {
+            var invoiceEx = {};
+            invoiceEx.trader = this.invoices[i].trader;
+            invoiceEx.in_out = this.invoices[i].in_out;
+            invoiceEx.in_date = this.invoices[i].in_date;
+            invoiceEx.seller = this.invoices[i].seller;
+            invoiceEx.deal_type = this.invoices[i].deal_type;
+            invoiceEx.invoice = this.invoices[i].invoice;
+            invoiceEx.origin = this.invoices[i].origin;
+            invoiceEx.item = this.invoices[i].item;
+            invoiceEx.unit = this.invoices[i].unit;
+            invoiceEx.quality = this.invoices[i].quality;
+            invoiceEx.weight = this.invoices[i].weight;
+            invoiceEx.in_number = (this.invoices[i].in_number);
+            invoiceEx.in_sum = (this.invoices[i].in_sum);
+            invoiceEx.out_number = (this.invoices[i].out_number);
+            invoiceEx.out_sum = (this.invoices[i].out_sum);
+            invoiceEx.outDate = '';
+            invoiceEx.outNumber = 0;
+            invoiceEx.outSum = 0;
+            invoiceEx.outPurchase = '';
+            invoiceEx.seller_no = this.invoices[i].seller_no;
+            this.invoiceExs.push(invoiceEx);
+            for (var j = 0; j < this.invoices[i].unstoring.length; j++) {
+                var invoiceExOut = {};
+                invoiceExOut.trader = ''; // this.invoices[i].trader;
+                invoiceExOut.in_out = ''; // this.invoices[i].in_out;
+                invoiceExOut.in_date = ''; // this.invoices[i].in_date;
+                invoiceExOut.seller = ''; // this.invoices[i].seller;
+                invoiceExOut.deal_type = ''; // this.invoices[i].deal_type;
+                invoiceExOut.invoice = ''; // this.invoices[i].invoice;
+                invoiceExOut.origin = ''; // this.invoices[i].origin;
+                invoiceExOut.item = ''; // this.invoices[i].item;
+                invoiceExOut.unit = ''; // this.invoices[i].unit;
+                invoiceExOut.quality = ''; // this.invoices[i].quality;
+                invoiceExOut.weight = ''; // this.invoices[i].weight;
+                invoiceExOut.in_number = 0; // this.invoices[i].in_number;
+                invoiceExOut.in_sum = 0; // this.invoices[i].in_sum;
+                invoiceExOut.out_number = 0; // this.invoices[i].out_number;
+                invoiceExOut.out_sum = 0; // this.invoices[i].out_sum;
+                invoiceExOut.outDate = this.invoices[i].unstoring[j].outDate;
+                invoiceExOut.outNumber = this.invoices[i].unstoring[j].outNumber;
+                invoiceExOut.outSum = this.invoices[i].unstoring[j].outSum;
+                invoiceExOut.outPurchase = this.invoices[i].unstoring[j].outPurchase;
+                invoiceExOut.seller_no = this.invoices[i].seller_no;
+                this.invoiceExs.push(invoiceExOut);
+            }
+        }
+    };
+    InvoiceSaleComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-invoice-sale',
+            template: __webpack_require__(/*! ./invoice-sale.component.html */ "./src/app/invoice-sale/invoice-sale.component.html"),
+            styles: [__webpack_require__(/*! ./invoice-sale.component.css */ "./src/app/invoice-sale/invoice-sale.component.css")],
+            providers: [
+                {
+                    provide: _angular_material__WEBPACK_IMPORTED_MODULE_2__["DateAdapter"], useClass: _date_adapter__WEBPACK_IMPORTED_MODULE_3__["AppDateAdapter"]
+                },
+                {
+                    provide: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DATE_FORMATS"], useValue: _date_adapter__WEBPACK_IMPORTED_MODULE_3__["APP_DATE_FORMATS"]
+                }
+            ]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _invoice_service__WEBPACK_IMPORTED_MODULE_4__["InvoiceService"],
+            _util_service__WEBPACK_IMPORTED_MODULE_5__["UtilService"],
+            _excel_service__WEBPACK_IMPORTED_MODULE_6__["ExcelService"]])
+    ], InvoiceSaleComponent);
+    return InvoiceSaleComponent;
 }());
 
 
@@ -10410,6 +10679,15 @@ var InvoiceService = /** @class */ (function () {
     };
     InvoiceService.prototype.todayAll = function (today) {
         return this.http.get(this.apiBaseUrl + "/" + today + "/all")
+            .toPromise()
+            .then(this.utilService.checkSuccess)
+            .then(function (response) {
+            return response.data;
+        })
+            .catch(this.utilService.handleApiError);
+    };
+    InvoiceService.prototype.todaySale = function (today) {
+        return this.http.get(this.apiBaseUrl + "/" + today + "/sale")
             .toPromise()
             .then(this.utilService.checkSuccess)
             .then(function (response) {
@@ -10486,7 +10764,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-invoices\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">재고보기 - 입력일 이후 재고가 있는 송품장 리스트</h3>    \n   \n    <table width=\"100%\">\n      <tr>\n        <td>\n          <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n          <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n          <mat-datepicker #picker></mat-datepicker> \n           &nbsp; &nbsp; &nbsp;\n          <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-primary btn-sm\">전체 보기</a>\n        </td>\n        <td>\n          <button (click)=\"exportAsXLSX()\">\n            <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\n          </button>\n        </td>\n      </tr>\n    </table>\n      \n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th width=\"10%\">구분</th>\n          <th width=\"30%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n          <th width=\"30%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n          <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n          <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n          <th width=\"10%\"></th>\n      </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n          <tr>\n            <td>\n              {{invoice.in_out}}\n            </td>\n            <td>\n                {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n            </td>\n            <td>\n              {{invoice.item}}<br/>\n              {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.in_number | number}}<br/>{{invoice.seller_no}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n            </td>\n            <td class=\"text-center\">\n              <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\n            </td>\n          </tr>\n          \n          <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n            <tr>   \n              <td>출고</td>   \n              <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\n              <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\n              <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n              <td></td>\n            </tr>\n          </ng-container> \n\n          <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n            <tr>\n              <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n              <td></td>\n            </tr>\n          </ng-container>\n\n          <ng-container *ngIf=\"i === invoices.length-1\">\n              <tr>\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n                <td></td>\n              </tr>\n          </ng-container>\n\n        </ng-container>\n      </tbody>\n    </table>\n  </div>  \n</div>"
+module.exports = "<div class=\"page page-invoices\">\n\n  <div class=\"contentBox\">\n    <h3 class=\"contentBoxTop\">재고보기 - 입력일 이후 재고가 있는 송품장 리스트</h3>    \n   \n    <table width=\"100%\">\n      <tr>\n        <td>\n          <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\n          <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n          <mat-datepicker #picker></mat-datepicker> \n           &nbsp; &nbsp; &nbsp;\n          <a [routerLink]=\"['/','invoice']\" class=\"btn btn-warning btn-sm\" role=\"button\">재고 보기</a>&nbsp;\n          <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-primary btn-sm\" role=\"button\">전체 보기</a>&nbsp;\n          <a [routerLink]=\"['/','invoice', 'sale']\" class=\"btn btn-primary btn-sm\" role=\"button\">판매 보기</a>&nbsp;\n        </td>\n        <td>\n          <button (click)=\"exportAsXLSX()\">\n            <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\n          </button>\n        </td>\n      </tr>\n    </table>\n      \n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th width=\"10%\">구분</th>\n          <th width=\"30%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\n          <th width=\"30%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\n          <th width=\"10%\" class=\"text-right\">입고수량<br/>영업인</th>\n          <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\n          <th width=\"10%\"></th>\n      </tr>\n      </thead>\n      <tbody>\n        <ng-container *ngFor=\"let invoice of invoices; let i = index\">\n          <tr>\n            <td>\n              {{invoice.in_out}}\n            </td>\n            <td>\n                {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}\n            </td>\n            <td>\n              {{invoice.item}}<br/>\n              {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.in_number | number}}<br/>{{invoice.seller_no}}\n            </td>\n            <td  class=\"text-right\">\n              {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\n            </td>\n            <td class=\"text-center\">\n              <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\n            </td>\n          </tr>\n          \n          <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \n            <tr>   \n              <td>출고</td>   \n              <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\n              <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\n              <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\n              <td></td>\n            </tr>\n          </ng-container> \n\n          <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\n            <tr>\n              <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n              <td></td>\n            </tr>\n          </ng-container>\n\n          <ng-container *ngIf=\"i === invoices.length-1\">\n              <tr>\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\n                <td></td>\n              </tr>\n          </ng-container>\n\n        </ng-container>\n      </tbody>\n    </table>\n  </div>  \n</div>"
 
 /***/ }),
 
@@ -10546,8 +10824,8 @@ var InvoiceComponent = /** @class */ (function () {
     };
     InvoiceComponent.prototype.anotherDay = function () {
         var _this = this;
-        var today = this.mydate.getFullYear() + "-" +
-            this.utilService.get2digits(this.mydate.getMonth() + 1) + "-" +
+        var today = this.mydate.getFullYear() + '-' +
+            this.utilService.get2digits(this.mydate.getMonth() + 1) + '-' +
             this.utilService.get2digits(this.mydate.getDate());
         this.invoiceService.today(today).
             then(function (data) {
@@ -10558,14 +10836,15 @@ var InvoiceComponent = /** @class */ (function () {
     InvoiceComponent.prototype.getOutSum = function (invoice) {
         var sum = 0;
         for (var i = 0; i < this.invoices.length; i++) {
-            if (this.invoices[i].invoice === invoice)
+            if (this.invoices[i].invoice === invoice) {
                 sum += this.invoices[i].out_sum;
+            }
         }
         return sum;
     };
     InvoiceComponent.prototype.deleteInvoice = function (id) {
         var _this = this;
-        var answer = confirm("송품장을 삭제하시겠습니까?");
+        var answer = confirm('송품장을 삭제하시겠습니까?');
         if (answer) {
             this.invoiceService.destroy(id)
                 .then(function (data) {
@@ -10597,36 +10876,38 @@ var InvoiceComponent = /** @class */ (function () {
             invoiceEx.quality = this.invoices[i].quality;
             invoiceEx.weight = this.invoices[i].weight;
             invoiceEx.in_number = this.invoices[i].in_number;
-            invoiceEx.in_sum = this.invoices[i].in_sum;
-            invoiceEx.out_number = this.invoices[i].out_number;
-            invoiceEx.out_sum = this.invoices[i].out_sum;
+            invoiceEx.in_sum = (this.invoices[i].in_sum);
+            invoiceEx.out_number = (this.invoices[i].out_number);
+            invoiceEx.out_sum = (this.invoices[i].out_sum);
             invoiceEx.outDate = '';
             invoiceEx.outNumber = 0;
             invoiceEx.outSum = 0;
             invoiceEx.outPurchase = '';
+            invoiceEx.seller_no = this.invoices[i].seller_no;
             this.invoiceExs.push(invoiceEx);
             for (var j = 0; j < this.invoices[i].unstoring.length; j++) {
-                var invoiceEx_1 = {};
-                invoiceEx_1.trader = ''; //this.invoices[i].trader;
-                invoiceEx_1.in_out = ''; //this.invoices[i].in_out;
-                invoiceEx_1.in_date = ''; //this.invoices[i].in_date;
-                invoiceEx_1.seller = ''; //this.invoices[i].seller;
-                invoiceEx_1.deal_type = ''; //this.invoices[i].deal_type;
-                invoiceEx_1.invoice = ''; //this.invoices[i].invoice;
-                invoiceEx_1.origin = ''; // this.invoices[i].origin;
-                invoiceEx_1.item = ''; //this.invoices[i].item;
-                invoiceEx_1.unit = 0; //this.invoices[i].unit;
-                invoiceEx_1.quality = ''; //this.invoices[i].quality;
-                invoiceEx_1.weight = ''; //this.invoices[i].weight;
-                invoiceEx_1.in_number = 0; //this.invoices[i].in_number;
-                invoiceEx_1.in_sum = 0; //this.invoices[i].in_sum;
-                invoiceEx_1.out_number = 0; //this.invoices[i].out_number;
-                invoiceEx_1.out_sum = 0; //this.invoices[i].out_sum;
-                invoiceEx_1.outDate = this.invoices[i].unstoring[j].outDate;
-                invoiceEx_1.outNumber = this.invoices[i].unstoring[j].outNumber;
-                invoiceEx_1.outSum = this.invoices[i].unstoring[j].outSum;
-                invoiceEx_1.outPurchase = this.invoices[i].unstoring[j].outPurchase;
-                this.invoiceExs.push(invoiceEx_1);
+                var invoiceExOut = {};
+                invoiceExOut.trader = ''; // this.invoices[i].trader;
+                invoiceExOut.in_out = ''; // this.invoices[i].in_out;
+                invoiceExOut.in_date = ''; // this.invoices[i].in_date;
+                invoiceExOut.seller = ''; // this.invoices[i].seller;
+                invoiceExOut.deal_type = ''; // this.invoices[i].deal_type;
+                invoiceExOut.invoice = ''; // this.invoices[i].invoice;
+                invoiceExOut.origin = ''; // this.invoices[i].origin;
+                invoiceExOut.item = ''; // this.invoices[i].item;
+                invoiceExOut.unit = ''; // this.invoices[i].unit;
+                invoiceExOut.quality = ''; // this.invoices[i].quality;
+                invoiceExOut.weight = ''; // this.invoices[i].weight;
+                invoiceExOut.in_number = 0; // this.invoices[i].in_number;
+                invoiceExOut.in_sum = 0; // this.invoices[i].in_sum;
+                invoiceExOut.out_number = 0; // this.invoices[i].out_number;
+                invoiceExOut.out_sum = 0; // this.invoices[i].out_sum;
+                invoiceExOut.outDate = this.invoices[i].unstoring[j].outDate;
+                invoiceExOut.outNumber = (this.invoices[i].unstoring[j].outNumber);
+                invoiceExOut.outSum = (this.invoices[i].unstoring[j].outSum);
+                invoiceExOut.outPurchase = this.invoices[i].unstoring[j].outPurchase;
+                invoiceExOut.seller_no = this.invoices[i].seller_no;
+                this.invoiceExs.push(invoiceExOut);
             }
         }
     };
@@ -10653,6 +10934,10 @@ var InvoiceComponent = /** @class */ (function () {
     return InvoiceComponent;
 }());
 
+function addComma(num) {
+    var regexp = /\B(?=(\d{3})+(?!\d))/g;
+    return num.toString().replace(regexp, ',');
+}
 
 
 /***/ }),
@@ -11130,7 +11415,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-sellers\">\n\n  <form [formGroup]=\"form\" (ngSubmit)=\"submit()\" class=\"login-form form-horizontal\" >\n    <div class=\"contentBox\">\n      <h3 class=\"contentBoxTop\">사용자 등록</h3>\n\n      <fieldset>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.userID}\">\n          <label for=\"userID\" class=\"col-sm-3 control-label\">아이디*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"userID\" id=\"userID\">\n            <span *ngIf=\"formErrors.userID\" class=\"help-block\">{{formErrors.userID}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"name\" class=\"col-sm-3 control-label\">이름</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"name\" id=\"name\">\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.sellerNo}\">\n          <label for=\"sellerNo\" class=\"col-sm-3 control-label\">영업인번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"sellerNo\" id=\"sellerNo\">\n            <span *ngIf=\"formErrors.sellerNo\" class=\"help-block\">{{formErrors.sellerNo}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.storeName}\">\n          <label for=\"storeName\" class=\"col-sm-3 control-label\">상호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"storeName\" id=\"storeName\">\n            <span *ngIf=\"formErrors.storeName\" class=\"help-block\">{{formErrors.storeName}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.phone}\">\n          <label for=\"phone\" class=\"col-sm-3 control-label\">전화번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"phone\" id=\"phone\">\n            <span *ngIf=\"formErrors.phone\" class=\"help-block\">{{formErrors.phone}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.email}\">\n          <label for=\"email\" class=\"col-sm-3 control-label\">메일</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"email\" id=\"email\">\n            <span *ngIf=\"formErrors.email\" class=\"help-block\">{{formErrors.email}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.password}\">\n          <label for=\"password\" class=\"col-sm-3 control-label\">비밀번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"password\" formControlName=\"password\" id=\"password\">\n            <span *ngIf=\"formErrors.password\" class=\"help-block\">{{formErrors.password}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.confirmPassword}\">\n          <label for=\"confirmPassword\" class=\"col-sm-12 control-label\">비밀번호 확인*</label>\n          <div class=\"col-sm-9 col-sm-offset-3\">\n            <input class=\"form-control\" type=\"password\" formControlName=\"confirmPassword\" id=\"confirmPassword\">\n            <span *ngIf=\"formErrors.confirmPassword\" class=\"help-block\">{{formErrors.confirmPassword}}</span>\n          </div>\n        </div>\n        <p>\n          *필수항목\n        </p>\n        <div *ngIf=\"errorResponse?.message\" class=\"alert alert-danger\">\n          {{errorResponse?.message}}\n        </div>\n      </fieldset>\n    </div>\n    <div class=\"buttons\">\n      <button type=\"submit\" class=\"btn btn-default\">확인</button>\n    </div>\n  </form>\n  \n</div>"
+module.exports = "<div class=\"page page-sellers\">\n\n  <form [formGroup]=\"form\" (ngSubmit)=\"submit()\" class=\"login-form form-horizontal\" >\n    <div class=\"contentBox\">\n      <h3 class=\"contentBoxTop\">사용자 등록</h3>\n\n      <fieldset>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.userID}\">\n          <label for=\"userID\" class=\"col-sm-3 control-label\">아이디*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"userID\" id=\"userID\">\n            <span *ngIf=\"formErrors.userID\" class=\"help-block\">{{formErrors.userID}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"name\" class=\"col-sm-3 control-label\">이름</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"name\" id=\"name\">\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.sellerNo}\">\n          <label for=\"sellerNo\" class=\"col-sm-3 control-label\">영업인번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"sellerNo\" id=\"sellerNo\">\n            <span *ngIf=\"formErrors.sellerNo\" class=\"help-block\">{{formErrors.sellerNo}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.storeName}\">\n          <label for=\"storeName\" class=\"col-sm-3 control-label\">상호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"storeName\" id=\"storeName\">\n            <span *ngIf=\"formErrors.storeName\" class=\"help-block\">{{formErrors.storeName}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.phone}\">\n          <label for=\"phone\" class=\"col-sm-3 control-label\">전화번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"phone\" id=\"phone\">\n            <span *ngIf=\"formErrors.phone\" class=\"help-block\">{{formErrors.phone}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.email}\">\n          <label for=\"email\" class=\"col-sm-3 control-label\">메일</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"text\" formControlName=\"email\" id=\"email\">\n            <span *ngIf=\"formErrors.email\" class=\"help-block\">{{formErrors.email}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.password}\">\n          <label for=\"password\" class=\"col-sm-3 control-label\">비밀번호*</label>\n          <div class=\"col-sm-9\">\n            <input class=\"form-control\" type=\"password\" formControlName=\"password\" id=\"password\">\n            <span *ngIf=\"formErrors.password\" class=\"help-block\">{{formErrors.password}}</span>\n          </div>\n        </div>\n\n        <div class=\"form-group\" [ngClass]=\"{'has-error': formErrors.confirmPassword}\">\n          <label for=\"confirmPassword\" class=\"col-sm-12 control-label\">비밀번호 확인*</label>\n          <div class=\"col-sm-9 col-sm-offset-3\">\n            <input class=\"form-control\" type=\"password\" formControlName=\"confirmPassword\" id=\"confirmPassword\">\n            <span *ngIf=\"formErrors.confirmPassword\" class=\"help-block\">{{formErrors.confirmPassword}}</span>\n          </div>\n        </div>\n        <p>\n          *필수항목\n        </p>\n        <div *ngIf=\"errorResponse?.message\" class=\"alert alert-danger\">\n          {{errorResponse.message}}\n        </div>\n      </fieldset>\n    </div>\n    <div class=\"buttons\">\n      <button type=\"submit\" class=\"btn btn-default\">확인</button>\n    </div>\n  </form>\n  \n</div>"
 
 /***/ }),
 
@@ -11170,7 +11455,7 @@ var SellerNewComponent = /** @class */ (function () {
         this.utilService = utilService;
         this.sellerService = sellerService;
         this.formErrors = {
-            'usernID': '',
+            'userID': '',
             'name': '',
             'sellerNo': '',
             'storeName': '',
@@ -11180,7 +11465,7 @@ var SellerNewComponent = /** @class */ (function () {
             'confirmPassword': '',
         };
         this.formErrorMessages = {
-            'usernID': {
+            'userID': {
                 'required': '아이디를 입력하세요.',
                 'pattern': '8~16자의 영문 숫자입니다.',
             },
@@ -11203,7 +11488,7 @@ var SellerNewComponent = /** @class */ (function () {
                 'required': '비밀번호를 입력하세요.',
                 'pattern': '8~16자의 영문 숫자 조합입니다.',
             },
-            'passwordConfirmation': {
+            'confirmPassword': {
                 'required': '비밀번호을 한번 더 입력하세요.',
                 'match': '입력 비밀번호가 확인과 일치하지 않습니다.',
             },
@@ -11213,14 +11498,14 @@ var SellerNewComponent = /** @class */ (function () {
     SellerNewComponent.prototype.buildForm = function () {
         var _this = this;
         this.form = this.formBuilder.group({
-            userID: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{8,16}$/)]],
-            name: [""],
+            userID: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{8,16}$/)]],
+            name: [''],
             sellerNo: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^[0-9]*$/)]],
-            storeName: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{2,40}$/)]],
-            phone: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
-            email: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
-            confirmPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            storeName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{2,40}$/)]],
+            phone: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
+            confirmPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
         }, {
             validator: this.customValidation,
         });
@@ -11228,11 +11513,10 @@ var SellerNewComponent = /** @class */ (function () {
             _this.utilService.updateFormErrors(_this.form, _this.formErrors, _this.formErrorMessages);
         });
     };
-    ;
     SellerNewComponent.prototype.customValidation = function (group) {
         var password = group.get('password');
         var confirmPassword = group.get('confirmPassword');
-        if (password.dirty && confirmPassword.dirty && password.value != confirmPassword.value) {
+        if (password.dirty && confirmPassword.dirty && password.value !== confirmPassword.value) {
             confirmPassword.setErrors({ 'match': true });
         }
     };
@@ -11896,7 +12180,7 @@ var UserNewComponent = /** @class */ (function () {
         this.utilService = utilService;
         this.userService = userService;
         this.formErrors = {
-            'usernID': '',
+            'userID': '',
             'name': '',
             'storeName': '',
             'phone': '',
@@ -11905,7 +12189,7 @@ var UserNewComponent = /** @class */ (function () {
             'confirmPassword': '',
         };
         this.formErrorMessages = {
-            'usernID': {
+            'userID': {
                 'required': '아이디를 입력하세요.',
                 'pattern': '8~16자의 영문 숫자입니다.',
             },
@@ -11924,7 +12208,7 @@ var UserNewComponent = /** @class */ (function () {
                 'required': '비밀번호를 입력하세요.',
                 'pattern': '8~16자의 영문 숫자 조합입니다.',
             },
-            'passwordConfirmation': {
+            'confirmPassword': {
                 'required': '비밀번호을 한번 더 입력하세요.',
                 'match': '입력 비밀번호가 확인과 일치하지 않습니다.',
             },
@@ -11934,13 +12218,13 @@ var UserNewComponent = /** @class */ (function () {
     UserNewComponent.prototype.buildForm = function () {
         var _this = this;
         this.form = this.formBuilder.group({
-            userID: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{8,16}$/)]],
-            name: [""],
-            storeName: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{2,40}$/)]],
-            phone: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
-            email: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-            password: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
-            confirmPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            userID: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{8,16}$/)]],
+            name: [''],
+            storeName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^.{2,40}$/)]],
+            phone: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
+            confirmPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
         }, {
             validator: this.customValidation,
         });
@@ -11948,11 +12232,11 @@ var UserNewComponent = /** @class */ (function () {
             _this.utilService.updateFormErrors(_this.form, _this.formErrors, _this.formErrorMessages);
         });
     };
-    ;
     UserNewComponent.prototype.customValidation = function (group) {
         var password = group.get('password');
         var confirmPassword = group.get('confirmPassword');
-        if (password.dirty && confirmPassword.dirty && password.value != confirmPassword.value) {
+        console.log(password.value, confirmPassword.value);
+        if (password.dirty && confirmPassword.dirty && password.value !== confirmPassword.value) {
             confirmPassword.setErrors({ 'match': true });
         }
     };
@@ -12259,14 +12543,17 @@ var UtilService = /** @class */ (function () {
     function UtilService() {
     }
     UtilService.prototype.checkSuccess = function (response) {
-        if (response.success)
+        if (response.success) {
             return Promise.resolve(response);
-        else
+        }
+        else {
             return Promise.reject(response);
+        }
     };
     UtilService.prototype.handleApiError = function (error) {
-        if (!_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].production)
+        if (!_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].production) {
             console.error('An error occurred', error);
+        }
         return Promise.reject(error);
     };
     UtilService.prototype.updateFormErrors = function (form, formErrors, formErrorMessages) {
@@ -12274,13 +12561,17 @@ var UtilService = /** @class */ (function () {
             return;
         }
         for (var field in formErrors) {
-            formErrors[field] = '';
-            var control = form.get(field);
-            if (control && control.dirty && !control.valid) {
-                var messages = formErrorMessages[field];
-                if (messages) {
-                    for (var key in control.errors) {
-                        formErrors[field] += messages[key] + ' ';
+            if (formErrors.hasOwnProperty(field)) {
+                formErrors[field] = '';
+                var control = form.get(field);
+                if (control && control.dirty && !control.valid) {
+                    var messages = formErrorMessages[field];
+                    if (messages) {
+                        for (var key in control.errors) {
+                            if (control.errors.hasOwnProperty(key)) {
+                                formErrors[field] += messages[key] + ' ';
+                            }
+                        }
                     }
                 }
             }
@@ -12291,9 +12582,12 @@ var UtilService = /** @class */ (function () {
             return;
         }
         for (var field in form.controls) {
-            var control = form.get(field);
-            if (control)
-                control.markAsDirty();
+            if (form.controls.hasOwnProperty(field)) {
+                var control = form.get(field);
+                if (control) {
+                    control.markAsDirty();
+                }
+            }
         }
     };
     UtilService.prototype.makeFormDirtyAndUpdateErrors = function (form, formErrors, formErrorMessages) {
@@ -12303,9 +12597,11 @@ var UtilService = /** @class */ (function () {
     UtilService.prototype.handleFormSubmitError = function (response, form, formErrors) {
         if (response.errors) {
             for (var field in formErrors) {
-                var control = form.get(field);
-                if (response.errors[field] && response.errors[field].message) {
-                    formErrors[field] += response.errors[field].message;
+                if (formErrors.hasOwnProperty(field)) {
+                    // const control = form.get(field);
+                    if (response.errors[field] && response.errors[field].message) {
+                        formErrors[field] += response.errors[field].message;
+                    }
                 }
             }
             if (response.errors.unhandled) {
@@ -12314,20 +12610,20 @@ var UtilService = /** @class */ (function () {
         }
     };
     UtilService.prototype.get2digits = function (num) {
-        return ("0" + num).slice(-2);
+        return ('0' + num).slice(-2);
     };
     UtilService.prototype.getDate = function () {
         var mydate = new Date();
-        return mydate.getFullYear() + "-" + this.get2digits(mydate.getMonth() + 1) + "-" + this.get2digits(mydate.getDate());
+        return mydate.getFullYear() + '-' + this.get2digits(mydate.getMonth() + 1) + '-' + this.get2digits(mydate.getDate());
     };
     UtilService.prototype.getTime = function () {
         var mydate = new Date();
-        return this.get2digits(mydate.getHours()) + ":" + this.get2digits(mydate.getMinutes() + 1) + ":" + this.get2digits(mydate.getSeconds());
+        return this.get2digits(mydate.getHours()) + ':' + this.get2digits(mydate.getMinutes() + 1) + ':' + this.get2digits(mydate.getSeconds());
     };
     UtilService.prototype.getDateTime = function () {
         var mydate = new Date();
-        return mydate.getFullYear() + "-" + this.get2digits(mydate.getMonth() + 1) + "-" + this.get2digits(mydate.getDate()) + " "
-            + this.get2digits(mydate.getHours()) + ":" + this.get2digits(mydate.getMinutes() + 1) + ":" + this.get2digits(mydate.getSeconds());
+        return mydate.getFullYear() + '-' + this.get2digits(mydate.getMonth() + 1) + '-' + this.get2digits(mydate.getDate()) + ' '
+            + this.get2digits(mydate.getHours()) + ':' + this.get2digits(mydate.getMinutes() + 1) + ':' + this.get2digits(mydate.getSeconds());
     };
     UtilService.prototype.getDateTimeStr = function () {
         var mydate = new Date();
@@ -12424,7 +12720,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
-    apiBaseUrl: "http://jhfishery-api.ebizpia.co.kr:3300/api",
+    apiBaseUrl: 'http://jhfishery-api.ebizpia.co.kr:3300/api',
 };
 /*
  * In development mode, to ignore zone related error stack frames such as

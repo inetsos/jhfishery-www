@@ -20,8 +20,9 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { UploadComponent } from './upload/upload.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceAllComponent } from './invoice-all/invoice-all.component';
+import { InvoiceSaleComponent } from './invoice-sale/invoice-sale.component';
 
-import { SellerNewComponent } from './seller-new/seller-new.component'; 
+import { SellerNewComponent } from './seller-new/seller-new.component';
 import { SellerIndexComponent } from './seller-index/seller-index.component';
 import { SellerShowComponent } from './seller-show/seller-show.component';
 import { SellerEditComponent } from './seller-edit/seller-edit.component';
@@ -30,27 +31,34 @@ const routes: Routes = [
   { path: '',  component: WelcomeComponent },
   { path: 'upload',  canActivate: [AuthGuard],
     children: [
-      { 
-        path: '', 
-        component: UploadComponent 
+      {
+        path: '',
+        component: UploadComponent
       }
     ]
   },
   { path: 'invoice', canActivate: [AuthGuard],
     children: [
-      { 
-        path: '', 
+      {
+        path: '',
         component: InvoiceComponent,
-        resolve: { 
+        resolve: {
           invoices: InvoicesResolve,
-        } 
+        }
       },
-      { 
-        path: 'all', 
+      {
+        path: 'all',
         component: InvoiceAllComponent,
-        resolve: { 
+        resolve: {
           invoices: InvoicesResolve,
-        } 
+        }
+      },
+      {
+        path: 'sale',
+        component: InvoiceSaleComponent,
+        resolve: {
+          invoices: InvoicesResolve,
+        }
       }
     ]
   },
@@ -58,21 +66,21 @@ const routes: Routes = [
   { path: 'users/new',  component: UserNewComponent },
   { path: 'users', canActivate: [AuthGuard],
     children: [
-      { 
-        path: '', 
+      {
+        path: '',
         component: UserIndexComponent,
-        resolve: { 
+        resolve: {
           users: UsersResolve,
-        } 
+        }
       },
-      { 
+      {
         path: ':userID',
         component: UserShowComponent,
         resolve: {
           user: UserResolve
         }
       },
-      { 
+      {
         path: ':userID/edit',
         component: UserEditComponent,
         resolve: {
@@ -84,22 +92,22 @@ const routes: Routes = [
   { path: 'sellers', canActivate: [AuthGuard],
     children: [
       {
-        path: 'new', component: SellerNewComponent,  
+        path: 'new', component: SellerNewComponent,
       },
-      { 
-        path: '', component: SellerIndexComponent,      
+      {
+        path: '', component: SellerIndexComponent,
         resolve: {
           sellers: SellersResolve,
-        } 
+        }
       },
-      { 
+      {
         path: ':userID',
         component: SellerShowComponent,
         resolve: {
           seller: SellerResolve
         }
       },
-      { 
+      {
         path: ':userID/edit',
         component: SellerEditComponent,
         resolve: {
@@ -116,8 +124,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
   ],
-  exports: [ 
-    RouterModule 
+  exports: [
+    RouterModule
   ],
   declarations: []
 })

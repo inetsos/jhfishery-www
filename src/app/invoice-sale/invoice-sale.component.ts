@@ -13,9 +13,9 @@ import { InvoiceEx } from '../invoice_ex';
 import { ApiResponse } from '../api-response';
 
 @Component({
-  selector: 'app-invoice-all',
-  templateUrl: './invoice-all.component.html',
-  styleUrls: ['./invoice-all.component.css'],
+  selector: 'app-invoice-sale',
+  templateUrl: './invoice-sale.component.html',
+  styleUrls: ['./invoice-sale.component.css'],
   providers: [
     {
         provide: DateAdapter, useClass: AppDateAdapter
@@ -25,7 +25,7 @@ import { ApiResponse } from '../api-response';
     }
   ]
 })
-export class InvoiceAllComponent implements OnInit {
+export class InvoiceSaleComponent implements OnInit {
 
   invoices: Invoice[];
   mydate = new Date();
@@ -58,7 +58,7 @@ export class InvoiceAllComponent implements OnInit {
     const today = this.mydate.getFullYear() + '-' +
       this.utilService.get2digits(this.mydate.getMonth() + 1) + '-' +
       this.utilService.get2digits(this.mydate.getDate());
-    this.invoiceService.todayAll(today).
+    this.invoiceService.todaySale(today).
       then((data) => {
         this.invoices = data as Invoice[];
       })
@@ -159,9 +159,4 @@ export class InvoiceAllComponent implements OnInit {
     }
   }
 
-}
-
-function addComma(num) {
-  const regexp = /\B(?=(\d{3})+(?!\d))/g;
-  return num.toString().replace(regexp, ',');
 }

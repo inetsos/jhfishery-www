@@ -7,6 +7,11 @@ body {
 a {
     cursor: pointer;
 }
+
+th {
+    background-color: #eeeeee;
+}
+
 .page {
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
@@ -82,6 +87,9 @@ a {
     max-width: 330px;
 }
 .page-users {
+    max-width: 330px;
+}
+.page-sellers {
     max-width: 330px;
 }
 

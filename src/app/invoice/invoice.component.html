@@ -10,7 +10,9 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker> 
            &nbsp; &nbsp; &nbsp;
-          <a [routerLink]="['/','invoice', 'all']" class="btn btn-primary btn-sm">전체 보기</a>
+          <a [routerLink]="['/','invoice']" class="btn btn-warning btn-sm" role="button">재고 보기</a>&nbsp;
+          <a [routerLink]="['/','invoice', 'all']" class="btn btn-primary btn-sm" role="button">전체 보기</a>&nbsp;
+          <a [routerLink]="['/','invoice', 'sale']" class="btn btn-primary btn-sm" role="button">판매 보기</a>&nbsp;
         </td>
         <td>
           <button (click)="exportAsXLSX()">
