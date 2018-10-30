@@ -26,10 +26,11 @@
       <thead>
         <tr>
           <th width="10%">구분</th>
-          <th width="30%">출하자<br/>반입일자, 거래형태, 송장번호</th>
-          <th width="30%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
+          <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
+          <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
           <th width="10%" class="text-right">입고수량<br/>영업인</th>
           <th width="10%" class="text-right">출고수량<br/>매출금액</th>
+          <th width="10%" class="text-right">재고수량</th>
           <th width="10%"></th>
       </tr>
       </thead>
@@ -52,6 +53,9 @@
             <td  class="text-right">
               {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}
             </td>
+            <td  class="text-right">
+                <b>{{invoice.in_number - invoice.out_number | number}} </b>
+              </td>
             <td class="text-center">
               <button (click)="deleteInvoice(invoice._id)">삭제</button>
             </td>

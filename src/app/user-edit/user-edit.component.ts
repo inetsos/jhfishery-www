@@ -21,13 +21,13 @@ export class UserEditComponent implements OnInit {
   form: FormGroup;
 
   formErrors = {
-    'currentPassword':'',
-    'userID':'',
-    'storeName':'',
-    'phone':'',
-    'email':'',
-    'newPassword':'',
-    'confirmPassword':'',
+    'currentPassword': '',
+    'userID': '',
+    'storeName': '',
+    'phone': '',
+    'email': '',
+    'newPassword': '',
+    'confirmPassword': '',
   };
   formErrorMessages = {
     'userID': {
@@ -57,14 +57,14 @@ export class UserEditComponent implements OnInit {
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      currentPassword:["", [Validators.required]],
-      userID:[this.user.userID, [Validators.required, Validators.pattern(/^.{8,16}$/)]],
-      name:[this.user.name],
-      storeName:[this.user.storeName, [Validators.required, Validators.pattern(/^.{2,40}$/)]],
-      phone:[this.user.phone, [Validators.required, Validators.pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
-      email:[this.user.email, [Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-      newPassword:["", [Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
-      confirmPassword:[""],
+      currentPassword: ['', [Validators.required]],
+      userID: [this.user.userID, [Validators.required, Validators.pattern(/^.{8,16}$/)]],
+      name: [this.user.name],
+      storeName: [this.user.storeName, [Validators.required, Validators.pattern(/^.{2,40}$/)]],
+      phone: [this.user.phone, [Validators.required, Validators.pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
+      email: [this.user.email, [Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+      newPassword: ['', [Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
+      confirmPassword: [''],
     }, {
       validator: this.customValidation,
     });
@@ -72,13 +72,13 @@ export class UserEditComponent implements OnInit {
     this.form.valueChanges.subscribe(data => {
       this.utilService.updateFormErrors(this.form, this.formErrors, this.formErrorMessages);
     });
-  };
+  }
 
   customValidation(group: FormGroup) {
-    var password = group.get('newPassword');
-    var confirmPassword = group.get('confirmPassword');
-    
-    if(password.dirty && confirmPassword.dirty && password.value != confirmPassword.value){
+    const password = group.get('newPassword');
+    const confirmPassword = group.get('confirmPassword');
+
+    if (password.dirty && confirmPassword.dirty && password.value !== confirmPassword.value) {
       confirmPassword.setErrors({'match': true});
     }
   }
@@ -90,7 +90,7 @@ export class UserEditComponent implements OnInit {
     private utilService: UtilService,
     private userService: UserService,
     public authService: AuthService,
-  ) { 
+  ) {
     this.user = this.route.snapshot.data['user'];
     this.buildForm();
   }
@@ -100,12 +100,12 @@ export class UserEditComponent implements OnInit {
 
   submit() {
     this.utilService.makeFormDirtyAndUpdateErrors(this.form, this.formErrors, this.formErrorMessages);
-    if(this.form.valid){
+    if (this.form.valid) {
       this.userService.update(this.user.userID, this.form.value)
-      .then(data =>{
+      .then(data => {
         this.router.navigate(['/', 'users', this.user.userID]);
       })
-      .catch(response =>{
+      .catch(response => {
         this.errorResponse = response;
         this.utilService.handleFormSubmitError(this.errorResponse, this.form, this.formErrors);
       });
@@ -113,13 +113,13 @@ export class UserEditComponent implements OnInit {
   }
 
   delete() {
-    var answer = confirm("당신의 사용자 계정을 삭제하시겠습니까?");
-    if(answer){
+    const answer = confirm('당신의 사용자 계정을 삭제하시겠습니까?');
+    if (answer) {
       this.userService.destroy(this.user.userID)
-      .then(data =>{
+      .then(data => {
         this.authService.logout();
       })
-      .catch(response =>{
+      .catch(response => {
         this.errorResponse = response;
         this.utilService.handleFormSubmitError(this.errorResponse, this.form, this.formErrors);
       });
