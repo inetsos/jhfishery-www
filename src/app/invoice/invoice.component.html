@@ -1,15 +1,20 @@
 <div class="page page-invoices">
 
   <div class="contentBox">
-    <h3 class="contentBoxTop">재고보기 - 입력일 이후 재고가 있는 송품장 리스트</h3>    
+    <h3 class="contentBoxTop">재고보기 - 입력 기간 재고가 있는 송품장 리스트</h3>    
    
     <table width="100%">
       <tr>
         <td>
-          <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="mydate" (ngModelChange)="anotherDay()">
+          반입일:&nbsp;
+          <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="s_date" (ngModelChange)="anotherDay()">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker> 
-           &nbsp; &nbsp; &nbsp;
+          &nbsp;
+          <input matInput [matDatepicker]="picker2" placeholder="" [(ngModel)]="e_date" (ngModelChange)="anotherDay()">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker> 
+          &nbsp;
           <a [routerLink]="['/','invoice']" class="btn btn-warning btn-sm" role="button">재고 보기</a>&nbsp;
           <a [routerLink]="['/','invoice', 'all']" class="btn btn-primary btn-sm" role="button">전체 보기</a>&nbsp;
           <a [routerLink]="['/','invoice', 'sale']" class="btn btn-primary btn-sm" role="button">판매 보기</a>&nbsp;
@@ -27,8 +32,8 @@
         <tr>
           <th width="10%">구분</th>
           <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
-          <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
-          <th width="10%" class="text-right">입고수량<br/>영업인</th>
+          <th width="20%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
+          <th width="15%" class="text-right">입고수량<br/>영업인</th>
           <th width="10%" class="text-right">출고수량<br/>매출금액</th>
           <th width="10%" class="text-right">재고수량</th>
           <th width="10%"></th>
@@ -41,14 +46,20 @@
               {{invoice.in_out}}
             </td>
             <td>
-                {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, {{invoice.invoice}}
+                {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, 
+                <ng-container *ngIf="invoice.in_number - invoice.out_number === 0">
+                  <span style='color:red'><b>{{invoice.invoice}}</b></span>
+                </ng-container>
+                <ng-container *ngIf="invoice.in_number - invoice.out_number !== 0">
+                  <span><b>{{invoice.invoice}}</b></span>
+                </ng-container>
             </td>
             <td>
               {{invoice.item}}<br/>
               {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
             </td>
             <td  class="text-right">
-              {{invoice.in_number | number}}<br/>{{invoice.seller_no}}
+              {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>
             </td>
             <td  class="text-right">
               {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}
@@ -68,6 +79,7 @@
               <td class="text-right">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>
               <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>
               <td></td>
+              <td></td>
             </tr>
           </ng-container> 
 
@@ -75,12 +87,14 @@
             <tr>
               <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
               <td></td>
+              <td></td>
             </tr>
           </ng-container>
 
           <ng-container *ngIf="i === invoices.length-1">
               <tr>
                 <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
+                <td></td>
                 <td></td>
               </tr>
           </ng-container>

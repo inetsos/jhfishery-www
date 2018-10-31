@@ -58,6 +58,35 @@ export class InvoiceService {
               .catch(this.utilService.handleApiError);
   }
 
+  period(s_day: string, e_day: string): Promise<Invoice[]> {
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${s_day}/${e_day}`)
+              .toPromise()
+              .then(this.utilService.checkSuccess)
+              .then(response => {
+                return response.data as Invoice[];
+              })
+              .catch(this.utilService.handleApiError);
+  }
+
+  periodAll(s_day: string, e_day: string): Promise<Invoice[]> {
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${s_day}/${e_day}/all`)
+              .toPromise()
+              .then(this.utilService.checkSuccess)
+              .then(response => {
+                return response.data as Invoice[];
+              })
+              .catch(this.utilService.handleApiError);
+  }
+
+  periodSale(s_day: string, e_day: string): Promise<Invoice[]> {
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${s_day}/${e_day}/sale`)
+              .toPromise()
+              .then(this.utilService.checkSuccess)
+              .then(response => {
+                return response.data as Invoice[];
+              })
+              .catch(this.utilService.handleApiError);
+  }
 
   destroy(id: string): Promise<Invoice> {
     return this.http.delete<ApiResponse>(`${this.apiBaseUrl}/${id}`)

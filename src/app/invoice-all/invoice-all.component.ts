@@ -28,7 +28,8 @@ import { ApiResponse } from '../api-response';
 export class InvoiceAllComponent implements OnInit {
 
   invoices: Invoice[];
-  mydate = new Date();
+  s_date = new Date();
+  e_date = new Date();
   total = 0;
   errorResponse: ApiResponse;
   navigationSubscription;
@@ -55,10 +56,16 @@ export class InvoiceAllComponent implements OnInit {
   }
 
   anotherDay() {
-    const today = this.mydate.getFullYear() + '-' +
-      this.utilService.get2digits(this.mydate.getMonth() + 1) + '-' +
-      this.utilService.get2digits(this.mydate.getDate());
-    this.invoiceService.todayAll(today).
+
+    const s_day = this.s_date.getFullYear() + '-' +
+      this.utilService.get2digits(this.s_date.getMonth() + 1) + '-' +
+      this.utilService.get2digits(this.s_date.getDate());
+
+    const e_day = this.e_date.getFullYear() + '-' +
+      this.utilService.get2digits(this.e_date.getMonth() + 1) + '-' +
+      this.utilService.get2digits(this.e_date.getDate());
+
+    this.invoiceService.periodAll(s_day, e_day).
       then((data) => {
         this.invoices = data as Invoice[];
       })
