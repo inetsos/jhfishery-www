@@ -58,6 +58,7 @@ export class InvoiceSaleComponent implements OnInit {
     const today = this.mydate.getFullYear() + '-' +
       this.utilService.get2digits(this.mydate.getMonth() + 1) + '-' +
       this.utilService.get2digits(this.mydate.getDate());
+
     this.invoiceService.todaySale(today).
       then((data) => {
         this.invoices = data as Invoice[];
@@ -70,7 +71,9 @@ export class InvoiceSaleComponent implements OnInit {
     let sum = 0;
     for (let i = 0; i < this.invoices.length; i++) {
       if (this.invoices[i].invoice === invoice) {
-        sum += this.invoices[i].out_sum;
+        for (let j = 0; j < this.invoices[i].unstoring.length; j++) {
+          sum += this.invoices[i].unstoring[j].outSum;
+        }
       }
     }
     return sum;

@@ -1,7 +1,7 @@
 <div class="page page-invoices">
 
     <div class="contentBox">
-      <h3 class="contentBoxTop">판매보기 - 입력 기간 판매한 송품장 리스트</h3>    
+      <h3 class="contentBoxTop">판매보기 - 입력일 이후에 판매한 송품장 리스트</h3>    
      
       <table width="100%">
         <tr>
@@ -24,46 +24,55 @@
         
       <table class="table table-bordered">
         <thead>
-          <tr >
+          <tr>
             <!-- <th width="10%">구분</th> -->
             <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
-            <th width="20%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
-            <th width="15%" class="text-right">입고수량<br/>영업인</th>
-            <th width="10%" class="text-right">출고수량<br/>매출금액</th>
+            <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
+            <th width="20%" class="text-right">입고수량<br/>영업인</th>
+            <th width="20%" class="text-right">출고수량<br/>매출금액</th>
             <th width="10%" class="text-right">재고수량</th>
-            <th width="20%">판매일<br/>판매처</th>
         </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let invoice of invoices; let i = index">
-              <ng-container *ngFor="let unstoring of invoice.unstoring" >   
-                <tr>
-                  <!-- <td>
-                    {{invoice.in_out}}
-                  </td> -->
-                  <td>
-                      {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, 
-                      <ng-container *ngIf="invoice.in_number - invoice.out_number === 0">
-                        <span style='color:red'><b>{{invoice.invoice}}</b></span>
-                      </ng-container>
-                      <ng-container *ngIf="invoice.in_number - invoice.out_number !== 0">
-                        <span><b>{{invoice.invoice}}</b></span>
-                      </ng-container>
-                  </td>
-                  <td>
-                    {{invoice.item}}<br/>
-                    {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
-                  </td>
-                  <td  class="text-right">
-                    {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>
-                  </td>
-                  <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>
-                  <td  class="text-right">
-                    <b>{{invoice.in_number - invoice.out_number | number}} </b>
-                  </td>
-                  <td><b>{{unstoring.outDate}}</b><br/>{{unstoring.outPurchase}}</td>
-                </tr>
-              </ng-container>            
+          <ng-container *ngFor="let invoice of invoices; let i = index">  
+            <ng-container *ngIf="invoice.unstoring.length > 0 ">              
+            <tr>
+              <!-- <td>
+                {{invoice.in_out}}
+              </td> -->
+              <td>
+                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, 
+                  <ng-container *ngIf="invoice.in_number - invoice.out_number === 0">
+                    <span style='color:red'><b>{{invoice.invoice}}</b></span>
+                  </ng-container>
+                  <ng-container *ngIf="invoice.in_number - invoice.out_number !== 0">
+                    <span><b>{{invoice.invoice}}</b></span>
+                  </ng-container>
+              </td>
+              <td>
+                {{invoice.item}}<br/>
+                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
+              </td>
+              <td  class="text-right">
+                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>
+              </td>
+              <td  class="text-right">
+                  {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}
+              </td>
+              <td  class="text-right">
+                <b>{{ invoice.in_number - invoice.out_number | number}} </b>
+              </td>              
+            </tr>
+            <ng-container *ngFor="let unstoring of invoice.unstoring" >   
+              <tr style="background-color: #eeeeee;">   
+                <td colspan="2" class="text-right">판매일<br/>판매처</td>
+                <td class="text-right">{{unstoring.outDate}}<br/>{{unstoring.outPurchase}}</td>
+                <td class="text-right">{{unstoring.outNumber | number}}<br/><b>{{unstoring.outSum | number}}</b></td>
+                <td></td>
+              </tr>
+            </ng-container>
+
+              </ng-container>       
 
             <!-- <ng-container *ngIf="i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice && invoice.unstoring.length > 0">
               <tr>

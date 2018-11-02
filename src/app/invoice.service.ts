@@ -59,7 +59,7 @@ export class InvoiceService {
   }
 
   period(s_day: string, e_day: string): Promise<Invoice[]> {
-    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${s_day}/${e_day}`)
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${s_day}/${e_day}/period`)
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
@@ -69,7 +69,7 @@ export class InvoiceService {
   }
 
   periodAll(s_day: string, e_day: string): Promise<Invoice[]> {
-    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${s_day}/${e_day}/all`)
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/periodAll/${s_day}/${e_day}`)
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
@@ -79,7 +79,7 @@ export class InvoiceService {
   }
 
   periodSale(s_day: string, e_day: string): Promise<Invoice[]> {
-    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${s_day}/${e_day}/sale`)
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/periodSale/${s_day}/${e_day}`)
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
