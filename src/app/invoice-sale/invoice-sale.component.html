@@ -6,10 +6,15 @@
       <table width="100%">
         <tr>
           <td>
-            <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="mydate" (ngModelChange)="anotherDay()">
+            매출일:&nbsp;
+            <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="s_date" (ngModelChange)="anotherDay()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker> 
-             &nbsp; &nbsp; &nbsp;
+            &nbsp;
+            <input matInput [matDatepicker]="picker2" placeholder="" [(ngModel)]="e_date" (ngModelChange)="anotherDay()">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker> 
+            &nbsp;
             <a [routerLink]="['/','invoice']" class="btn btn-primary btn-sm" role="button">재고 보기</a>&nbsp;
             <a [routerLink]="['/','invoice', 'all']" class="btn btn-primary btn-sm" role="button">전체 보기</a>&nbsp;
             <a [routerLink]="['/','invoice', 'sale']" class="btn btn-warning btn-sm" role="button">판매 보기</a>&nbsp;
@@ -43,7 +48,7 @@
               <td>
                   {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, 
                   <ng-container *ngIf="invoice.in_number - invoice.out_number === 0">
-                    <span style='color:red'><b>{{invoice.invoice}}</b></span>
+                    <span style='color:red; text-decoration: underline;'><b>{{invoice.invoice}}</b></span>
                   </ng-container>
                   <ng-container *ngIf="invoice.in_number - invoice.out_number !== 0">
                     <span><b>{{invoice.invoice}}</b></span>

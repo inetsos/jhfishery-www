@@ -10254,7 +10254,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-invoices\">\r\n\r\n    <div class=\"contentBox\">\r\n      <h3 class=\"contentBoxTop\">전체보기 - 입력 기간 전체 송품장 리스트</h3>    \r\n     \r\n      <table width=\"100%\">\r\n        <tr>\r\n          <td>반입일:&nbsp;\r\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"s_date\" (ngModelChange)=\"anotherDay()\">\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker></mat-datepicker> \r\n            &nbsp;\r\n            <input matInput [matDatepicker]=\"picker2\" placeholder=\"\" [(ngModel)]=\"e_date\" (ngModelChange)=\"anotherDay()\">\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker2\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker2></mat-datepicker> \r\n            &nbsp;\r\n            <a [routerLink]=\"['/','invoice']\" class=\"btn btn-primary btn-sm\" role=\"button\">재고 보기</a>&nbsp;\r\n            <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-warning btn-sm\" role=\"button\">전체 보기</a>&nbsp;\r\n            <a [routerLink]=\"['/','invoice', 'sale']\" class=\"btn btn-primary btn-sm\" role=\"button\">판매 보기</a>&nbsp;\r\n          </td>\r\n          <td>\r\n            <button (click)=\"exportAsXLSX()\">\r\n              <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\r\n            </button>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n        \r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr >\r\n            <th width=\"8%\">구분</th>\r\n            <th width=\"22%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\r\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\r\n            <th width=\"15%\" class=\"text-right\">입고수량<br/>영업인</th>\r\n            <th width=\"10%\" class=\"text-right\">출고수량<br/>매출금액</th>\r\n            <th width=\"10%\" class=\"text-right\">재고수량</th>\r\n            <th></th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\r\n            <tr>\r\n              <td>\r\n                {{invoice.in_out}}\r\n              </td>\r\n              <td>\r\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\r\n                    <span style='color:red; text-decoration: underline;'><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\r\n                    <span><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n              </td>\r\n              <td>\r\n                {{invoice.item}}<br/>\r\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                <b>{{invoice.in_number - invoice.out_number | number}} </b>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\r\n              </td>\r\n            </tr>\r\n            \r\n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \r\n              <tr>   \r\n                <td>출고</td>   \r\n                <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\r\n                <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\r\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\r\n                <td></td>\r\n                <td></td>\r\n              </tr>\r\n            </ng-container> \r\n  \r\n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\r\n              <tr>\r\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                <td></td>\r\n                <td></td>\r\n              </tr>\r\n            </ng-container>\r\n  \r\n            <ng-container *ngIf=\"i === invoices.length-1\">\r\n                <tr>\r\n                  <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                  <td></td>\r\n                  <td></td>\r\n                </tr>\r\n            </ng-container>\r\n  \r\n          </ng-container>\r\n        </tbody>\r\n      </table>\r\n    </div>  \r\n  </div>"
+module.exports = "<div class=\"page page-invoices\">\r\n\r\n    <div class=\"contentBox\">\r\n      <h3 class=\"contentBoxTop\">전체보기 - 입력 기간 전체 송품장 리스트</h3>    \r\n     \r\n      <table width=\"100%\">\r\n        <tr>\r\n          <td>반입일:&nbsp;\r\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"s_date\" (ngModelChange)=\"anotherDay()\">\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker></mat-datepicker> \r\n            &nbsp;\r\n            <input matInput [matDatepicker]=\"picker2\" placeholder=\"\" [(ngModel)]=\"e_date\" (ngModelChange)=\"anotherDay()\">\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker2\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker2></mat-datepicker> \r\n            &nbsp;\r\n            <a [routerLink]=\"['/','invoice']\" class=\"btn btn-primary btn-sm\" role=\"button\">재고 보기</a>&nbsp;\r\n            <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-warning btn-sm\" role=\"button\">전체 보기</a>&nbsp;\r\n            <a [routerLink]=\"['/','invoice', 'sale']\" class=\"btn btn-primary btn-sm\" role=\"button\">판매 보기</a>&nbsp;\r\n          </td>\r\n          <td>\r\n            <button (click)=\"exportAsXLSX()\">\r\n              <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\r\n            </button>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n        \r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr >\r\n            <th width=\"5%\">구분</th>\r\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\r\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\r\n            <th width=\"10%\" class=\"text-right\">입고량<br/>영업인</th>\r\n            <th width=\"10%\" class=\"text-right\">출고량<br/>매출금액</th>\r\n            <th width=\"8%\" class=\"text-right\">재고량</th>\r\n            <th width=\"7%\"></th>\r\n            <th width=\"10%\"></th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\r\n            <tr>\r\n              <td>\r\n                {{invoice.in_out}}\r\n              </td>\r\n              <td>\r\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\r\n                    <span style='color:red; text-decoration: underline;'><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\r\n                    <span><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n              </td>\r\n              <td>\r\n                {{invoice.item}}<br/>\r\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                <b>{{invoice.in_number - invoice.out_number | number}} </b>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                <div class=\"row\">\r\n                  <input type=\"text\" #seller style=\"width:40px\">\r\n                  <button (click)=\"onModifySeller(invoice._id, invoice, seller.value)\">수정</button>\r\n                </div>             \r\n              </td>\r\n            </tr>\r\n            \r\n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \r\n              <tr>   \r\n                <td>출고</td>   \r\n                <td colspan=\"2\" class=\"text-right\"><b>판매일<br/>판매처</b></td>\r\n                <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\r\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>\r\n                <td></td>\r\n                <td></td>\r\n              </tr>\r\n            </ng-container> \r\n  \r\n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\r\n              <tr>\r\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                <td></td>\r\n                <td></td>\r\n              </tr>\r\n            </ng-container>\r\n  \r\n            <ng-container *ngIf=\"i === invoices.length-1\">\r\n                <tr>\r\n                  <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                  <td></td>\r\n                  <td></td>\r\n                </tr>\r\n            </ng-container>\r\n  \r\n          </ng-container>\r\n        </tbody>\r\n      </table>\r\n    </div>  \r\n  </div>"
 
 /***/ }),
 
@@ -10338,6 +10338,19 @@ var InvoiceAllComponent = /** @class */ (function () {
         }
         return sum;
     };
+    InvoiceAllComponent.prototype.onModifySeller = function (invoice_id, invoice, seller) {
+        var _this = this;
+        console.log(seller);
+        invoice.seller_no = seller;
+        this.invoiceService.update(invoice_id, invoice)
+            .then(function (data) {
+            // alert('삭제하였습니다.');
+            _this.router.navigate(['/invoice/all']);
+        })
+            .catch(function (response) {
+            _this.errorResponse = response;
+        });
+    };
     InvoiceAllComponent.prototype.deleteInvoice = function (id) {
         var _this = this;
         var answer = confirm('송품장을 삭제하시겠습니까?');
@@ -10345,7 +10358,7 @@ var InvoiceAllComponent = /** @class */ (function () {
             this.invoiceService.destroy(id)
                 .then(function (data) {
                 alert('삭제하였습니다.');
-                _this.router.navigate(['/invoice']);
+                _this.router.navigate(['/invoice/all']);
             })
                 .catch(function (response) {
                 _this.errorResponse = response;
@@ -10457,7 +10470,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-invoices\">\r\n\r\n    <div class=\"contentBox\">\r\n      <h3 class=\"contentBoxTop\">판매보기 - 입력일 이후에 판매한 송품장 리스트</h3>    \r\n     \r\n      <table width=\"100%\">\r\n        <tr>\r\n          <td>\r\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"mydate\" (ngModelChange)=\"anotherDay()\">\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker></mat-datepicker> \r\n             &nbsp; &nbsp; &nbsp;\r\n            <a [routerLink]=\"['/','invoice']\" class=\"btn btn-primary btn-sm\" role=\"button\">재고 보기</a>&nbsp;\r\n            <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-primary btn-sm\" role=\"button\">전체 보기</a>&nbsp;\r\n            <a [routerLink]=\"['/','invoice', 'sale']\" class=\"btn btn-warning btn-sm\" role=\"button\">판매 보기</a>&nbsp;\r\n          </td>\r\n          <td>\r\n            <button (click)=\"exportAsXLSX()\">\r\n              <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\r\n            </button>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n        \r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr>\r\n            <!-- <th width=\"10%\">구분</th> -->\r\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\r\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\r\n            <th width=\"20%\" class=\"text-right\">입고수량<br/>영업인</th>\r\n            <th width=\"20%\" class=\"text-right\">출고수량<br/>매출금액</th>\r\n            <th width=\"10%\" class=\"text-right\">재고수량</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">  \r\n            <ng-container *ngIf=\"invoice.unstoring.length > 0 \">              \r\n            <tr>\r\n              <!-- <td>\r\n                {{invoice.in_out}}\r\n              </td> -->\r\n              <td>\r\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\r\n                    <span style='color:red'><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\r\n                    <span><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n              </td>\r\n              <td>\r\n                {{invoice.item}}<br/>\r\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                  {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                <b>{{ invoice.in_number - invoice.out_number | number}} </b>\r\n              </td>              \r\n            </tr>\r\n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \r\n              <tr style=\"background-color: #eeeeee;\">   \r\n                <td colspan=\"2\" class=\"text-right\">판매일<br/>판매처</td>\r\n                <td class=\"text-right\">{{unstoring.outDate}}<br/>{{unstoring.outPurchase}}</td>\r\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/><b>{{unstoring.outSum | number}}</b></td>\r\n                <td></td>\r\n              </tr>\r\n            </ng-container>\r\n\r\n              </ng-container>       \r\n\r\n            <!-- <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice && invoice.unstoring.length > 0\">\r\n              <tr>\r\n                <td colspan=\"7\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\r\n              </tr>\r\n            </ng-container>           \r\n  \r\n            <ng-container *ngIf=\"i === invoices.length-1  && invoice.unstoring.length > 0\">\r\n                <tr>\r\n                  <td colspan=\"7\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                </tr>\r\n            </ng-container> -->\r\n  \r\n          </ng-container>\r\n        </tbody>\r\n      </table>\r\n    </div>  \r\n  </div>"
+module.exports = "<div class=\"page page-invoices\">\r\n\r\n    <div class=\"contentBox\">\r\n      <h3 class=\"contentBoxTop\">판매보기 - 입력일 이후에 판매한 송품장 리스트</h3>    \r\n     \r\n      <table width=\"100%\">\r\n        <tr>\r\n          <td>\r\n            매출일:&nbsp;\r\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"\" [(ngModel)]=\"s_date\" (ngModelChange)=\"anotherDay()\">\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker></mat-datepicker> \r\n            &nbsp;\r\n            <input matInput [matDatepicker]=\"picker2\" placeholder=\"\" [(ngModel)]=\"e_date\" (ngModelChange)=\"anotherDay()\">\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker2\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker2></mat-datepicker> \r\n            &nbsp;\r\n            <a [routerLink]=\"['/','invoice']\" class=\"btn btn-primary btn-sm\" role=\"button\">재고 보기</a>&nbsp;\r\n            <a [routerLink]=\"['/','invoice', 'all']\" class=\"btn btn-primary btn-sm\" role=\"button\">전체 보기</a>&nbsp;\r\n            <a [routerLink]=\"['/','invoice', 'sale']\" class=\"btn btn-warning btn-sm\" role=\"button\">판매 보기</a>&nbsp;\r\n          </td>\r\n          <td>\r\n            <button (click)=\"exportAsXLSX()\">\r\n              <i class=\"fa fa-file-excel-o\" style=\"font-size:20px;color:blue\"></i>\r\n            </button>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n        \r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr>\r\n            <!-- <th width=\"10%\">구분</th> -->\r\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\r\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\r\n            <th width=\"20%\" class=\"text-right\">입고수량<br/>영업인</th>\r\n            <th width=\"20%\" class=\"text-right\">출고수량<br/>매출금액</th>\r\n            <th width=\"10%\" class=\"text-right\">재고수량</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">  \r\n            <ng-container *ngIf=\"invoice.unstoring.length > 0 \">              \r\n            <tr>\r\n              <!-- <td>\r\n                {{invoice.in_out}}\r\n              </td> -->\r\n              <td>\r\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\r\n                    <span style='color:red; text-decoration: underline;'><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\r\n                    <span><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n              </td>\r\n              <td>\r\n                {{invoice.item}}<br/>\r\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                  {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                <b>{{ invoice.in_number - invoice.out_number | number}} </b>\r\n              </td>              \r\n            </tr>\r\n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \r\n              <tr style=\"background-color: #eeeeee;\">   \r\n                <td colspan=\"2\" class=\"text-right\">판매일<br/>판매처</td>\r\n                <td class=\"text-right\">{{unstoring.outDate}}<br/>{{unstoring.outPurchase}}</td>\r\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/><b>{{unstoring.outSum | number}}</b></td>\r\n                <td></td>\r\n              </tr>\r\n            </ng-container>\r\n\r\n              </ng-container>       \r\n\r\n            <!-- <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice && invoice.unstoring.length > 0\">\r\n              <tr>\r\n                <td colspan=\"7\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\r\n              </tr>\r\n            </ng-container>           \r\n  \r\n            <ng-container *ngIf=\"i === invoices.length-1  && invoice.unstoring.length > 0\">\r\n                <tr>\r\n                  <td colspan=\"7\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                </tr>\r\n            </ng-container> -->\r\n  \r\n          </ng-container>\r\n        </tbody>\r\n      </table>\r\n    </div>  \r\n  </div>"
 
 /***/ }),
 
@@ -10502,7 +10515,8 @@ var InvoiceSaleComponent = /** @class */ (function () {
         this.invoiceService = invoiceService;
         this.utilService = utilService;
         this.excelService = excelService;
-        this.mydate = new Date();
+        this.s_date = new Date();
+        this.e_date = new Date();
         this.total = 0;
         this.invoiceExs = [];
         this.navigationSubscription = this.router.events.subscribe(function (e) {
@@ -10517,10 +10531,13 @@ var InvoiceSaleComponent = /** @class */ (function () {
     };
     InvoiceSaleComponent.prototype.anotherDay = function () {
         var _this = this;
-        var today = this.mydate.getFullYear() + '-' +
-            this.utilService.get2digits(this.mydate.getMonth() + 1) + '-' +
-            this.utilService.get2digits(this.mydate.getDate());
-        this.invoiceService.todaySale(today).
+        var s_day = this.s_date.getFullYear() + '-' +
+            this.utilService.get2digits(this.s_date.getMonth() + 1) + '-' +
+            this.utilService.get2digits(this.s_date.getDate());
+        var e_day = this.e_date.getFullYear() + '-' +
+            this.utilService.get2digits(this.e_date.getMonth() + 1) + '-' +
+            this.utilService.get2digits(this.e_date.getDate());
+        this.invoiceService.periodSale(s_day, e_day).
             then(function (data) {
             _this.invoices = data;
         })
@@ -10739,6 +10756,15 @@ var InvoiceService = /** @class */ (function () {
         })
             .catch(this.utilService.handleApiError);
     };
+    InvoiceService.prototype.update = function (id, invoice) {
+        return this.http.put(this.apiBaseUrl + "/" + id, invoice)
+            .toPromise()
+            .then(this.utilService.checkSuccess)
+            .then(function (response) {
+            return response.data;
+        })
+            .catch(this.utilService.handleApiError);
+    };
     //////////////////////////////////////////////
     InvoiceService.prototype.show = function (userID) {
         return this.http.get(this.apiBaseUrl + "/" + userID)
@@ -10751,15 +10777,6 @@ var InvoiceService = /** @class */ (function () {
     };
     InvoiceService.prototype.create = function (user) {
         return this.http.post("" + this.apiBaseUrl, user)
-            .toPromise()
-            .then(this.utilService.checkSuccess)
-            .then(function (response) {
-            return response.data;
-        })
-            .catch(this.utilService.handleApiError);
-    };
-    InvoiceService.prototype.update = function (userID, user) {
-        return this.http.put(this.apiBaseUrl + "/" + userID, user)
             .toPromise()
             .then(this.utilService.checkSuccess)
             .then(function (response) {
@@ -11296,15 +11313,15 @@ var SellerEditComponent = /** @class */ (function () {
     SellerEditComponent.prototype.buildForm = function () {
         var _this = this;
         this.form = this.formBuilder.group({
-            currentPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
+            currentPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
             userID: [this.seller.userID, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^.{8,16}$/)]],
             name: [this.seller.name],
             sellerNo: [this.seller.sellerNo, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^[0-9]*$/)]],
             storeName: [this.seller.storeName, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^.{2,40}$/)]],
             phone: [this.seller.phone, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
             email: [this.seller.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-            newPassword: ["", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
-            confirmPassword: [""],
+            newPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
+            confirmPassword: [''],
         }, {
             validator: this.customValidation,
         });
@@ -11312,11 +11329,10 @@ var SellerEditComponent = /** @class */ (function () {
             _this.utilService.updateFormErrors(_this.form, _this.formErrors, _this.formErrorMessages);
         });
     };
-    ;
     SellerEditComponent.prototype.customValidation = function (group) {
         var password = group.get('newPassword');
         var confirmPassword = group.get('confirmPassword');
-        if (password.dirty && confirmPassword.dirty && password.value != confirmPassword.value) {
+        if (password.dirty && confirmPassword.dirty && password.value !== confirmPassword.value) {
             confirmPassword.setErrors({ 'match': true });
         }
     };
@@ -11338,12 +11354,12 @@ var SellerEditComponent = /** @class */ (function () {
     };
     SellerEditComponent.prototype.delete = function () {
         var _this = this;
-        var answer = confirm("영업인 계정을 삭제하시겠습니까?");
+        var answer = confirm('영업인 계정을 삭제하시겠습니까?');
         if (answer) {
             this.sellerService.destroy(this.seller.userID)
                 .then(function (data) {
                 alert('영업인 계정을 삭제하였습니다.');
-                //this.authService.logout();
+                // this.authService.logout();
             })
                 .catch(function (response) {
                 _this.errorResponse = response;
@@ -11357,12 +11373,8 @@ var SellerEditComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./seller-edit.component.html */ "./src/app/seller-edit/seller-edit.component.html"),
             styles: [__webpack_require__(/*! ./seller-edit.component.css */ "./src/app/seller-edit/seller-edit.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
-            _util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"],
-            _seller_service__WEBPACK_IMPORTED_MODULE_4__["SellerService"],
-            _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+            _util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"], _seller_service__WEBPACK_IMPORTED_MODULE_4__["SellerService"], _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]])
     ], SellerEditComponent);
     return SellerEditComponent;
 }());
@@ -11898,12 +11910,12 @@ var UploadComponent = /** @class */ (function () {
     }
     UploadComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
+        // override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
         this.uploader.onAfterAddingFile = function (file) { file.withCredentials = false; };
-        //overide the onCompleteItem property of the uploader so we are 
-        //able to deal with the server response.
+        // overide the onCompleteItem property of the uploader so we are
+        // able to deal with the server response.
         this.uploader.onCompleteItem = function (item, response, status, headers) {
-            console.log("Excel File Upload : uploaded:", item, status, response);
+            console.log('Excel File Upload : uploaded:', item, status, response);
             _this.router.navigate(['/', 'invoice']);
         };
     };
@@ -12918,7 +12930,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\user\Documents\GitHub\jhfishery-www\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\2018-Won\project\jhfishery\jhfishery-www\src\main.ts */"./src/main.ts");
 
 
 /***/ }),

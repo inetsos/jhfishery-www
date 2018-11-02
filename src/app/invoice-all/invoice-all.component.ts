@@ -85,13 +85,27 @@ export class InvoiceAllComponent implements OnInit {
     return sum;
   }
 
+  onModifySeller(invoice_id: string, invoice: Invoice, seller: number) {
+    console.log(seller);
+
+    invoice.seller_no = seller;
+    this.invoiceService.update(invoice_id, invoice)
+      .then(data => {
+        // alert('삭제하였습니다.');
+        this.router.navigate(['/invoice/all']);
+      })
+      .catch(response => {
+        this.errorResponse = response;
+      });
+  }
+
   deleteInvoice(id: string) {
     const answer = confirm('송품장을 삭제하시겠습니까?');
     if (answer) {
       this.invoiceService.destroy(id)
       .then(data => {
         alert('삭제하였습니다.');
-        this.router.navigate(['/invoice']);
+        this.router.navigate(['/invoice/all']);
       })
       .catch(response => {
         this.errorResponse = response;

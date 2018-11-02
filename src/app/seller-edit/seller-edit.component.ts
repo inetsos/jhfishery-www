@@ -21,14 +21,14 @@ export class SellerEditComponent implements OnInit {
   form: FormGroup;
 
   formErrors = {
-    'currentPassword':'',
-    'userID':'',
+    'currentPassword': '',
+    'userID': '',
     'sellerNo': '',
-    'storeName':'',
-    'phone':'',
-    'email':'',
-    'newPassword':'',
-    'confirmPassword':'',
+    'storeName': '',
+    'phone': '',
+    'email': '',
+    'newPassword': '',
+    'confirmPassword': '',
   };
   formErrorMessages = {
     'userID': {
@@ -62,15 +62,15 @@ export class SellerEditComponent implements OnInit {
 
   buildForm(): void {
     this.form = this.formBuilder.group({
-      currentPassword:["", [Validators.required]],
-      userID:[this.seller.userID, [Validators.required, Validators.pattern(/^.{8,16}$/)]],
-      name:[this.seller.name],
-      sellerNo:[this.seller.sellerNo, [Validators.required, Validators.pattern(/^[0-9]*$/)]],
-      storeName:[this.seller.storeName, [Validators.required, Validators.pattern(/^.{2,40}$/)]],
-      phone:[this.seller.phone, [Validators.required, Validators.pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
-      email:[this.seller.email, [Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-      newPassword:["", [Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
-      confirmPassword:[""],
+      currentPassword: ['', [Validators.required]],
+      userID: [this.seller.userID, [Validators.required, Validators.pattern(/^.{8,16}$/)]],
+      name: [this.seller.name],
+      sellerNo: [this.seller.sellerNo, [Validators.required, Validators.pattern(/^[0-9]*$/)]],
+      storeName: [this.seller.storeName, [Validators.required, Validators.pattern(/^.{2,40}$/)]],
+      phone: [this.seller.phone, [Validators.required, Validators.pattern(/^\d{2,3}-\d{3,4}-\d{4}$/)]],
+      email: [this.seller.email, [Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+      newPassword: ['', [Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/)]],
+      confirmPassword: [''],
     }, {
       validator: this.customValidation,
     });
@@ -78,27 +78,23 @@ export class SellerEditComponent implements OnInit {
     this.form.valueChanges.subscribe(data => {
       this.utilService.updateFormErrors(this.form, this.formErrors, this.formErrorMessages);
     });
-  };
+  }
 
   customValidation(group: FormGroup) {
-    var password = group.get('newPassword');
-    var confirmPassword = group.get('confirmPassword');
-    
-    if(password.dirty && confirmPassword.dirty && password.value != confirmPassword.value){
+    const password = group.get('newPassword');
+    const confirmPassword = group.get('confirmPassword');
+
+    if (password.dirty && confirmPassword.dirty && password.value !== confirmPassword.value) {
       confirmPassword.setErrors({'match': true});
     }
   }
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private utilService: UtilService,
-    private sellerService: SellerService,
-    public authService: AuthService,
-  ) { 
+  constructor(private route: ActivatedRoute, private router: Router, private formBuilder: FormBuilder,
+    private utilService: UtilService, private sellerService: SellerService, public authService: AuthService ) {
+
     this.seller = this.route.snapshot.data['seller'];
     this.buildForm();
+
   }
 
   ngOnInit() {
@@ -106,12 +102,12 @@ export class SellerEditComponent implements OnInit {
 
   submit() {
     this.utilService.makeFormDirtyAndUpdateErrors(this.form, this.formErrors, this.formErrorMessages);
-    if(this.form.valid){
+    if (this.form.valid) {
       this.sellerService.update(this.seller.userID, this.form.value)
-      .then(data =>{
+      .then(data => {
         this.router.navigate(['/', 'sellers', this.seller.userID]);
       })
-      .catch(response =>{
+      .catch(response => {
         this.errorResponse = response;
         this.utilService.handleFormSubmitError(this.errorResponse, this.form, this.formErrors);
       });
@@ -119,14 +115,14 @@ export class SellerEditComponent implements OnInit {
   }
 
   delete() {
-    var answer = confirm("영업인 계정을 삭제하시겠습니까?");
-    if(answer){
+    const answer = confirm('영업인 계정을 삭제하시겠습니까?');
+    if (answer) {
       this.sellerService.destroy(this.seller.userID)
-      .then(data =>{
+      .then(data => {
         alert('영업인 계정을 삭제하였습니다.');
-        //this.authService.logout();
+        // this.authService.logout();
       })
-      .catch(response =>{
+      .catch(response => {
         this.errorResponse = response;
         this.utilService.handleFormSubmitError(this.errorResponse, this.form, this.formErrors);
       });

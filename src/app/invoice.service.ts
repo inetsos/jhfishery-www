@@ -98,6 +98,16 @@ export class InvoiceService {
               .catch(this.utilService.handleApiError);
   }
 
+  update(id: string, invoice: Invoice): Promise<Invoice> {
+    return this.http.put<ApiResponse>(`${this.apiBaseUrl}/${id}`, invoice)
+              .toPromise()
+              .then(this.utilService.checkSuccess)
+              .then(response => {
+                return response.data as Invoice;
+              })
+              .catch(this.utilService.handleApiError);
+  }
+
   //////////////////////////////////////////////
   show(userID: string): Promise<Invoice> {
     return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${userID}`)
@@ -111,16 +121,6 @@ export class InvoiceService {
 
   create(user: Invoice): Promise<Invoice> {
     return this.http.post<ApiResponse>(`${this.apiBaseUrl}`, user)
-              .toPromise()
-              .then(this.utilService.checkSuccess)
-              .then(response => {
-                return response.data as Invoice;
-              })
-              .catch(this.utilService.handleApiError);
-  }
-
-  update(userID: string, user: Invoice): Promise<Invoice> {
-    return this.http.put<ApiResponse>(`${this.apiBaseUrl}/${userID}`, user)
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {

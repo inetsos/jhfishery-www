@@ -29,13 +29,14 @@
       <table class="table table-bordered">
         <thead>
           <tr >
-            <th width="8%">구분</th>
-            <th width="22%">출하자<br/>반입일자, 거래형태, 송장번호</th>
+            <th width="5%">구분</th>
+            <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
             <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
-            <th width="15%" class="text-right">입고수량<br/>영업인</th>
-            <th width="10%" class="text-right">출고수량<br/>매출금액</th>
-            <th width="10%" class="text-right">재고수량</th>
-            <th></th>
+            <th width="10%" class="text-right">입고량<br/>영업인</th>
+            <th width="10%" class="text-right">출고량<br/>매출금액</th>
+            <th width="8%" class="text-right">재고량</th>
+            <th width="7%"></th>
+            <th width="10%"></th>
         </tr>
         </thead>
         <tbody>
@@ -68,6 +69,12 @@
               </td>
               <td class="text-center">
                 <button (click)="deleteInvoice(invoice._id)">삭제</button>
+              </td>
+              <td class="text-center">
+                <div class="row">
+                  <input type="text" #seller style="width:40px">
+                  <button (click)="onModifySeller(invoice._id, invoice, seller.value)">수정</button>
+                </div>             
               </td>
             </tr>
             
