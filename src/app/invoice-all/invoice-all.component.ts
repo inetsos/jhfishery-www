@@ -6,6 +6,8 @@ import { AppDateAdapter, APP_DATE_FORMATS} from '../date.adapter';
 
 import { Invoice } from '../invoice';
 import { InvoiceService } from '../invoice.service';
+import { Unstoring } from '../unstoring';
+import { UnstoringService } from '../unstoring.service';
 import { UtilService } from '../util.service';
 
 import { ExcelService } from '../excel.service';
@@ -40,6 +42,7 @@ export class InvoiceAllComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private invoiceService: InvoiceService,
+    private unstoringService: UnstoringService,
     private utilService: UtilService,
     private excelService: ExcelService
   ) {
@@ -90,6 +93,34 @@ export class InvoiceAllComponent implements OnInit {
 
     invoice.seller_no = seller;
     this.invoiceService.update(invoice_id, invoice)
+      .then(data => {
+        // alert('삭제하였습니다.');
+        this.router.navigate(['/invoice/all']);
+      })
+      .catch(response => {
+        this.errorResponse = response;
+      });
+  }
+
+  onModifyOutNumber(unstoring_id: string, unstoring: Unstoring, value: number) {
+
+    unstoring.outNumber = value;
+    unstoring.outSum = unstoring.outNumber * unstoring.outPrice;
+    this.unstoringService.update(unstoring_id, unstoring)
+      .then(data => {
+        // alert('삭제하였습니다.');
+        this.router.navigate(['/invoice/all']);
+      })
+      .catch(response => {
+        this.errorResponse = response;
+      });
+  }
+
+  onModifyOutPrice(unstoring_id: string, unstoring: Unstoring, value: number) {
+
+    unstoring.outPrice = value;
+    unstoring.outSum = unstoring.outNumber * unstoring.outPrice;
+    this.unstoringService.update(unstoring_id, unstoring)
       .then(data => {
         // alert('삭제하였습니다.');
         this.router.navigate(['/invoice/all']);

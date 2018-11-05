@@ -33,8 +33,8 @@
             <!-- <th width="10%">구분</th> -->
             <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
             <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
-            <th width="20%" class="text-right">입고수량<br/>영업인</th>
-            <th width="20%" class="text-right">출고수량<br/>매출금액</th>
+            <th width="20%" class="text-right">입고수량<br/>영업인</th>            
+            <th width="20%" class="text-right">판매수량<br/>매출금액</th>
             <th width="10%" class="text-right">재고수량</th>
         </tr>
         </thead>
@@ -72,8 +72,8 @@
               <tr style="background-color: #eeeeee;">   
                 <td colspan="2" class="text-right">판매일<br/>판매처</td>
                 <td class="text-right">{{unstoring.outDate}}<br/>{{unstoring.outPurchase}}</td>
-                <td class="text-right">{{unstoring.outNumber | number}}<br/><b>{{unstoring.outSum | number}}</b></td>
-                <td></td>
+                <td class="text-right">{{unstoring.outNumber | number}}<br/>{{unstoring.outPrice | number}}<br/><b>{{unstoring.outSum | number}}</b></td>
+                <td>수량<br/>단가<br/>금액</td>
               </tr>
             </ng-container>
 

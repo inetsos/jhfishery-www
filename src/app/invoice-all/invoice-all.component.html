@@ -32,11 +32,11 @@
             <th width="5%">구분</th>
             <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
             <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
-            <th width="10%" class="text-right">입고량<br/>영업인</th>
-            <th width="10%" class="text-right">출고량<br/>매출금액</th>
+            <th width="10%" class="text-right">입고량<br/>영업인</th>            
+            <th width="10%" class="text-right">판매수량<br/>매출금액</th>
             <th width="8%" class="text-right">재고량</th>
             <th width="7%" class="text-center">삭제</th>
-            <th width="10%" class="text-center">영업인 수정</th>
+            <th width="10%" class="text-center">수정</th>
         </tr>
         </thead>
         <tbody>
@@ -71,6 +71,7 @@
                 <button (click)="deleteInvoice(invoice._id)">삭제</button>
               </td>
               <td class="text-center">
+                영업인번호 <br/>
                 <div class="row">
                   <input type="text" #seller style="width:40px">
                   <button (click)="onModifySeller(invoice._id, invoice, seller.value)">수정</button>
@@ -81,27 +82,30 @@
             <ng-container *ngFor="let unstoring of invoice.unstoring" >   
               <tr>   
                 <td>출고</td>   
-                <td colspan="2" class="text-right"><b>판매일<br/>판매처</b></td>
+                <td colspan="2" class="text-right">판매일<br/>판매처</td>
                 <td class="text-right">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>
-                <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>
-                <td></td>
-                <td></td>
+                <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outPrice | number}}<br/>{{unstoring.outSum | number}}</td>
+                <td>수량<br/>단가<br/>금액</td>
+                <td colspan="2"  class="text-right">
+                  수량: <input type="text" #outNumber style="width:60px" class="text-right">
+                  <button (click)="onModifyOutNumber(unstoring._id, unstoring, outNumber.value)">수정</button><br/>
+                  단가: <input type="text" #outPrice style="width:60px" class="text-right">
+                  <button (click)="onModifyOutPrice(unstoring._id, unstoring, outPrice.value)">수정</button>
+                </td>
               </tr>
             </ng-container> 
   
             <ng-container *ngIf="i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice ">
-              <tr>
+              <tr style="background-color: #eeeeee;">
                 <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>
-                <td></td>
-                <td></td>
+                <td colspan="3"></td>
               </tr>
             </ng-container>
   
             <ng-container *ngIf="i === invoices.length-1">
-                <tr>
+                <tr style="background-color: #eeeeee;">
                   <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>
-                  <td></td>
-                  <td></td>
+                  <td colspan="3"></td>
                 </tr>
             </ng-container>
   

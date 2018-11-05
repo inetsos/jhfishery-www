@@ -30,12 +30,12 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th width="8%">구분</th>
-          <th width="22%">출하자<br/>반입일자, 거래형태, 송장번호</th>
+          <th width="5%">구분</th>
+          <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
           <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
           <th width="15%" class="text-right">입고수량<br/>영업인</th>
-          <th width="10%" class="text-right">출고수량<br/>매출금액</th>
-          <th width="10%" class="text-right">재고수량</th>
+          <th width="10%" class="text-right">판매수량<br/>매출금액</th>
+          <th width="10%" class="text-right">재고량</th>
           <th width="10%"></th>
       </tr>
       </thead>
@@ -75,16 +75,16 @@
           <ng-container *ngFor="let unstoring of invoice.unstoring" >   
             <tr>   
               <td>출고</td>   
-              <td colspan="2" class="text-right"><b>판매일<br/>판매처</b></td>
+              <td colspan="2" class="text-right">판매일<br/>판매처</td>
               <td class="text-right">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>
-              <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outSum | number}}</td>
-              <td></td>
+              <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outPrice | number}}<br/>{{unstoring.outSum | number}}</td>
+              <td>수량<br/>단가<br/>금액</td>
               <td></td>
             </tr>
           </ng-container> 
 
           <ng-container *ngIf="i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice ">
-            <tr>
+            <tr  style="background-color: #eeeeee;">
               <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
               <td></td>
               <td></td>
@@ -92,7 +92,7 @@
           </ng-container>
 
           <ng-container *ngIf="i === invoices.length-1">
-              <tr>
+              <tr  style="background-color: #eeeeee;">
                 <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{getOutSum(invoices[i].invoice) | number }} </b></td>
                 <td></td>
                 <td></td>
