@@ -25,6 +25,7 @@ export interface Invoice {
             outNumber: number;
             outSum: number;
             outPurchase: string;
+            createdAt: Date;
         }
     ];
 }

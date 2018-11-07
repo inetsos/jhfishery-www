@@ -6,19 +6,15 @@
       <table width="100%">
         <tr>
           <td>
-            판매일:&nbsp;
+            입력일:&nbsp;
             <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="s_date" (ngModelChange)="anotherDay()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker> 
-            &nbsp;
-            <input matInput [matDatepicker]="picker2" placeholder="" [(ngModel)]="e_date" (ngModelChange)="anotherDay()">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker> 
-            &nbsp;
+            &nbsp;            
             <a [routerLink]="['/','invoice']" class="btn btn-primary btn-sm" role="button">재고 보기</a>&nbsp;
             <a [routerLink]="['/','invoice', 'all']" class="btn btn-primary btn-sm" role="button">전체 보기</a>&nbsp;
-            <a [routerLink]="['/','invoice', 'sale']" class="btn btn-warning btn-sm" role="button">판매 보기</a>&nbsp;
-            <a [routerLink]="['/','invoice', 'deadline']" class="btn btn-primary btn-sm" role="button">마감 보기</a>&nbsp;
+            <a [routerLink]="['/','invoice', 'sale']" class="btn btn-primary btn-sm" role="button">판매 보기</a>&nbsp;
+            <a [routerLink]="['/','invoice', 'deadline']" class="btn btn-warning btn-sm" role="button">마감 보기</a>&nbsp;
           </td>
           <td>
             <button (click)="exportAsXLSX()">
@@ -72,7 +68,8 @@
             <ng-container *ngFor="let unstoring of invoice.unstoring" >   
               <tr style="background-color: #eeeeee;">   
                 <td colspan="2" class="text-right">판매일<br/>판매처</td>
-                <td class="text-right">{{unstoring.outDate}}<br/>{{unstoring.outPurchase}}</td>
+                <td class="text-right">{{unstoring.outDate}}<br/>{{unstoring.outPurchase}}<br/>
+                  <span style='color:green'>{{unstoring.createdAt | date: 'yyyy-MM-dd HH:mm' }}</span></td>
                 <td class="text-right">{{unstoring.outNumber | number}}<br/>{{unstoring.outPrice | number}}<br/><b>{{unstoring.outSum | number}}</b></td>
                 <td>수량<br/>단가<br/>금액</td>
               </tr>

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -9,7 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { FileSelectDirective } from 'ng2-file-upload';
 
-import { AppRoutingModule }    from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth.guard';
 import { UsersResolve } from './users.resolve';
 import { UserResolve } from './user.resolve';
@@ -42,6 +42,7 @@ import { SellerEditComponent } from './seller-edit/seller-edit.component';
 import { SellerShowComponent } from './seller-show/seller-show.component';
 import { InvoiceAllComponent } from './invoice-all/invoice-all.component';
 import { InvoiceSaleComponent } from './invoice-sale/invoice-sale.component';
+import { InvoiceDeadlineComponent } from './invoice-deadline/invoice-deadline.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { InvoiceSaleComponent } from './invoice-sale/invoice-sale.component';
     SellerEditComponent,
     SellerShowComponent,
     InvoiceAllComponent,
-    InvoiceSaleComponent
+    InvoiceSaleComponent,
+    InvoiceDeadlineComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,7 @@ import { InvoiceSaleComponent } from './invoice-sale/invoice-sale.component';
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatProgressBarModule,
     MatDatepickerModule

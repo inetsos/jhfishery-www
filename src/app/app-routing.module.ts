@@ -21,6 +21,7 @@ import { UploadComponent } from './upload/upload.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceAllComponent } from './invoice-all/invoice-all.component';
 import { InvoiceSaleComponent } from './invoice-sale/invoice-sale.component';
+import { InvoiceDeadlineComponent } from './invoice-deadline/invoice-deadline.component';
 
 import { SellerNewComponent } from './seller-new/seller-new.component';
 import { SellerIndexComponent } from './seller-index/seller-index.component';
@@ -56,6 +57,13 @@ const routes: Routes = [
       {
         path: 'sale',
         component: InvoiceSaleComponent,
+        resolve: {
+          invoices: InvoicesResolve,
+        }
+      },
+      {
+        path: 'deadline',
+        component: InvoiceDeadlineComponent,
         resolve: {
           invoices: InvoicesResolve,
         }
