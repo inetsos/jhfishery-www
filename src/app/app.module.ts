@@ -43,6 +43,7 @@ import { SellerShowComponent } from './seller-show/seller-show.component';
 import { InvoiceAllComponent } from './invoice-all/invoice-all.component';
 import { InvoiceSaleComponent } from './invoice-sale/invoice-sale.component';
 import { InvoiceDeadlineComponent } from './invoice-deadline/invoice-deadline.component';
+import { InvoiceUpdateComponent } from './invoice-update/invoice-update.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { InvoiceDeadlineComponent } from './invoice-deadline/invoice-deadline.co
     SellerShowComponent,
     InvoiceAllComponent,
     InvoiceSaleComponent,
-    InvoiceDeadlineComponent
+    InvoiceDeadlineComponent,
+    InvoiceUpdateComponent
   ],
   imports: [
     BrowserModule,

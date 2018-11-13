@@ -9431,16 +9431,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./invoice-all/invoice-all.component */ "./src/app/invoice-all/invoice-all.component.ts");
 /* harmony import */ var _invoice_sale_invoice_sale_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./invoice-sale/invoice-sale.component */ "./src/app/invoice-sale/invoice-sale.component.ts");
 /* harmony import */ var _invoice_deadline_invoice_deadline_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./invoice-deadline/invoice-deadline.component */ "./src/app/invoice-deadline/invoice-deadline.component.ts");
-/* harmony import */ var _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./seller-new/seller-new.component */ "./src/app/seller-new/seller-new.component.ts");
-/* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
-/* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
-/* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
+/* harmony import */ var _invoice_update_invoice_update_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./invoice-update/invoice-update.component */ "./src/app/invoice-update/invoice-update.component.ts");
+/* harmony import */ var _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./seller-new/seller-new.component */ "./src/app/seller-new/seller-new.component.ts");
+/* harmony import */ var _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./seller-index/seller-index.component */ "./src/app/seller-index/seller-index.component.ts");
+/* harmony import */ var _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./seller-show/seller-show.component */ "./src/app/seller-show/seller-show.component.ts");
+/* harmony import */ var _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./seller-edit/seller-edit.component */ "./src/app/seller-edit/seller-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -9505,6 +9507,10 @@ var routes = [
                 resolve: {
                     invoices: _invoices_resolve__WEBPACK_IMPORTED_MODULE_6__["InvoicesResolve"],
                 }
+            },
+            {
+                path: 'update',
+                component: _invoice_update_invoice_update_component__WEBPACK_IMPORTED_MODULE_21__["InvoiceUpdateComponent"]
             }
         ]
     },
@@ -9538,24 +9544,24 @@ var routes = [
     { path: 'sellers', canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]],
         children: [
             {
-                path: 'new', component: _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_21__["SellerNewComponent"],
+                path: 'new', component: _seller_new_seller_new_component__WEBPACK_IMPORTED_MODULE_22__["SellerNewComponent"],
             },
             {
-                path: '', component: _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_22__["SellerIndexComponent"],
+                path: '', component: _seller_index_seller_index_component__WEBPACK_IMPORTED_MODULE_23__["SellerIndexComponent"],
                 resolve: {
                     sellers: _sellers_resolve__WEBPACK_IMPORTED_MODULE_7__["SellersResolve"],
                 }
             },
             {
                 path: ':userID',
-                component: _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_23__["SellerShowComponent"],
+                component: _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_24__["SellerShowComponent"],
                 resolve: {
                     seller: _seller_resolve__WEBPACK_IMPORTED_MODULE_8__["SellerResolve"]
                 }
             },
             {
                 path: ':userID/edit',
-                component: _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_24__["SellerEditComponent"],
+                component: _seller_edit_seller_edit_component__WEBPACK_IMPORTED_MODULE_25__["SellerEditComponent"],
                 resolve: {
                     seller: _seller_resolve__WEBPACK_IMPORTED_MODULE_8__["SellerResolve"]
                 }
@@ -9604,7 +9610,7 @@ module.exports = ".loading-overlay {\r\n    position: fixed;\r\n    top: 0px;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-progress-bar *ngIf=\"loading\" class=\"loading-overlay\" [mode]=\"'indeterminate'\"></mat-progress-bar>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n\r\n    <nav class=\"navbar navbar-default navbar-custom\">\r\n      <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\r\n\r\n        <div class=\"navbar-header\">\r\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\r\n            <span class=\"sr-only\">Toggle navigation</span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n          </button>\r\n          <a [routerLink]=\"['/']\" class=\"navbar-brand\">(주)대구종합수산</a>\r\n        </div>\r\n\r\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n\r\n          <ul class=\"nav navbar-nav\">\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','upload']\">파일 업로드</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','invoice']\">송품장 보기</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','sellers', 'new']\">영업인 등록</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','sellers']\">영업인 보기</a>\r\n            </li>\r\n          </ul>\r\n\r\n          <ul class=\"nav navbar-nav navbar-right\">\r\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\r\n              <a [routerLink]=\"['/','login']\">로그인</a>\r\n            </li>\r\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\r\n              <a [routerLink]=\"['/','users','new']\">사용자 등록</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','users']\">사용자 보기</a>\r\n            </li>\r\n            <li *ngIf=\"authService.isLoggedIn()\">  <!-- 1 -->\r\n              <a (click)=\"authService.logout()\"> 로그아웃 </a>\r\n            </li>\r\n          </ul>\r\n\r\n        </div>\r\n\r\n      </div>\r\n    </nav>\r\n\r\n    <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<mat-progress-bar *ngIf=\"loading\" class=\"loading-overlay\" [mode]=\"'indeterminate'\"></mat-progress-bar>\r\n\r\n<div class=\"container-fluid\">\r\n  <div class=\"row\">\r\n\r\n    <nav class=\"navbar navbar-default navbar-custom\">\r\n      <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\r\n\r\n        <div class=\"navbar-header\">\r\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\r\n            <span class=\"sr-only\">Toggle navigation</span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n          </button>\r\n          <a [routerLink]=\"['/']\" class=\"navbar-brand\">(주)대구종합수산</a>\r\n        </div>\r\n\r\n        <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n\r\n          <ul class=\"nav navbar-nav\">\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','upload']\">파일 업로드</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','invoice']\">송품장 보기</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n                <a [routerLink]=\"['/','invoice', 'update']\">송품장 수정</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','sellers', 'new']\">영업인 등록</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','sellers']\">영업인 보기</a>\r\n            </li>\r\n          </ul>\r\n\r\n          <ul class=\"nav navbar-nav navbar-right\">\r\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\r\n              <a [routerLink]=\"['/','login']\">로그인</a>\r\n            </li>\r\n            <li *ngIf=\"!authService.isLoggedIn()\" [routerLinkActive]=\"['active']\"> <!-- 1 -->\r\n              <a [routerLink]=\"['/','users','new']\">사용자 등록</a>\r\n            </li>\r\n            <li [routerLinkActive]=\"['active']\">\r\n              <a [routerLink]=\"['/','users']\">사용자 보기</a>\r\n            </li>\r\n            <li *ngIf=\"authService.isLoggedIn()\">  <!-- 1 -->\r\n              <a (click)=\"authService.logout()\"> 로그아웃 </a>\r\n            </li>\r\n          </ul>\r\n\r\n        </div>\r\n\r\n      </div>\r\n    </nav>\r\n\r\n    <div class=\"col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -9723,12 +9729,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./invoice-all/invoice-all.component */ "./src/app/invoice-all/invoice-all.component.ts");
 /* harmony import */ var _invoice_sale_invoice_sale_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./invoice-sale/invoice-sale.component */ "./src/app/invoice-sale/invoice-sale.component.ts");
 /* harmony import */ var _invoice_deadline_invoice_deadline_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./invoice-deadline/invoice-deadline.component */ "./src/app/invoice-deadline/invoice-deadline.component.ts");
+/* harmony import */ var _invoice_update_invoice_update_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./invoice-update/invoice-update.component */ "./src/app/invoice-update/invoice-update.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -9791,7 +9799,8 @@ var AppModule = /** @class */ (function () {
                 _seller_show_seller_show_component__WEBPACK_IMPORTED_MODULE_35__["SellerShowComponent"],
                 _invoice_all_invoice_all_component__WEBPACK_IMPORTED_MODULE_36__["InvoiceAllComponent"],
                 _invoice_sale_invoice_sale_component__WEBPACK_IMPORTED_MODULE_37__["InvoiceSaleComponent"],
-                _invoice_deadline_invoice_deadline_component__WEBPACK_IMPORTED_MODULE_38__["InvoiceDeadlineComponent"]
+                _invoice_deadline_invoice_deadline_component__WEBPACK_IMPORTED_MODULE_38__["InvoiceDeadlineComponent"],
+                _invoice_update_invoice_update_component__WEBPACK_IMPORTED_MODULE_39__["InvoiceUpdateComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -10888,6 +10897,177 @@ var InvoiceSaleComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/invoice-update/invoice-update.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/invoice-update/invoice-update.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/invoice-update/invoice-update.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/invoice-update/invoice-update.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"page page-invoices\">\r\n\r\n    <div class=\"contentBox\">\r\n      <h3 class=\"contentBoxTop\">송품장 수정</h3> \r\n      \r\n      <div class=\"titleBox\">\r\n        송품장번호:&nbsp; <input type=\"text\" #invoice_no style=\"width:160px\">&nbsp;\r\n        <button (click)=\"getInvoice(invoice_no.value)\">찾기</button>\r\n      </div>\r\n                  \r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr>\r\n            <th width=\"5%\">구분</th>\r\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\r\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\r\n            <th width=\"10%\" class=\"text-right\">입고량<br/>영업인</th>            \r\n            <th width=\"10%\" class=\"text-right\">판매수량<br/>매출금액</th>\r\n            <th width=\"8%\" class=\"text-right\">재고량</th>\r\n            <th width=\"7%\" class=\"text-center\">삭제</th>\r\n            <th width=\"10%\" class=\"text-center\">수정</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\r\n            <tr>\r\n              <td>\r\n                {{invoice.in_out}}\r\n              </td>\r\n              <td>\r\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\r\n                    <span style='color:red; text-decoration: underline;'><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\r\n                    <span><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n              </td>\r\n              <td>\r\n                {{invoice.item}}<br/>\r\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                <b>{{invoice.in_number - invoice.out_number | number}} </b>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                영업인번호 <br/>\r\n                <div class=\"row\">\r\n                  <input type=\"text\" #seller style=\"width:40px\">\r\n                  <button (click)=\"onModifySeller(invoice._id, invoice, seller.value)\">수정</button>\r\n                </div>             \r\n              </td>\r\n            </tr>\r\n            \r\n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \r\n              <tr>   \r\n                <td>출고</td>   \r\n                <td colspan=\"2\" class=\"text-right\">판매일<br/>판매처</td>\r\n                <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\r\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outPrice | number}}<br/>{{unstoring.outSum | number}}</td>\r\n                <td>수량<br/>단가<br/>금액</td>\r\n                <td colspan=\"2\"  class=\"text-right\">\r\n                  수량: <input type=\"text\" #outNumber style=\"width:60px\" class=\"text-right\">\r\n                  <button (click)=\"onModifyOutNumber(unstoring._id, unstoring, outNumber.value)\">수정</button><br/>\r\n                  단가: <input type=\"text\" #outPrice style=\"width:60px\" class=\"text-right\">\r\n                  <button (click)=\"onModifyOutPrice(unstoring._id, unstoring, outPrice.value)\">수정</button>\r\n                </td>\r\n              </tr>\r\n            </ng-container> \r\n  \r\n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\r\n              <tr style=\"background-color: #eeeeee;\">\r\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                <td colspan=\"3\"></td>\r\n              </tr>\r\n            </ng-container>\r\n  \r\n            <ng-container *ngIf=\"i === invoices.length-1\">\r\n                <tr style=\"background-color: #eeeeee;\">\r\n                  <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                  <td colspan=\"3\"></td>\r\n                </tr>\r\n            </ng-container>\r\n  \r\n          </ng-container>\r\n        </tbody>\r\n      </table>\r\n    </div>  \r\n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/invoice-update/invoice-update.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/invoice-update/invoice-update.component.ts ***!
+  \************************************************************/
+/*! exports provided: InvoiceUpdateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceUpdateComponent", function() { return InvoiceUpdateComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _invoice_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../invoice.service */ "./src/app/invoice.service.ts");
+/* harmony import */ var _unstoring_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../unstoring.service */ "./src/app/unstoring.service.ts");
+/* harmony import */ var _util_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util.service */ "./src/app/util.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var InvoiceUpdateComponent = /** @class */ (function () {
+    function InvoiceUpdateComponent(route, router, invoiceService, unstoringService, utilService) {
+        var _this = this;
+        this.route = route;
+        this.router = router;
+        this.invoiceService = invoiceService;
+        this.unstoringService = unstoringService;
+        this.utilService = utilService;
+        this.total = 0;
+        this.invoice_no = '';
+        //   this.route.params.subscribe(params => {
+        //     this.invoice_no = params['invoice'];
+        //     console.log('1.', this.invoice_no);
+        //     this.getInvoice(this.invoice_no);
+        //  });
+        this.navigationSubscription = this.router.events.subscribe(function (e) {
+            // If it is a NavigationEnd event re-initalise the component
+            if (e instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]) {
+                // this.invoices = this.route.snapshot.data['invoices'];
+                // this.anotherDay();
+                _this.getInvoice(_this.invoice_no);
+                //   this.route.params.subscribe(params => {
+                //     console.log('2.', this.invoice_no);
+                //     this.invoice_no = params['invoice'];
+                //  });
+            }
+        });
+    }
+    InvoiceUpdateComponent.prototype.ngOnInit = function () {
+    };
+    InvoiceUpdateComponent.prototype.getInvoice = function (invoice) {
+        var _this = this;
+        if (invoice !== '') {
+            this.invoice_no = invoice;
+            this.invoiceService.invoice(invoice).
+                then(function (data) {
+                _this.invoices = data;
+            })
+                .catch(function (response) { return null; });
+        }
+    };
+    InvoiceUpdateComponent.prototype.getOutSum = function (invoice) {
+        var sum = 0;
+        for (var i = 0; i < this.invoices.length; i++) {
+            if (this.invoices[i].invoice === invoice) {
+                for (var j = 0; j < this.invoices[i].unstoring.length; j++) {
+                    sum += this.invoices[i].unstoring[j].outSum;
+                }
+            }
+        }
+        return sum;
+    };
+    InvoiceUpdateComponent.prototype.onModifySeller = function (invoice_id, invoice, seller) {
+        var _this = this;
+        invoice.seller_no = seller;
+        this.invoiceService.update(invoice_id, invoice)
+            .then(function (data) {
+            // alert('삭제하였습니다.');
+            _this.router.navigate(['/invoice/update'], { queryParams: { invoice: _this.invoice_no } });
+        })
+            .catch(function (response) {
+            _this.errorResponse = response;
+        });
+    };
+    InvoiceUpdateComponent.prototype.onModifyOutNumber = function (unstoring_id, unstoring, value) {
+        var _this = this;
+        unstoring.outNumber = value;
+        unstoring.outSum = unstoring.outNumber * unstoring.outPrice;
+        this.unstoringService.update(unstoring_id, unstoring)
+            .then(function (data) {
+            // alert('삭제하였습니다.');
+            _this.router.navigate(['/invoice/update'], { queryParams: { invoice: _this.invoice_no } });
+        })
+            .catch(function (response) {
+            _this.errorResponse = response;
+        });
+    };
+    InvoiceUpdateComponent.prototype.onModifyOutPrice = function (unstoring_id, unstoring, value) {
+        var _this = this;
+        unstoring.outPrice = value;
+        unstoring.outSum = unstoring.outNumber * unstoring.outPrice;
+        this.unstoringService.update(unstoring_id, unstoring)
+            .then(function (data) {
+            // alert('삭제하였습니다.');
+            _this.router.navigate(['/invoice/update'], { queryParams: { invoice: _this.invoice_no } });
+        })
+            .catch(function (response) {
+            _this.errorResponse = response;
+        });
+    };
+    InvoiceUpdateComponent.prototype.deleteInvoice = function (id) {
+        var _this = this;
+        var answer = confirm('송품장을 삭제하시겠습니까?');
+        if (answer) {
+            this.invoiceService.destroy(id)
+                .then(function (data) {
+                alert('삭제하였습니다.');
+                _this.router.navigate(['/invoice/all']);
+            })
+                .catch(function (response) {
+                _this.errorResponse = response;
+            });
+        }
+    };
+    InvoiceUpdateComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-invoice-update',
+            template: __webpack_require__(/*! ./invoice-update.component.html */ "./src/app/invoice-update/invoice-update.component.html"),
+            styles: [__webpack_require__(/*! ./invoice-update.component.css */ "./src/app/invoice-update/invoice-update.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _invoice_service__WEBPACK_IMPORTED_MODULE_2__["InvoiceService"],
+            _unstoring_service__WEBPACK_IMPORTED_MODULE_3__["UnstoringService"], _util_service__WEBPACK_IMPORTED_MODULE_4__["UtilService"]])
+    ], InvoiceUpdateComponent);
+    return InvoiceUpdateComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/invoice.service.ts":
 /*!************************************!*\
   !*** ./src/app/invoice.service.ts ***!
@@ -11011,9 +11191,8 @@ var InvoiceService = /** @class */ (function () {
         })
             .catch(this.utilService.handleApiError);
     };
-    //////////////////////////////////////////////
-    InvoiceService.prototype.show = function (userID) {
-        return this.http.get(this.apiBaseUrl + "/" + userID)
+    InvoiceService.prototype.invoice = function (invoice) {
+        return this.http.get(this.apiBaseUrl + "/" + invoice)
             .toPromise()
             .then(this.utilService.checkSuccess)
             .then(function (response) {
@@ -11021,6 +11200,7 @@ var InvoiceService = /** @class */ (function () {
         })
             .catch(this.utilService.handleApiError);
     };
+    //////////////////////////////////////////////
     InvoiceService.prototype.create = function (user) {
         return this.http.post("" + this.apiBaseUrl, user)
             .toPromise()

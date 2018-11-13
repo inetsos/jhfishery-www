@@ -1,0 +1,98 @@
+<div class="page page-invoices">
+
+    <div class="contentBox">
+      <h3 class="contentBoxTop">송품장 수정</h3> 
+      
+      <div class="titleBox">
+        송품장번호:&nbsp; <input type="text" #invoice_no style="width:160px">&nbsp;
+        <button (click)="getInvoice(invoice_no.value)">찾기</button>
+      </div>
+                  
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th width="5%">구분</th>
+            <th width="25%">출하자<br/>반입일자, 거래형태, 송장번호</th>
+            <th width="25%">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>
+            <th width="10%" class="text-right">입고량<br/>영업인</th>            
+            <th width="10%" class="text-right">판매수량<br/>매출금액</th>
+            <th width="8%" class="text-right">재고량</th>
+            <th width="7%" class="text-center">삭제</th>
+            <th width="10%" class="text-center">수정</th>
+        </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let invoice of invoices; let i = index">
+            <tr>
+              <td>
+                {{invoice.in_out}}
+              </td>
+              <td>
+                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, 
+                  <ng-container *ngIf="invoice.in_number - invoice.out_number === 0">
+                    <span style='color:red; text-decoration: underline;'><b>{{invoice.invoice}}</b></span>
+                  </ng-container>
+                  <ng-container *ngIf="invoice.in_number - invoice.out_number !== 0">
+                    <span><b>{{invoice.invoice}}</b></span>
+                  </ng-container>
+              </td>
+              <td>
+                {{invoice.item}}<br/>
+                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}
+              </td>
+              <td  class="text-right">
+                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>
+              </td>
+              <td  class="text-right">
+                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}
+              </td>
+              <td  class="text-right">
+                <b>{{invoice.in_number - invoice.out_number | number}} </b>
+              </td>
+              <td class="text-center">
+                <button (click)="deleteInvoice(invoice._id)">삭제</button>
+              </td>
+              <td class="text-center">
+                영업인번호 <br/>
+                <div class="row">
+                  <input type="text" #seller style="width:40px">
+                  <button (click)="onModifySeller(invoice._id, invoice, seller.value)">수정</button>
+                </div>             
+              </td>
+            </tr>
+            
+            <ng-container *ngFor="let unstoring of invoice.unstoring" >   
+              <tr>   
+                <td>출고</td>   
+                <td colspan="2" class="text-right">판매일<br/>판매처</td>
+                <td class="text-right">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>
+                <td class="text-right">{{unstoring.outNumber | number}}<br/> {{unstoring.outPrice | number}}<br/>{{unstoring.outSum | number}}</td>
+                <td>수량<br/>단가<br/>금액</td>
+                <td colspan="2"  class="text-right">
+                  수량: <input type="text" #outNumber style="width:60px" class="text-right">
+                  <button (click)="onModifyOutNumber(unstoring._id, unstoring, outNumber.value)">수정</button><br/>
+                  단가: <input type="text" #outPrice style="width:60px" class="text-right">
+                  <button (click)="onModifyOutPrice(unstoring._id, unstoring, outPrice.value)">수정</button>
+                </td>
+              </tr>
+            </ng-container> 
+  
+            <ng-container *ngIf="i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice ">
+              <tr style="background-color: #eeeeee;">
+                <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>
+                <td colspan="3"></td>
+              </tr>
+            </ng-container>
+  
+            <ng-container *ngIf="i === invoices.length-1">
+                <tr style="background-color: #eeeeee;">
+                  <td colspan="5" class="text-right"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>
+                  <td colspan="3"></td>
+                </tr>
+            </ng-container>
+  
+          </ng-container>
+        </tbody>
+      </table>
+    </div>  
+  </div>

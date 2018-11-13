@@ -118,16 +118,17 @@ export class InvoiceService {
               .catch(this.utilService.handleApiError);
   }
 
-  //////////////////////////////////////////////
-  show(userID: string): Promise<Invoice> {
-    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${userID}`)
+  invoice(invoice: string): Promise<Invoice[]> {
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${invoice}`)
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {
-                return response.data as Invoice;
+                return response.data as Invoice[];
               })
               .catch(this.utilService.handleApiError);
   }
+
+  //////////////////////////////////////////////
 
   create(user: Invoice): Promise<Invoice> {
     return this.http.post<ApiResponse>(`${this.apiBaseUrl}`, user)
