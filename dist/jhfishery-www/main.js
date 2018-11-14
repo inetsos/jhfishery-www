@@ -10915,7 +10915,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page page-invoices\">\r\n\r\n    <div class=\"contentBox\">\r\n      <h3 class=\"contentBoxTop\">송품장 수정</h3> \r\n      \r\n      <div class=\"titleBox\">\r\n        송품장번호:&nbsp; <input type=\"text\" #invoice_no style=\"width:160px\">&nbsp;\r\n        <button (click)=\"getInvoice(invoice_no.value)\">찾기</button>\r\n      </div>\r\n                  \r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr>\r\n            <th width=\"5%\">구분</th>\r\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\r\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\r\n            <th width=\"10%\" class=\"text-right\">입고량<br/>영업인</th>            \r\n            <th width=\"10%\" class=\"text-right\">판매수량<br/>매출금액</th>\r\n            <th width=\"8%\" class=\"text-right\">재고량</th>\r\n            <th width=\"7%\" class=\"text-center\">삭제</th>\r\n            <th width=\"10%\" class=\"text-center\">수정</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\r\n            <tr>\r\n              <td>\r\n                {{invoice.in_out}}\r\n              </td>\r\n              <td>\r\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\r\n                    <span style='color:red; text-decoration: underline;'><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\r\n                    <span><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n              </td>\r\n              <td>\r\n                {{invoice.item}}<br/>\r\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                <b>{{invoice.in_number - invoice.out_number | number}} </b>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                영업인번호 <br/>\r\n                <div class=\"row\">\r\n                  <input type=\"text\" #seller style=\"width:40px\">\r\n                  <button (click)=\"onModifySeller(invoice._id, invoice, seller.value)\">수정</button>\r\n                </div>             \r\n              </td>\r\n            </tr>\r\n            \r\n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \r\n              <tr>   \r\n                <td>출고</td>   \r\n                <td colspan=\"2\" class=\"text-right\">판매일<br/>판매처</td>\r\n                <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\r\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outPrice | number}}<br/>{{unstoring.outSum | number}}</td>\r\n                <td>수량<br/>단가<br/>금액</td>\r\n                <td colspan=\"2\"  class=\"text-right\">\r\n                  수량: <input type=\"text\" #outNumber style=\"width:60px\" class=\"text-right\">\r\n                  <button (click)=\"onModifyOutNumber(unstoring._id, unstoring, outNumber.value)\">수정</button><br/>\r\n                  단가: <input type=\"text\" #outPrice style=\"width:60px\" class=\"text-right\">\r\n                  <button (click)=\"onModifyOutPrice(unstoring._id, unstoring, outPrice.value)\">수정</button>\r\n                </td>\r\n              </tr>\r\n            </ng-container> \r\n  \r\n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\r\n              <tr style=\"background-color: #eeeeee;\">\r\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                <td colspan=\"3\"></td>\r\n              </tr>\r\n            </ng-container>\r\n  \r\n            <ng-container *ngIf=\"i === invoices.length-1\">\r\n                <tr style=\"background-color: #eeeeee;\">\r\n                  <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                  <td colspan=\"3\"></td>\r\n                </tr>\r\n            </ng-container>\r\n  \r\n          </ng-container>\r\n        </tbody>\r\n      </table>\r\n    </div>  \r\n  </div>"
+module.exports = "<div class=\"page page-invoices\">\r\n\r\n    <div class=\"contentBox\">\r\n      <h3 class=\"contentBoxTop\">송품장 수정</h3> \r\n      \r\n      <div class=\"titleBox\">\r\n        송품장번호:&nbsp; <input type=\"text\" #invoice_no style=\"width:160px\">&nbsp;\r\n        <button (click)=\"getInvoice(invoice_no.value)\">찾기</button>\r\n      </div>\r\n                  \r\n      <table class=\"table table-bordered\">\r\n        <thead>\r\n          <tr>\r\n            <th width=\"5%\">구분</th>\r\n            <th width=\"25%\">출하자<br/>반입일자, 거래형태, 송장번호</th>\r\n            <th width=\"25%\">품종 <br/>원산지, 거래단량, 등급, 반입중량</th>\r\n            <th width=\"10%\" class=\"text-right\">입고량<br/>영업인</th>            \r\n            <th width=\"10%\" class=\"text-right\">판매수량<br/>매출금액</th>\r\n            <th width=\"8%\" class=\"text-right\">재고량</th>\r\n            <th width=\"7%\" class=\"text-center\">삭제</th>\r\n            <th width=\"10%\" class=\"text-center\">수정</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n          <ng-container *ngFor=\"let invoice of invoices; let i = index\">\r\n            <tr>\r\n              <td>\r\n                {{invoice.in_out}}\r\n              </td>\r\n              <td>\r\n                  {{invoice.seller}}<br/>{{invoice.in_date}}, {{invoice.deal_type}}, \r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number === 0\">\r\n                    <span style='color:red; text-decoration: underline;'><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n                  <ng-container *ngIf=\"invoice.in_number - invoice.out_number !== 0\">\r\n                    <span><b>{{invoice.invoice}}</b></span>\r\n                  </ng-container>\r\n              </td>\r\n              <td>\r\n                {{invoice.item}}<br/>\r\n                {{invoice.origin}}, {{invoice.uint}}, {{invoice.quality}}, {{invoice.weight}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.in_number | number}}<br/><span style='color:blue'><b>{{invoice.seller_no}}</b></span>\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                {{invoice.out_number | number}}<br/>{{invoice.out_sum | number}}\r\n              </td>\r\n              <td  class=\"text-right\">\r\n                <b>{{invoice.in_number - invoice.out_number | number}} </b>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                <button (click)=\"deleteInvoice(invoice._id)\">삭제</button>\r\n              </td>\r\n              <td class=\"text-center\">\r\n                영업인번호 <br/>\r\n                <div class=\"row\">\r\n                  <input type=\"text\" #seller style=\"width:40px\">\r\n                  <button (click)=\"onModifySeller(invoice._id, invoice, seller.value)\">수정</button>\r\n                </div>             \r\n              </td>\r\n            </tr>\r\n            \r\n            <ng-container *ngFor=\"let unstoring of invoice.unstoring\" >   \r\n              <tr>   \r\n                <td>출고</td>   \r\n                <td colspan=\"2\" class=\"text-right\">판매일<br/>판매처</td>\r\n                <td class=\"text-right\">{{unstoring.outDate}} <br/>{{unstoring.outPurchase}}</td>\r\n                <td class=\"text-right\">{{unstoring.outNumber | number}}<br/> {{unstoring.outPrice | number}}<br/>{{unstoring.outSum | number}}</td>\r\n                <td>수량<br/>단가<br/>금액</td>\r\n                <td colspan=\"2\"  class=\"text-right\">\r\n                  수량: <input type=\"text\" #outNumber style=\"width:60px\" class=\"text-right\">\r\n                  <button (click)=\"onModifyOutNumber(invoice, unstoring._id, unstoring, outNumber.value)\">수정</button><br/>\r\n                  단가: <input type=\"text\" #outPrice style=\"width:60px\" class=\"text-right\">\r\n                  <button (click)=\"onModifyOutPrice(invoice, unstoring._id, unstoring, outPrice.value)\">수정</button>\r\n                </td>\r\n              </tr>\r\n            </ng-container> \r\n  \r\n            <ng-container *ngIf=\"i < (invoices.length-1) && invoices[i].invoice !== invoices[i+1].invoice \">\r\n              <tr style=\"background-color: #eeeeee;\">\r\n                <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                <td colspan=\"3\"></td>\r\n              </tr>\r\n            </ng-container>\r\n  \r\n            <ng-container *ngIf=\"i === invoices.length-1\">\r\n                <tr style=\"background-color: #eeeeee;\">\r\n                  <td colspan=\"5\" class=\"text-right\"><b>매수금액: {{invoice.in_sum | number}} &nbsp;&nbsp; 매출금액: {{ getOutSum(invoices[i].invoice) | number }} </b></td>\r\n                  <td colspan=\"3\"></td>\r\n                </tr>\r\n            </ng-container>\r\n  \r\n          </ng-container>\r\n        </tbody>\r\n      </table>\r\n    </div>  \r\n  </div>"
 
 /***/ }),
 
@@ -10966,8 +10966,6 @@ var InvoiceUpdateComponent = /** @class */ (function () {
         this.navigationSubscription = this.router.events.subscribe(function (e) {
             // If it is a NavigationEnd event re-initalise the component
             if (e instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]) {
-                // this.invoices = this.route.snapshot.data['invoices'];
-                // this.anotherDay();
                 _this.getInvoice(_this.invoice_no);
                 //   this.route.params.subscribe(params => {
                 //     console.log('2.', this.invoice_no);
@@ -11012,27 +11010,62 @@ var InvoiceUpdateComponent = /** @class */ (function () {
             _this.errorResponse = response;
         });
     };
-    InvoiceUpdateComponent.prototype.onModifyOutNumber = function (unstoring_id, unstoring, value) {
+    InvoiceUpdateComponent.prototype.onModifyOutNumber = function (invoice, unstoring_id, unstoring, value) {
         var _this = this;
+        this.invoice = invoice;
         unstoring.outNumber = value;
         unstoring.outSum = unstoring.outNumber * unstoring.outPrice;
         this.unstoringService.update(unstoring_id, unstoring)
             .then(function (data) {
-            // alert('삭제하였습니다.');
-            _this.router.navigate(['/invoice/update'], { queryParams: { invoice: _this.invoice_no } });
+            var out_number = 0;
+            var out_sum = 0;
+            var unstoring_old = invoice.unstoring;
+            for (var i = 0; i < unstoring_old.length; i++) {
+                if (unstoring_old[i]._id !== data._id) {
+                    out_number += unstoring_old[i].outNumber;
+                    out_sum += unstoring_old[i].outSum;
+                }
+            }
+            // this.updateData(data._id, out_number + data.outNumber, out_sum + data.outSum);
+            invoice.out_number = out_number + data.outNumber;
+            invoice.out_sum = out_sum + data.outSum;
+            _this.invoiceService.update(invoice._id, invoice)
+                .then(function (result) {
+                _this.router.navigate(['/invoice/update'], { queryParams: { invoice: _this.invoice_no } });
+            })
+                .catch(function (response) {
+                _this.errorResponse = response;
+            });
         })
             .catch(function (response) {
             _this.errorResponse = response;
         });
     };
-    InvoiceUpdateComponent.prototype.onModifyOutPrice = function (unstoring_id, unstoring, value) {
+    InvoiceUpdateComponent.prototype.onModifyOutPrice = function (invoice, unstoring_id, unstoring, value) {
         var _this = this;
         unstoring.outPrice = value;
         unstoring.outSum = unstoring.outNumber * unstoring.outPrice;
         this.unstoringService.update(unstoring_id, unstoring)
             .then(function (data) {
-            // alert('삭제하였습니다.');
-            _this.router.navigate(['/invoice/update'], { queryParams: { invoice: _this.invoice_no } });
+            var out_number = 0;
+            var out_sum = 0;
+            var unstoring_old = invoice.unstoring;
+            for (var i = 0; i < unstoring_old.length; i++) {
+                if (unstoring_old[i]._id !== data._id) {
+                    out_number += unstoring_old[i].outNumber;
+                    out_sum += unstoring_old[i].outSum;
+                }
+            }
+            // this.updateData(data._id, out_number + data.outNumber, out_sum + data.outSum);
+            invoice.out_number = out_number + data.outNumber;
+            invoice.out_sum = out_sum + data.outSum;
+            _this.invoiceService.update(invoice._id, invoice)
+                .then(function (result) {
+                _this.router.navigate(['/invoice/update'], { queryParams: { invoice: _this.invoice_no } });
+            })
+                .catch(function (response) {
+                _this.errorResponse = response;
+            });
         })
             .catch(function (response) {
             _this.errorResponse = response;

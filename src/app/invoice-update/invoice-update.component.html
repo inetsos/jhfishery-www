@@ -70,9 +70,9 @@
                 <td>수량<br/>단가<br/>금액</td>
                 <td colspan="2"  class="text-right">
                   수량: <input type="text" #outNumber style="width:60px" class="text-right">
-                  <button (click)="onModifyOutNumber(unstoring._id, unstoring, outNumber.value)">수정</button><br/>
+                  <button (click)="onModifyOutNumber(invoice, unstoring._id, unstoring, outNumber.value)">수정</button><br/>
                   단가: <input type="text" #outPrice style="width:60px" class="text-right">
-                  <button (click)="onModifyOutPrice(unstoring._id, unstoring, outPrice.value)">수정</button>
+                  <button (click)="onModifyOutPrice(invoice, unstoring._id, unstoring, outPrice.value)">수정</button>
                 </td>
               </tr>
             </ng-container> 

@@ -5,6 +5,7 @@ import { NativeDateAdapter, DateAdapter, MAT_DATE_FORMATS } from '@angular/mater
 import { AppDateAdapter, APP_DATE_FORMATS} from '../date.adapter';
 
 import { Invoice } from '../invoice';
+import { InvoiceSimple } from '../invoice-simple';
 import { InvoiceService } from '../invoice.service';
 import { Unstoring } from '../unstoring';
 import { UnstoringService } from '../unstoring.service';
@@ -22,6 +23,9 @@ import { ApiResponse } from '../api-response';
 export class InvoiceUpdateComponent implements OnInit {
 
   invoices: Invoice[];
+  invoiceSimple: InvoiceSimple;
+  invoice: Invoice;
+
   total = 0;
   invoice_no = '';
   errorResponse: ApiResponse;
@@ -87,28 +91,66 @@ export class InvoiceUpdateComponent implements OnInit {
       });
   }
 
-  onModifyOutNumber(unstoring_id: string, unstoring: Unstoring, value: number) {
-
+  onModifyOutNumber(invoice: Invoice, unstoring_id: string, unstoring: Unstoring, value: number) {
+    this.invoice = invoice;
     unstoring.outNumber = value;
     unstoring.outSum = unstoring.outNumber * unstoring.outPrice;
     this.unstoringService.update(unstoring_id, unstoring)
       .then(data => {
-        // alert('삭제하였습니다.');
-        this.router.navigate(['/invoice/update'], { queryParams: { invoice: this.invoice_no } });
+
+        let out_number = 0;
+        let out_sum = 0;
+        const unstoring_old  = invoice.unstoring;
+        for (let i = 0; i < unstoring_old.length; i++) {
+          if (unstoring_old[i]._id !== data._id) {
+            out_number += unstoring_old[i].outNumber;
+            out_sum += unstoring_old[i].outSum;
+          }
+        }
+        // this.updateData(data._id, out_number + data.outNumber, out_sum + data.outSum);
+        invoice.out_number = out_number + data.outNumber;
+        invoice.out_sum =  out_sum + data.outSum;
+        this.invoiceService.update(invoice._id, invoice)
+        .then(result => {
+          this.router.navigate(['/invoice/update'], { queryParams: { invoice: this.invoice_no } });
+        })
+        .catch(response => {
+          this.errorResponse = response;
+        });
       })
       .catch(response => {
         this.errorResponse = response;
       });
   }
 
-  onModifyOutPrice(unstoring_id: string, unstoring: Unstoring, value: number) {
+  onModifyOutPrice(invoice: Invoice, unstoring_id: string, unstoring: Unstoring, value: number) {
 
     unstoring.outPrice = value;
     unstoring.outSum = unstoring.outNumber * unstoring.outPrice;
     this.unstoringService.update(unstoring_id, unstoring)
       .then(data => {
-        // alert('삭제하였습니다.');
-        this.router.navigate(['/invoice/update'], { queryParams: { invoice: this.invoice_no } });
+
+        let out_number = 0;
+        let out_sum = 0;
+        const unstoring_old  = invoice.unstoring;
+        for (let i = 0; i < unstoring_old.length; i++) {
+          if (unstoring_old[i]._id !== data._id) {
+            out_number += unstoring_old[i].outNumber;
+            out_sum += unstoring_old[i].outSum;
+          }
+        }
+
+        // this.updateData(data._id, out_number + data.outNumber, out_sum + data.outSum);
+        invoice.out_number = out_number + data.outNumber;
+        invoice.out_sum =  out_sum + data.outSum;
+        this.invoiceService.update(invoice._id, invoice)
+        .then(result => {
+          this.router.navigate(['/invoice/update'], { queryParams: { invoice: this.invoice_no } });
+        })
+        .catch(response => {
+          this.errorResponse = response;
+        });
+
       })
       .catch(response => {
         this.errorResponse = response;
