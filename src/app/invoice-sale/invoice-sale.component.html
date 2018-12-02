@@ -7,11 +7,11 @@
         <tr>
           <td>
             판매일:&nbsp;
-            <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="s_date" (ngModelChange)="anotherDay()">
+            <input style="width: 80px;" matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="s_date" (ngModelChange)="anotherDay()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker> 
             &nbsp;
-            <input matInput [matDatepicker]="picker2" placeholder="" [(ngModel)]="e_date" (ngModelChange)="anotherDay()">
+            <input style="width: 80px;" matInput [matDatepicker]="picker2" placeholder="" [(ngModel)]="e_date" (ngModelChange)="anotherDay()">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker> 
             &nbsp;

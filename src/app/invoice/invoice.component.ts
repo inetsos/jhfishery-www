@@ -36,6 +36,9 @@ export class InvoiceComponent implements OnInit {
 
   invoiceExs: InvoiceEx[] = [];
 
+  promises = [];
+  checkedInvoice = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -54,6 +57,22 @@ export class InvoiceComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  selectAll() {
+    for (let i = 0; i < this.invoices.length; i++) {
+      this.checkedInvoice[i] = this.invoices[i]._id;
+    }
+  }
+
+  onChange(isChecked: boolean, i: number, id: string) {
+    if (isChecked === true) {
+      this.checkedInvoice[i] = id;
+    } else {
+      this.checkedInvoice[i] = '';
+    }
+
+    console.log(this.checkedInvoice);
   }
 
   anotherDay() {
@@ -85,6 +104,43 @@ export class InvoiceComponent implements OnInit {
       }
     }
     return sum;
+  }
+
+//   var family = ['Shane', 'Sally', 'Isaac'];
+// console.log(family.indexOf('Isaac'); // 2
+// console.log(family.indexOf('Kittie'); // -1
+// var kittieExists = family.indexOf('Kittie') > -1; // false
+// if (!kittieExists) {
+//   family.push('Kittie');
+// }
+// console.log(family); // 'Shane', 'Sally', 'Isaac', 'Kittie'];
+
+  deleteCheckedInvoice() {
+    for (let i = 0; i < this.checkedInvoice.length ; i++) {
+      if (this.checkedInvoice[i] !== '') {
+        this.promises.push(checkValue(this.checkedInvoice[i]));
+      }
+    }
+
+   Promise.all(this.promises)
+    .then(function(data) {
+      this.router.navigate(['/invoice']);
+    })
+    .catch(function(err) {
+      this.errorResponse = err;
+    });
+
+  function checkValue(id: string) {
+      return new Promise(function(resolve, reject) {
+            this.invoiceService.destroy(id)
+            .then(data => {
+              return resolve(data);
+            })
+            .catch(response => {
+              return reject(response);
+            });
+      });
+    }
   }
 
   deleteInvoice(id: string) {

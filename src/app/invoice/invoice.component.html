@@ -7,11 +7,11 @@
       <tr>
         <td>
           반입일:&nbsp;
-          <input matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="s_date" (ngModelChange)="anotherDay()">
+          <input style="width: 80px;" matInput [matDatepicker]="picker" placeholder="" [(ngModel)]="s_date" (ngModelChange)="anotherDay()">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker> 
-          &nbsp;
-          <input matInput [matDatepicker]="picker2" placeholder="" [(ngModel)]="e_date" (ngModelChange)="anotherDay()">
+
+          <input style="width: 80px;" matInput [matDatepicker]="picker2" placeholder="" [(ngModel)]="e_date" (ngModelChange)="anotherDay()">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker> 
           &nbsp;
@@ -19,6 +19,9 @@
           <a [routerLink]="['/','invoice', 'all']" class="btn btn-primary btn-sm" role="button">전체 보기</a>&nbsp;
           <a [routerLink]="['/','invoice', 'sale']" class="btn btn-primary btn-sm" role="button">판매 보기</a>&nbsp;
           <a [routerLink]="['/','invoice', 'deadline']" class="btn btn-primary btn-sm" role="button">마감 보기</a>&nbsp;
+          &nbsp;
+          <button style="width: 80px;" (click)="selectAll()">모두선택</button>&nbsp;
+          <button style="width: 80px;" (click)="deleteCheckedInvoice()">삭제</button>
         </td>
         <td>
           <button (click)="exportAsXLSX()">
@@ -69,7 +72,8 @@
                 <b>{{invoice.in_number - invoice.out_number | number}} </b>
               </td>
             <td class="text-center">
-              <button (click)="deleteInvoice(invoice._id)">삭제</button>
+              <!-- <button (click)="deleteInvoice(invoice._id)">삭제</button> -->
+              <input type="checkbox" [checked]="checkedInvoice[i] === invoice._id" #select (change)="onChange(select.checked, i, invoice._id)">
             </td>
           </tr>
           
