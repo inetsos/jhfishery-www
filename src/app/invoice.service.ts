@@ -119,7 +119,7 @@ export class InvoiceService {
   }
 
   invoice(invoice: string): Promise<Invoice[]> {
-    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/${invoice}`)
+    return this.http.get<ApiResponse>(`${this.apiBaseUrl}/invoice/${invoice}`)
               .toPromise()
               .then(this.utilService.checkSuccess)
               .then(response => {

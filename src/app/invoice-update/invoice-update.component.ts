@@ -58,10 +58,10 @@ export class InvoiceUpdateComponent implements OnInit {
     if (invoice !== '') {
       this.invoice_no = invoice;
       this.invoiceService.invoice(invoice).
-        then((data) => {
-          this.invoices = data as Invoice[];
-        })
-        .catch(response => null);
+      then((data) => {
+        this.invoices = data as Invoice[];
+      })
+      .catch(response => null);
     }
   }
 
@@ -157,13 +157,51 @@ export class InvoiceUpdateComponent implements OnInit {
       });
   }
 
+
+  deleteUnstoring(invoice: Invoice, unstoring_id: string, unstoring: Unstoring) {
+
+    const answer = confirm('판매정보를 삭제하시겠습니까?');
+    if (answer) {
+
+      this.unstoringService.destroy(unstoring_id)
+        .then(data => {
+          alert('삭제하였습니다.');
+          let out_number = 0;
+          let out_sum = 0;
+          const unstoring_old  = invoice.unstoring;
+          for (let i = 0; i < unstoring_old.length; i++) {
+            if (unstoring_old[i]._id !== data._id) {
+              out_number += unstoring_old[i].outNumber;
+              out_sum += unstoring_old[i].outSum;
+            }
+          }
+
+          // this.updateData(data._id, out_number + data.outNumber, out_sum + data.outSum);
+          invoice.out_number = out_number;
+          invoice.out_sum =  out_sum;
+          this.invoiceService.update(invoice._id, invoice)
+          .then(result => {
+            this.router.navigate(['/invoice/update'], { queryParams: { invoice: this.invoice_no } });
+          })
+          .catch(response => {
+            this.errorResponse = response;
+          });
+
+        })
+        .catch(response => {
+          this.errorResponse = response;
+        });
+    }
+  }
+
   deleteInvoice(id: string) {
     const answer = confirm('송품장을 삭제하시겠습니까?');
     if (answer) {
       this.invoiceService.destroy(id)
       .then(data => {
         alert('삭제하였습니다.');
-        this.router.navigate(['/invoice/all']);
+        // this.router.navigate(['/invoice/all']);
+        this.router.navigate(['/invoice/update'], { queryParams: { invoice: this.invoice_no } });
       })
       .catch(response => {
         this.errorResponse = response;

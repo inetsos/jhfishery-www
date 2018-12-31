@@ -73,6 +73,7 @@
                   <button (click)="onModifyOutNumber(invoice, unstoring._id, unstoring, outNumber.value)">수정</button><br/>
                   단가: <input type="text" #outPrice style="width:60px" class="text-right">
                   <button (click)="onModifyOutPrice(invoice, unstoring._id, unstoring, outPrice.value)">수정</button>
+                  <button (click)="deleteUnstoring(invoice, unstoring._id)">삭제</button>
                 </td>
               </tr>
             </ng-container> 
