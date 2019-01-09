@@ -11,7 +11,7 @@ export class InvoicesResolve implements Resolve<Invoice[]> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot) {
-    //return this.invoiceService.index().catch(response => null);
+    // return this.invoiceService.index().catch(response => null);
     return this.invoiceService.today(route.queryParams['today']).catch(response => null);
   }
 }
